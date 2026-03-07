@@ -46,9 +46,9 @@ struct AnthropicProvider: LLMProvider {
         
         // Anthropic doesn't provide a models list API; return latest models
         [
-            "claude-sonnet-4-20250514",
-            "claude-haiku-4-20250414",
-            "claude-opus-4-20250514",
+            "claude-sonnet-4-6-20250627",
+            "claude-opus-4-6-20250627",
+            "claude-haiku-4-5-20250627",
         ]
     }
     
