@@ -56,18 +56,14 @@ final class AIChatViewModel {
     var inputText: String = ""
     var isProcessing = false
     
-    /// Reference to the document text (updated externally).
-    var documentText: String = ""
-    var syntaxName: String?
+    /// Lazy provider that returns current document text and syntax name.
+    var documentTextProvider: (() -> (text: String, syntax: String?))?
     
     /// Callback to apply a targeted search-and-replace edit.
     var onApplyEdit: ((_ search: String, _ replace: String) -> Bool)?
     
     /// Callback to replace all document text (fallback).
     var onReplaceAll: ((String) -> Void)?
-    
-    /// Callback to refresh document text right before sending a message.
-    var onRefreshDocumentText: (() -> Void)?
     
     /// Track applied states for edit blocks per message.
     var appliedEdits: Set<UUID> = []
@@ -77,9 +73,6 @@ final class AIChatViewModel {
         
         let userText = self.inputText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !userText.isEmpty else { return }
-        
-        // Refresh document text right before sending
-        self.onRefreshDocumentText?()
         
         self.messages.append(AIChatMessage(role: .user, content: userText))
         self.inputText = ""
@@ -237,13 +230,15 @@ final class AIChatViewModel {
             - For non-edit responses (explanations, questions), just write normally without blocks.
             """
         
-        if !self.documentText.isEmpty {
-            let preview = String(self.documentText.prefix(6000))
-            prompt += "\n\n--- CURRENT DOCUMENT ---\n\(preview)\n--- END DOCUMENT ---"
-        }
-        
-        if let syntax = self.syntaxName {
-            prompt += "\n\nDocument syntax: \(syntax)"
+        if let provider = self.documentTextProvider {
+            let doc = provider()
+            if !doc.text.isEmpty {
+                let preview = String(doc.text.prefix(6000))
+                prompt += "\n\n--- CURRENT DOCUMENT ---\n\(preview)\n--- END DOCUMENT ---"
+            }
+            if let syntax = doc.syntax {
+                prompt += "\n\nDocument syntax: \(syntax)"
+            }
         }
         
         return prompt

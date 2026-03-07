@@ -143,6 +143,14 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
         // AI Chat panel (right side, starts collapsed)
         let chatViewModel = AIChatViewModel()
         self.aiChatViewModel = chatViewModel
+        
+        // Set up lazy document text provider — captures self weakly
+        chatViewModel.documentTextProvider = { [weak self] in
+            let text = self?.documentViewController?.focusedTextView?.string ?? ""
+            let syntax = (self?.document as? Document)?.syntaxName
+            return (text: text, syntax: syntax)
+        }
+        
         let chatView = AIChatView(viewModel: chatViewModel)
         let chatHostingController = NSHostingController(rootView: chatView)
         let chatItem = NSSplitViewItem(inspectorWithViewController: chatHostingController)
@@ -444,19 +452,6 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
         
         guard let vm = self.aiChatViewModel else { return }
         
-        let docText = self.documentViewController?.focusedTextView?.string ?? ""
-        let syntaxName = (self.document as? Document)?.syntaxName
-        
-        vm.documentText = docText
-        vm.syntaxName = syntaxName
-        
-        // Live refresh: fetch current document text before each message send
-        vm.onRefreshDocumentText = { [weak self] in
-            guard let textView = self?.documentViewController?.focusedTextView else { return }
-            vm.documentText = textView.string
-            vm.syntaxName = (self?.document as? Document)?.syntaxName
-        }
-        
         // Targeted search-and-replace edit
         vm.onApplyEdit = { [weak self] searchText, replaceText in
             guard let textView = self?.documentViewController?.focusedTextView else { return false }
@@ -467,9 +462,6 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
             guard range.location != NSNotFound else { return false }
             
             textView.insertText(replaceText, replacementRange: range)
-            
-            // Update document text in chat view model
-            vm.documentText = textView.string
             return true
         }
         
@@ -479,7 +471,6 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
             
             textView.selectAll(nil)
             textView.insertText(text, replacementRange: textView.selectedRange())
-            vm.documentText = textView.string
         }
     }
 }
