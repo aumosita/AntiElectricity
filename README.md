@@ -1,85 +1,97 @@
-# CotEditor
+# ⚡ AntiElectricity
 
-CotEditor is a lightweight plain-text editor designed for macOS. The project aims to provide a general plain-text editor for everyone with an intuitive macOS-native user interface.
+**AntiElectricity**는 [CotEditor](https://coteditor.com)를 기반으로 한 macOS 네이티브 텍스트 에디터입니다.
+CotEditor의 가볍고 아름다운 편집 환경 위에 **AI/LLM 기능**을 결합하여,
+글쓰기와 코딩을 새로운 방식으로 보조하는 에디터를 지향합니다.
 
-- __Requirement__: macOS Sequoia 15 or later
-- __Web Site__: <https://coteditor.com>
-- __Mac App Store__: <https://apps.apple.com/app/coteditor/id1024640650>
-- __Languages__: English, Czech, Dutch, French, German, Italian, Japanese, Korean, Polish, Portuguese, Russian, Spanish, Simplified Chinese, Traditional Chinese, Chinese (Hong Kong), and Turkish
+- **요구 사양**: macOS Sequoia 15 이상
+- **기반 프로젝트**: [CotEditor](https://github.com/coteditor/CotEditor) by 1024jp
 
-![screenshot](screenshot@2x.png)
+---
 
+## 핵심 기능
 
-## Design Philosophy
+### 🤖 AI/LLM 통합
 
-CotEditor is built with a clear focus on being a truly __macOS-native__ text editor.
-Its design emphasizes the following principles:
+로컬 LLM(Ollama)과 연결하여 텍스트를 직접 수정·생성할 수 있습니다.
 
-- __Behave as a first-class macOS application.__
-  CotEditor adopts system-native UI components, conventions, and behaviors so that it feels instantly familiar to macOS users. Rather than asserting its own personality, CotEditor aims to blend naturally into the macOS experience as one of its native apps. Features that deviate from standard macOS behavior may be rejected, even if they’re common in other editors.
+- **프리셋 프롬프트 시스템** — 자주 쓰는 AI 명령을 프리셋으로 저장하고, 메뉴·단축키로 즉시 실행
+- **예제 프리셋 제공** — 맞춤법 교정, 글 고쳐쓰기, 옛한글 번역, 코드 생성/수정/설명 등 6개 예제를 한 번에 가져오기
+- **자유 프롬프트** — 정해진 프리셋 없이 원하는 지시를 바로 입력 (⌘⇧P)
+- **수정 승인/거부** — AI가 수정한 결과를 살펴본 후 Accept 또는 Reject
+- **다중 접근 방식**:
+  - 메뉴바 **AI** 메뉴
+  - 툴바 **✨ 버튼** (드롭다운)
+  - 우클릭 **컨텍스트 메뉴**
 
-- __Be accessible and comfortable for both beginners and advanced users.__
-  CotEditor aims to stay simple enough for casual use while providing the precision and control expected by experienced editors and developers.
+### ✏️ CotEditor에서 물려받은 기능
 
-- __Less is more.__
-  CotEditor avoids unnecessary complexity, as minor options accumulate and ultimately place unnecessary decision-making burdens on users.
+- 50개 이상의 프로그래밍 언어 구문 강조 (Tree-sitter 기반)
+- 다양한 텍스트 인코딩 지원 (유니코드·한국어 인코딩 우선 배치)
+- 정규표현식 검색/치환
+- 스크립트 자동화 (AppleScript, Shell, Python 등)
+- 분할 편집기
+- macOS 네이티브 UI
 
-- __Handle a wide range of plain-text formats accurately.__
-  From everyday notes to niche or legacy formats, CotEditor prioritizes correct text handling, encoding support, and predictable editing behavior.
+---
 
-- __Respect a diverse user base through localization and accessibility.__
-  Whenever possible, CotEditor integrates macOS features for localization, accessibility, and user customization to serve a global audience.
+## 비전
 
-These principles guide the project’s long-term direction and day-to-day development decisions,
-and they also help determine which feature requests align with CotEditor’s macOS-native identity.
+AntiElectricity는 **"생각하는 텍스트 에디터"**를 목표로 합니다.
 
+1. **로컬 우선** — Ollama를 통해 인터넷 연결 없이도 AI 기능 사용 가능
+2. **사용자 제어** — AI가 무엇을 수정하든 최종 결정은 사용자에게
+3. **확장 가능** — 향후 OpenAI, Claude API 등 외부 프로바이더 지원 예정
+4. **한국어 친화** — 한국어 맞춤법 교정, 옛한글(ㆍ, ㆁ, ㅸ) 번역 등 한국어 특화 기능
 
+---
 
-## Source Code
+## 빌드 방법
 
-CotEditor is a purely macOS native application written in Swift. It adheres to Cocoa's document-based application architecture and respects the power of `NSTextView` and related text system APIs.
+### 로컬 빌드 (Ad-hoc)
 
+```bash
+# Xcode에서 열기
+open CotEditor.xcodeproj
 
-### Development Environment
+# 또는 커맨드라인 빌드
+xcodebuild -project CotEditor.xcodeproj -scheme CotEditor -configuration Release build
+```
 
-- macOS Tahoe 26
-- Xcode 26.3
-- Swift 6.2 (partly in Swift 5 mode)
-- Sandbox and hardened runtime enabled
+빌드된 앱은 DerivedData의 `Build/Products/Release/AntiElectricity.app`에 생성됩니다.
 
+### 개발 환경
 
+- macOS Tahoe 26 / Xcode 26.3
+- Swift 6.2
+- Sandbox + Hardened Runtime
 
-## Contribution
+---
 
-CotEditor has its own contributing guidelines. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before creating an issue or submitting a pull request.
+## AI 설정
 
+1. [Ollama](https://ollama.ai)를 설치하고 모델을 다운로드합니다. (`ollama pull qwen3:8b` 등)
+2. AntiElectricity → Settings → **AI** 탭에서:
+   - Server URL 확인 (기본: `http://localhost:11434`)
+   - **Test** 버튼으로 연결 확인
+   - 모델 선택
+   - **Import Examples**로 예제 프리셋 가져오기
 
+---
 
-## How to Build
+## 감사의 말
 
-### Build for ad‑hoc usage
+AntiElectricity는 [**CotEditor**](https://coteditor.com)를 포크하여 만들어졌습니다.
 
-For those people who just want to build and play with CotEditor locally.
+CotEditor는 오랜 시간 동안 macOS 생태계에서 가장 아름답고 신뢰할 수 있는 오픈소스 텍스트 에디터로 자리잡아 온 프로젝트입니다. 1024jp를 비롯한 CotEditor 기여자들의 수년간의 헌신적인 작업이 없었다면 이 프로젝트는 존재할 수 없었을 것입니다. 진심으로 감사드립니다.
 
-1. Open `CotEditor.xcodeproj` in Xcode.
-1. Switch to ad-hoc build mode:
-    1. Open `Configurations/CodeSigning.xcconfig`.
-    1. Comment out `#include "CodeSigning-Default.xcconfig"`.
-    1. Uncomment `#include "CodeSigning-AdHoc.xcconfig"`.
-1. Build the “CotEditor” scheme.
+> CotEditor © 2005-2009 nakamuxu, © 2011, 2014 usami-k, © 2013-2026 1024jp
+> Licensed under the Apache License, Version 2.0
 
+---
 
-### Build for distribution
+## 라이선스
 
-1. Open `CotEditor.xcodeproj` in Xcode.
-1. Build the “CotEditor” scheme.
-
-
-
-## License
-
-© 2005-2009 nakamuxu,
-© 2011, 2014 usami-k,
-© 2013-2026 1024jp.
-
-The source code is licensed under the terms of the __Apache License, Version 2.0__. Image resources are licensed under the [__Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License__](https://creativecommons.org/licenses/by-nc-nd/4.0/). See [LICENSE](LICENSE) for details.
+소스 코드는 **Apache License 2.0** 조건에 따라 라이선스가 부여됩니다.
+이미지 리소스는 [Creative Commons BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)에 따릅니다.
+자세한 내용은 [LICENSE](LICENSE)를 참조하세요.
