@@ -808,85 +808,85 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "CotEditor"
+            "value" : "AntiElectricity"
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor"
+            "value" : "AntiElectricity"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor"
+            "value" : "AntiElectricity"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor"
+            "value" : "AntiElectricity"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor"
+            "value" : "AntiElectricity"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor"
+            "value" : "AntiElectricity"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor"
+            "value" : "AntiElectricity"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor"
+            "value" : "AntiElectricity"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor"
+            "value" : "AntiElectricity"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor"
+            "value" : "AntiElectricity"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor"
+            "value" : "AntiElectricity"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor"
+            "value" : "AntiElectricity"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor"
+            "value" : "AntiElectricity"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "CotEditor"
+            "value" : "AntiElectricity"
           }
         }
       },
@@ -1100,348 +1100,348 @@
         }
       }
     },
-    "CotEditor Replace Definition" : {
+    "AntiElectricity Replace Definition" : {
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Definice nahrazení CotEditor"
+            "value" : "Definice nahrazení AntiElectricity"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor-Ersetzungsdefinition"
+            "value" : "AntiElectricity-Ersetzungsdefinition"
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor Replace Definition"
+            "value" : "AntiElectricity Replace Definition"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Definición de reemplazo de CotEditor"
+            "value" : "Definición de reemplazo de AntiElectricity"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Liste de remplacements CotEditor"
+            "value" : "Liste de remplacements AntiElectricity"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Definizione sostituzioni di CotEditor"
+            "value" : "Definizione sostituzioni di AntiElectricity"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor置換定義"
+            "value" : "AntiElectricity置換定義"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor 대치 정의"
+            "value" : "AntiElectricity 대치 정의"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vervangingsdefinitie CotEditor"
+            "value" : "Vervangingsdefinitie AntiElectricity"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Definicja zastąpienia CotEditora"
+            "value" : "Definicja zastąpienia AntiElectricitya"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Substituição de definição do CotEditor"
+            "value" : "Substituição de definição do AntiElectricity"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Файл замен CotEditor"
+            "value" : "Файл замен AntiElectricity"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor değişiklik tanımı"
+            "value" : "AntiElectricity değişiklik tanımı"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor替换定义"
+            "value" : "AntiElectricity替换定义"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor取代定義"
+            "value" : "AntiElectricity取代定義"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor取代定義檔"
+            "value" : "AntiElectricity取代定義檔"
           }
         }
       }
     },
-    "CotEditor Settings Archive" : {
+    "AntiElectricity Settings Archive" : {
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Archiv nastavení CotEditoru"
+            "value" : "Archiv nastavení AntiElectricityu"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor-Einstellungsarchiv"
+            "value" : "AntiElectricity-Einstellungsarchiv"
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor Settings Archive"
+            "value" : "AntiElectricity Settings Archive"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Archivo de ajustes de CotEditor"
+            "value" : "Archivo de ajustes de AntiElectricity"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Archive des paramètres CotEditor"
+            "value" : "Archive des paramètres AntiElectricity"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Archivio Impostazioni CotEditor"
+            "value" : "Archivio Impostazioni AntiElectricity"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor設定アーカイブ"
+            "value" : "AntiElectricity設定アーカイブ"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor 설정 아카이브"
+            "value" : "AntiElectricity 설정 아카이브"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "CotEditor-instellingenarchief"
+            "value" : "AntiElectricity-instellingenarchief"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "archiwum ustawień CotEditora"
+            "value" : "archiwum ustawień AntiElectricitya"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Arquivo de Configurações do CotEditor"
+            "value" : "Arquivo de Configurações do AntiElectricity"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Архив настроек CotEditor"
+            "value" : "Архив настроек AntiElectricity"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor Ayarları Arşivi"
+            "value" : "AntiElectricity Ayarları Arşivi"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor设置归档"
+            "value" : "AntiElectricity设置归档"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor設定封存檔"
+            "value" : "AntiElectricity設定封存檔"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor設定封存檔"
+            "value" : "AntiElectricity設定封存檔"
           }
         }
       }
     },
-    "CotEditor Syntax" : {
+    "AntiElectricity Syntax" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor-Syntax"
+            "value" : "AntiElectricity-Syntax"
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor Syntax"
+            "value" : "AntiElectricity Syntax"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Sintaxis CotEditor"
+            "value" : "Sintaxis AntiElectricity"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Syntaxe CotEditor"
+            "value" : "Syntaxe AntiElectricity"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditorシンタックス"
+            "value" : "AntiElectricityシンタックス"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "CotEditor-syntaxis"
+            "value" : "AntiElectricity-syntaxis"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor語法"
+            "value" : "AntiElectricity語法"
           }
         }
       }
     },
-    "CotEditor Theme" : {
+    "AntiElectricity Theme" : {
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Motiv CotEditoru"
+            "value" : "Motiv AntiElectricityu"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor-Thema"
+            "value" : "AntiElectricity-Thema"
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor Theme"
+            "value" : "AntiElectricity Theme"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tema CotEditor"
+            "value" : "Tema AntiElectricity"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Thème CotEditor"
+            "value" : "Thème AntiElectricity"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tema CotEditor"
+            "value" : "Tema AntiElectricity"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditorテーマ"
+            "value" : "AntiElectricityテーマ"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor 테마"
+            "value" : "AntiElectricity 테마"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor-thema"
+            "value" : "AntiElectricity-thema"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "motyw CotEditora"
+            "value" : "motyw AntiElectricitya"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tema do CotEditor"
+            "value" : "Tema do AntiElectricity"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Тема CotEditor"
+            "value" : "Тема AntiElectricity"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor teması"
+            "value" : "AntiElectricity teması"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor主题"
+            "value" : "AntiElectricity主题"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor主題"
+            "value" : "AntiElectricity主題"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor主題"
+            "value" : "AntiElectricity主題"
           }
         }
       }
@@ -3153,103 +3153,103 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor potřebuje souhlas uživatele k ovládání jiných aplikací pomocí AppleScriptu."
+            "value" : "AntiElectricity potřebuje souhlas uživatele k ovládání jiných aplikací pomocí AppleScriptu."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor benötigt deine Erlaubnis, um andere Programme mit AppleScript zu steuern."
+            "value" : "AntiElectricity benötigt deine Erlaubnis, um andere Programme mit AppleScript zu steuern."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "CotEditor needs your approval to control other applications with AppleScript."
+            "value" : "AntiElectricity needs your approval to control other applications with AppleScript."
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor needs your approval to control other applications with AppleScript."
+            "value" : "AntiElectricity needs your approval to control other applications with AppleScript."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor necesita tu aprobación para controlar otras aplicaciones con AppleScript"
+            "value" : "AntiElectricity necesita tu aprobación para controlar otras aplicaciones con AppleScript"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor a besoin de votre autorisation pour contrôler les autres applications avec AppleScript."
+            "value" : "AntiElectricity a besoin de votre autorisation pour contrôler les autres applications avec AppleScript."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor ha bisogno dell’autorizzazione per controllare altre applicazioni tramite AppleScript."
+            "value" : "AntiElectricity ha bisogno dell’autorizzazione per controllare altre applicazioni tramite AppleScript."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditorがAppleScriptでほかのアプリを操作するためにユーザの許可が必要です。"
+            "value" : "AntiElectricityがAppleScriptでほかのアプリを操作するためにユーザの許可が必要です。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor가 AppleScript로 다른 응용 프로그램을 제어하려면 사용자 승인이 필요합니다."
+            "value" : "AntiElectricity가 AppleScript로 다른 응용 프로그램을 제어하려면 사용자 승인이 필요합니다."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor heeft jouw toestemming nodig om andere apps te bedienen met AppleScript."
+            "value" : "AntiElectricity heeft jouw toestemming nodig om andere apps te bedienen met AppleScript."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor potrzebuje zgody użytkownika, aby sterować innymi aplikacjami za pomocą AppleScript."
+            "value" : "AntiElectricity potrzebuje zgody użytkownika, aby sterować innymi aplikacjami za pomocą AppleScript."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O CotEditor precisa de aprovação do usuário para controlar outros aplicativos via AppleScript."
+            "value" : "O AntiElectricity precisa de aprovação do usuário para controlar outros aplicativos via AppleScript."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor необходимо разрешение на использование AppleScript."
+            "value" : "AntiElectricity необходимо разрешение на использование AppleScript."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor, başka uygulamaları AppleScript ile denetlemek için kullanıcı onayına gereksinim duyuyor."
+            "value" : "AntiElectricity, başka uygulamaları AppleScript ile denetlemek için kullanıcı onayına gereksinim duyuyor."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor需要用户授权使用AppleScript控制其他应用。"
+            "value" : "AntiElectricity需要用户授权使用AppleScript控制其他应用。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor需要用戶授權使用AppleScript控制其他應用。"
+            "value" : "AntiElectricity需要用戶授權使用AppleScript控制其他應用。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor需要你的批准才能使用AppleScript控制其他應用程式。"
+            "value" : "AntiElectricity需要你的批准才能使用AppleScript控制其他應用程式。"
           }
         }
       }

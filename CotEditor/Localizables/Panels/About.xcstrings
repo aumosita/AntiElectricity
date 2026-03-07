@@ -203,103 +203,103 @@
         }
       }
     },
-    "and everyone who supports CotEditor!" : {
+    "and everyone who supports AntiElectricity!" : {
       "comment" : "last line of the Special Thanks section",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "a všem, kteří podporují CotEditor!"
+            "value" : "a všem, kteří podporují AntiElectricity!"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "und alle, die CotEditor unterstützen"
+            "value" : "und alle, die AntiElectricity unterstützen"
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "and everyone who supports CotEditor!"
+            "value" : "and everyone who supports AntiElectricity!"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¡Y a todos los que apoyan CotEditor!"
+            "value" : "¡Y a todos los que apoyan AntiElectricity!"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ainsi que tous ceux supportant CotEditor !"
+            "value" : "ainsi que tous ceux supportant AntiElectricity !"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "e a tutti i sostenitori di CotEditor!"
+            "value" : "e a tutti i sostenitori di AntiElectricity!"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "そしてCotEditorを支えてくれるすべての皆さま!"
+            "value" : "そしてAntiElectricityを支えてくれるすべての皆さま!"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "그리고 CotEditor를 응원해주시는 모든 분들!"
+            "value" : "그리고 AntiElectricity를 응원해주시는 모든 분들!"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "en iedereen die CotEditor steunt!"
+            "value" : "en iedereen die AntiElectricity steunt!"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "oraz wszyscy, którzy wspierają CotEditora!"
+            "value" : "oraz wszyscy, którzy wspierają AntiElectricitya!"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "e todos que apoiam o CotEditor!"
+            "value" : "e todos que apoiam o AntiElectricity!"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "и все кто поддерживает CotEditor!"
+            "value" : "и все кто поддерживает AntiElectricity!"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ve CotEditor’u destekleyen herkes!"
+            "value" : "ve AntiElectricity’u destekleyen herkes!"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "以及支持CotEditor的各位！"
+            "value" : "以及支持AntiElectricity的各位！"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "以及應援著CotEditor的諸位！"
+            "value" : "以及應援著AntiElectricity的諸位！"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "以及支持CotEditor的各位！"
+            "value" : "以及支持AntiElectricity的各位！"
           }
         }
       }
@@ -405,202 +405,202 @@
         }
       }
     },
-    "CotEditor is an open source program\nlicensed under the Apache License, Version 2.0." : {
+    "AntiElectricity is an open source program\nlicensed under the Apache License, Version 2.0." : {
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor je open source program\nlicencovaný pod licencí Apache, verze 2.0."
+            "value" : "AntiElectricity je open source program\nlicencovaný pod licencí Apache, verze 2.0."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor ist ein Open-Source-Programm,\ndas unter der Apache-Lizenz, Version 2.0 lizenziert ist."
+            "value" : "AntiElectricity ist ein Open-Source-Programm,\ndas unter der Apache-Lizenz, Version 2.0 lizenziert ist."
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor is an open source program\nlicenced under the Apache Licence, Version 2.0"
+            "value" : "AntiElectricity is an open source program\nlicenced under the Apache Licence, Version 2.0"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor es un programa de código abierto\nbajo la licencia Apache, versión 2.0."
+            "value" : "AntiElectricity es un programa de código abierto\nbajo la licencia Apache, versión 2.0."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor est un programme open source\nsous licence Apache, version 2.0."
+            "value" : "AntiElectricity est un programme open source\nsous licence Apache, version 2.0."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor è un programma Open-Source,\nrilasciato sotto la licenza Apache, Versione 2.0."
+            "value" : "AntiElectricity è un programma Open-Source,\nrilasciato sotto la licenza Apache, Versione 2.0."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditorはオープンソースプログラムとして\nApache License, Version 2.0でライセンスされてます。"
+            "value" : "AntiElectricityはオープンソースプログラムとして\nApache License, Version 2.0でライセンスされてます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor는 오픈소스 프로그램이며,\nApache License, Version 2.0으로 보호됩니다."
+            "value" : "AntiElectricity는 오픈소스 프로그램이며,\nApache License, Version 2.0으로 보호됩니다."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor is een open source programma\ngelicentieerd onder de Apache-licentie, versie 2.0."
+            "value" : "AntiElectricity is een open source programma\ngelicentieerd onder de Apache-licentie, versie 2.0."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor jest programem o otwartym kodzie źródłowym licencjonowanym na podstawie licencji Apache, wersja 2.0."
+            "value" : "AntiElectricity jest programem o otwartym kodzie źródłowym licencjonowanym na podstawie licencji Apache, wersja 2.0."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O CotEditor é um programa de código aberto\nlicenciado sob a Licença Apache, Versão 2.0."
+            "value" : "O AntiElectricity é um programa de código aberto\nlicenciado sob a Licença Apache, Versão 2.0."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor — программа с открытым исходным кодом,\nлицензированная Apache License, версия 2.0."
+            "value" : "AntiElectricity — программа с открытым исходным кодом,\nлицензированная Apache License, версия 2.0."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor, Apacha Lisansı Sürüm 2.0 altında\nlisanslanmış açık kaynaklı bir programdır."
+            "value" : "AntiElectricity, Apacha Lisansı Sürüm 2.0 altında\nlisanslanmış açık kaynaklı bir programdır."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor是基于Apache协议2.0版的开源软件"
+            "value" : "AntiElectricity是基于Apache协议2.0版的开源软件"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor是基於Apache協議2.0版的開源軟體"
+            "value" : "AntiElectricity是基於Apache協議2.0版的開源軟體"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor是依Apache許可協議2.0版本授權的開放原始碼程式。"
+            "value" : "AntiElectricity是依Apache許可協議2.0版本授權的開放原始碼程式。"
           }
         }
       }
     },
-    "CotEditor uses the following awesome technologies. We are deeply grateful for those who let us use their valuable work." : {
+    "AntiElectricity uses the following awesome technologies. We are deeply grateful for those who let us use their valuable work." : {
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor používá následující úžasné technologie. Jsme velmi vděční všem, kteří nám umožnili použít jejich přínosnou práci."
+            "value" : "AntiElectricity používá následující úžasné technologie. Jsme velmi vděční všem, kteří nám umožnili použít jejich přínosnou práci."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor verwendet die folgenden großartigen Technologien. Wir sind sehr dankbar für diejenigen, die uns ihre wertvolle Arbeit zur Verfügung stellen."
+            "value" : "AntiElectricity verwendet die folgenden großartigen Technologien. Wir sind sehr dankbar für diejenigen, die uns ihre wertvolle Arbeit zur Verfügung stellen."
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor uses the following awesome technologies. We are deeply grateful for those who let us use their valuable work."
+            "value" : "AntiElectricity uses the following awesome technologies. We are deeply grateful for those who let us use their valuable work."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor se desarrolla utilizando las siguientes tecnologías excepcionales. Agradecemos profundamente a quienes nos permiten usar su valioso trabajo."
+            "value" : "AntiElectricity se desarrolla utilizando las siguientes tecnologías excepcionales. Agradecemos profundamente a quienes nos permiten usar su valioso trabajo."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor utilise les technologies géniales suivantes. Nous sommes très reconnaissants envers ceux nous permettant d’utiliser leurs précieux travaux."
+            "value" : "AntiElectricity utilise les technologies géniales suivantes. Nous sommes très reconnaissants envers ceux nous permettant d’utiliser leurs précieux travaux."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor fa uso delle fantastiche seguenti tecnologie. Un enorme grazie a coloro che ci permettono di utilizzarle."
+            "value" : "AntiElectricity fa uso delle fantastiche seguenti tecnologie. Un enorme grazie a coloro che ci permettono di utilizzarle."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditorは下記の素晴らしい技術を使用しています。有益な作品の公開に深く感謝いたします。"
+            "value" : "AntiElectricityは下記の素晴らしい技術を使用しています。有益な作品の公開に深く感謝いたします。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor는 다음과 같은 멋진 기술을 활용합니다. 가치있는 작업물을 사용할 수 있게 해주신 분들께 매우 감사드립니다."
+            "value" : "AntiElectricity는 다음과 같은 멋진 기술을 활용합니다. 가치있는 작업물을 사용할 수 있게 해주신 분들께 매우 감사드립니다."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor gebruikt de volgende geweldige technologieën. We zijn degenen die ons hun waardevolle werk laten gebruiken zeer dankbaar."
+            "value" : "AntiElectricity gebruikt de volgende geweldige technologieën. We zijn degenen die ons hun waardevolle werk laten gebruiken zeer dankbaar."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor wykorzystuje poniższe niesamowite technologie. Jesteśmy głęboko wdzięczni tym, którzy pozwolili nam skorzystać ze swojej cennej pracy."
+            "value" : "AntiElectricity wykorzystuje poniższe niesamowite technologie. Jesteśmy głęboko wdzięczni tym, którzy pozwolili nam skorzystać ze swojej cennej pracy."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor usa as incríveis tecnologias a seguir. Somos profundamente gratos àqueles que nos permitem usar seu valioso trabalho."
+            "value" : "AntiElectricity usa as incríveis tecnologias a seguir. Somos profundamente gratos àqueles que nos permitem usar seu valioso trabalho."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor использует следующие замечательные технологии. Мы безмерно благодарны всем, кто позволил нам использовать их ценные труды."
+            "value" : "AntiElectricity использует следующие замечательные технологии. Мы безмерно благодарны всем, кто позволил нам использовать их ценные труды."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor aşağıdaki muhteşem teknolojileri kullanır. Değerli çalışmalarını kullanmamıza izin veren herkese şükran borçluyuz."
+            "value" : "AntiElectricity aşağıdaki muhteşem teknolojileri kullanır. Değerli çalışmalarını kullanmamıza izin veren herkese şükran borçluyuz."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor使用了下述绝伦的技术。对于让我们得以使用这些宝贵作品的人们，我们深表谢意。"
+            "value" : "AntiElectricity使用了下述绝伦的技术。对于让我们得以使用这些宝贵作品的人们，我们深表谢意。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor有使用到下述絕倫的技術。我們對那些讓我們用上了這些技術的人士們深表敬意。"
+            "value" : "AntiElectricity有使用到下述絕倫的技術。我們對那些讓我們用上了這些技術的人士們深表敬意。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor採用了以下令人驚奇的技術。我們衷心多謝所有允許我們使用其寶貴成果的人。"
+            "value" : "AntiElectricity採用了以下令人驚奇的技術。我們衷心多謝所有允許我們使用其寶貴成果的人。"
           }
         }
       }
@@ -1310,73 +1310,73 @@
         }
       }
     },
-    "The CotEditor Project" : {
+    "The AntiElectricity Project" : {
       "comment" : "section heading",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Projekt CotEditor"
+            "value" : "Projekt AntiElectricity"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Das CotEditor Projekt"
+            "value" : "Das AntiElectricity Projekt"
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The CotEditor Project"
+            "value" : "The AntiElectricity Project"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El proyecto CotEditor"
+            "value" : "El proyecto AntiElectricity"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le projet CotEditor"
+            "value" : "Le projet AntiElectricity"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Progetto CotEditor"
+            "value" : "Progetto AntiElectricity"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditorプロジェクト"
+            "value" : "AntiElectricityプロジェクト"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor 프로젝트"
+            "value" : "AntiElectricity 프로젝트"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Het CotEditor-project"
+            "value" : "Het AntiElectricity-project"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Projekt CotEditor"
+            "value" : "Projekt AntiElectricity"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Projeto CotEditor"
+            "value" : "Projeto AntiElectricity"
           }
         },
         "ru" : {
@@ -1388,25 +1388,25 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor Projesi"
+            "value" : "AntiElectricity Projesi"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor项目"
+            "value" : "AntiElectricity项目"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor專案"
+            "value" : "AntiElectricity專案"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor項目"
+            "value" : "AntiElectricity項目"
           }
         }
       }

@@ -950,102 +950,102 @@
         }
       }
     },
-    "Choose a CotEditor settings archive to import." : {
+    "Choose a AntiElectricity settings archive to import." : {
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vyberte archiv nastavení CotEditoru, který chcete importovat."
+            "value" : "Vyberte archiv nastavení AntiElectricityu, který chcete importovat."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wähle ein CotEditor-Einstellungsarchiv, das importiert werden soll."
+            "value" : "Wähle ein AntiElectricity-Einstellungsarchiv, das importiert werden soll."
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choose a CotEditor settings archive to import."
+            "value" : "Choose a AntiElectricity settings archive to import."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Seleccione el archivo de configuración de CotEditor que quiera importar."
+            "value" : "Seleccione el archivo de configuración de AntiElectricity que quiera importar."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Choisissez une archive de paramètres CotEditor à importer."
+            "value" : "Choisissez une archive de paramètres AntiElectricity à importer."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Selezionare un archivio di impostazioni di CotEditor da importare."
+            "value" : "Selezionare un archivio di impostazioni di AntiElectricity da importare."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "読み込むCotEditor設定アーカイブを選択"
+            "value" : "読み込むAntiElectricity設定アーカイブを選択"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "가져올 CotEditor 설정 아카이브를 선택하십시오."
+            "value" : "가져올 AntiElectricity 설정 아카이브를 선택하십시오."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Kies een CotEditor-instellingenarchief om te importeren."
+            "value" : "Kies een AntiElectricity-instellingenarchief om te importeren."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wybierz archiwum ustawień CotEditora, które chcesz importować."
+            "value" : "Wybierz archiwum ustawień AntiElectricitya, które chcesz importować."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Escolha um arquivo de configurações do CotEditor para importar."
+            "value" : "Escolha um arquivo de configurações do AntiElectricity para importar."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Выберите архив настроек CotEditor для импорта."
+            "value" : "Выберите архив настроек AntiElectricity для импорта."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İçe aktarılacak bir CotEditor ayarları arşivi seçin."
+            "value" : "İçe aktarılacak bir AntiElectricity ayarları arşivi seçin."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择要导入的CotEditor设置归档。"
+            "value" : "选择要导入的AntiElectricity设置归档。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "選擇要匯入的CotEditor設定封存檔。"
+            "value" : "選擇要匯入的AntiElectricity設定封存檔。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "選擇要輸入的CotEditor設定封存檔。"
+            "value" : "選擇要輸入的AntiElectricity設定封存檔。"
           }
         }
       }
@@ -1056,19 +1056,19 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tento archiv nastavení byl vytvořen jinou verzí CotEditoru (%@)."
+            "value" : "Tento archiv nastavení byl vytvořen jinou verzí AntiElectricityu (%@)."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dieses Einstellungsarchiv wurde von einer anderen Version von CotEditor (%@) erstellt."
+            "value" : "Dieses Einstellungsarchiv wurde von einer anderen Version von AntiElectricity (%@) erstellt."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This settings archive was created by a different version of CotEditor (%@)."
+            "value" : "This settings archive was created by a different version of AntiElectricity (%@)."
           }
         },
         "en-GB" : {
@@ -1080,79 +1080,79 @@
         "es" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Este archivo de ajustes fue creado por otra versión de CotEditor (%@)."
+            "value" : "Este archivo de ajustes fue creado por otra versión de AntiElectricity (%@)."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Cet archive de réglages a été créé par une autre version de CotEditor (%@)."
+            "value" : "Cet archive de réglages a été créé par une autre version de AntiElectricity (%@)."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Questo archivio di impostazioni è stato creato con una versione differente di CotEditor (%@)."
+            "value" : "Questo archivio di impostazioni è stato creato con una versione differente di AntiElectricity (%@)."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "この設定アーカイブは、別のバージョンのCotEditor（%@）で作成されています。"
+            "value" : "この設定アーカイブは、別のバージョンのAntiElectricity（%@）で作成されています。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이 설정 아카이브는 다른 버전의 CotEditor에서 생성되었습니다. (%@)"
+            "value" : "이 설정 아카이브는 다른 버전의 AntiElectricity에서 생성되었습니다. (%@)"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Dit instellingenarchief is gemaakt door een andere versie van CotEditor (%@).\n"
+            "value" : "Dit instellingenarchief is gemaakt door een andere versie van AntiElectricity (%@).\n"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To archiwum ustawień zostało utworzone przy użyciu innej wersji CotEditora (%@)."
+            "value" : "To archiwum ustawień zostało utworzone przy użyciu innej wersji AntiElectricitya (%@)."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Este arquivo de configurações foi criado por uma versão diferente do CotEditor (%@)."
+            "value" : "Este arquivo de configurações foi criado por uma versão diferente do AntiElectricity (%@)."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Этот архив настроек был создан другой версией CotEditor (%@)."
+            "value" : "Этот архив настроек был создан другой версией AntiElectricity (%@)."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bu ayarlar arşivi, CotEditor’ün farklı bir sürümü (%@) ile oluşturuldu."
+            "value" : "Bu ayarlar arşivi, AntiElectricity’ün farklı bir sürümü (%@) ile oluşturuldu."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "此设置归档由不同版本的CotEditor 创建（%@）。"
+            "value" : "此设置归档由不同版本的AntiElectricity 创建（%@）。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "此設定封存檔是由不同版本的CotEditor (%@) 所建立。"
+            "value" : "此設定封存檔是由不同版本的AntiElectricity (%@) 所建立。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "此設定封存檔是由不同版本的CotEditor （%@）製作。"
+            "value" : "此設定封存檔是由不同版本的AntiElectricity （%@）製作。"
           }
         }
       }

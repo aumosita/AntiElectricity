@@ -1,102 +1,102 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "A system feature that automatically overwrites your files while editing. Even if turned off, CotEditor covertly creates a backup in case it unexpectedly quits." : {
+    "A system feature that automatically overwrites your files while editing. Even if turned off, AntiElectricity covertly creates a backup in case it unexpectedly quits." : {
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Systémová funkce, která automaticky přepíše soubory během úprav. V případě, že není povolena, CotEditor vytvoří skryté zálohy pro případ neočekávaného selhání."
+            "value" : "Systémová funkce, která automaticky přepíše soubory během úprav. V případě, že není povolena, AntiElectricity vytvoří skryté zálohy pro případ neočekávaného selhání."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eine Systemfunktion, die deine Dateien während der Bearbeitung automatisch überschreibt. Selbst wenn nicht aktiviert, erstellt CotEditor verdeckt Backups für unerwartete Beenden."
+            "value" : "Eine Systemfunktion, die deine Dateien während der Bearbeitung automatisch überschreibt. Selbst wenn nicht aktiviert, erstellt AntiElectricity verdeckt Backups für unerwartete Beenden."
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A system feature that automatically overwrites your files while editing. Even if turned off, CotEditor covertly creates a backup in case it unexpectedly quits."
+            "value" : "A system feature that automatically overwrites your files while editing. Even if turned off, AntiElectricity covertly creates a backup in case it unexpectedly quits."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Una función del sistema que sobrescribe automáticamente sus archivos mientras los edita. Incluso si se apaga, CotEditor crea una copia de seguridad de forma encubierta ante un cierre inesperado."
+            "value" : "Una función del sistema que sobrescribe automáticamente sus archivos mientras los edita. Incluso si se apaga, AntiElectricity crea una copia de seguridad de forma encubierta ante un cierre inesperado."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fonctionnalité du système qui enregistre automatiquement vos fichiers pendant que vous les éditez. Si vous désactivez cette option, CotEditor créera quand même des sauvegardes pour prévenir les arrêts imprévus."
+            "value" : "Fonctionnalité du système qui enregistre automatiquement vos fichiers pendant que vous les éditez. Si vous désactivez cette option, AntiElectricity créera quand même des sauvegardes pour prévenir les arrêts imprévus."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Questa funzione sovrascrive automaticamente i tuoi file durante la lavorazione. Anche se disabilitata, CotEditor crea dei backup in caso di chiusura inaspettata."
+            "value" : "Questa funzione sovrascrive automaticamente i tuoi file durante la lavorazione. Anche se disabilitata, AntiElectricity crea dei backup in caso di chiusura inaspettata."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "書類の編集中に自動でファイルを上書きするmacOSの機能です。この機能を無効にした場合も、CotEditorは予期しない終了に備えて裏でバックアップを作成します。"
+            "value" : "書類の編集中に自動でファイルを上書きするmacOSの機能です。この機能を無効にした場合も、AntiElectricityは予期しない終了に備えて裏でバックアップを作成します。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "편집하는 동안 파일을 자동으로 덮어쓰는 시스템 기능입니다. 이 옵션을 끄더라도, CotEditor는 예상하지 못한 종료로부터 복원하기 위해 백업을 생성합니다."
+            "value" : "편집하는 동안 파일을 자동으로 덮어쓰는 시스템 기능입니다. 이 옵션을 끄더라도, AntiElectricity는 예상하지 못한 종료로부터 복원하기 위해 백업을 생성합니다."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Een systeemfunctie die automatisch uw bestanden overschrijft tijdens het bewerken. Zelfs als deze functie is uitgeschakeld, maakt CotEditor heimelijk een back-up voor het geval het programma onverwacht wordt afgesloten."
+            "value" : "Een systeemfunctie die automatisch uw bestanden overschrijft tijdens het bewerken. Zelfs als deze functie is uitgeschakeld, maakt AntiElectricity heimelijk een back-up voor het geval het programma onverwacht wordt afgesloten."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Funkcja systemu, która automatycznie nadpisuje Twoje pliki podczas edycji. Nawet jeśli jest wyłączona, CotEditor tworzy w ukryciu kopię zapasową na wypadek nieoczekiwanego zamknięcia."
+            "value" : "Funkcja systemu, która automatycznie nadpisuje Twoje pliki podczas edycji. Nawet jeśli jest wyłączona, AntiElectricity tworzy w ukryciu kopię zapasową na wypadek nieoczekiwanego zamknięcia."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Um recurso do sistema que salva os arquivos automaticamente durante a edição. Mesmo se inativo, o CotEditor cria um backup em segundo plano para o caso de falhas inesperadas."
+            "value" : "Um recurso do sistema que salva os arquivos automaticamente durante a edição. Mesmo se inativo, o AntiElectricity cria um backup em segundo plano para o caso de falhas inesperadas."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Системная функция, которая автоматически перезаписывает файлы во время редактирования. Даже если она отключена, CotEditor незаметно создаёт резервную копию на случай неожиданного завершения работы."
+            "value" : "Системная функция, которая автоматически перезаписывает файлы во время редактирования. Даже если она отключена, AntiElectricity незаметно создаёт резервную копию на случай неожиданного завершения работы."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Düzenleme sırasında dosyalarınızın üzerine kendiliğinden yazan bir sistem özelliği. Kapalı olsa bile CotEditor beklenmedik çıkmalar için arka planda yedek oluşturur."
+            "value" : "Düzenleme sırasında dosyalarınızın üzerine kendiliğinden yazan bir sistem özelliği. Kapalı olsa bile AntiElectricity beklenmedik çıkmalar için arka planda yedek oluşturur."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "编辑文件时自动覆盖保存文件的系统特性。即使被禁用，CotEditor也会在程序退出时自动保存备份。"
+            "value" : "编辑文件时自动覆盖保存文件的系统特性。即使被禁用，AntiElectricity也会在程序退出时自动保存备份。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "編輯檔案時自動覆蓋儲存檔案的系統特性。即使被禁用，CotEditor也會在程式退出時自動儲存備份。"
+            "value" : "編輯檔案時自動覆蓋儲存檔案的系統特性。即使被禁用，AntiElectricity也會在程式退出時自動儲存備份。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "編輯時可以自動覆寫檔案的系統功能。即使關閉此功能，CotEditor亦會秘密製作一個備份，以備程式意外結束。"
+            "value" : "編輯時可以自動覆寫檔案的系統功能。即使關閉此功能，AntiElectricity亦會秘密製作一個備份，以備程式意外結束。"
           }
         }
       }
@@ -307,103 +307,103 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aktuální symbolický odkaz `cot` není zaměřen na spuštěný CotEditor."
+            "value" : "Aktuální symbolický odkaz `cot` není zaměřen na spuštěný AntiElectricity."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Der aktuelle `cot` symbolische Link zielt nicht auf den laufenden CotEditor."
+            "value" : "Der aktuelle `cot` symbolische Link zielt nicht auf den laufenden AntiElectricity."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "The current `cot` symbolic link doesn’t target the running CotEditor."
+            "value" : "The current `cot` symbolic link doesn’t target the running AntiElectricity."
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The current `cot` symbolic link doesn’t target the running CotEditor."
+            "value" : "The current `cot` symbolic link doesn’t target the running AntiElectricity."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El enlace simbólico `cot` actual no se dirige al CotEditor en ejecución."
+            "value" : "El enlace simbólico `cot` actual no se dirige al AntiElectricity en ejecución."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le lien symbolique `cot` actuel ne pointe pas vers la version de CotEditor en cours d’éxécution."
+            "value" : "Le lien symbolique `cot` actuel ne pointe pas vers la version de AntiElectricity en cours d’éxécution."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Il link simbolico `cot` attuale non punta al CotEditor in esecuzione."
+            "value" : "Il link simbolico `cot` attuale non punta al AntiElectricity in esecuzione."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "現在の`cot`シンボリックリンクはこのCotEditor以外に向けられています。"
+            "value" : "現在の`cot`シンボリックリンクはこのAntiElectricity以外に向けられています。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "현재 `cot` 심볼릭 링크가 실행 중인 CotEditor를 가리키지 않습니다."
+            "value" : "현재 `cot` 심볼릭 링크가 실행 중인 AntiElectricity를 가리키지 않습니다."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "De huidige `cot` symbolische link richt zich niet op de actieve CotEditor."
+            "value" : "De huidige `cot` symbolische link richt zich niet op de actieve AntiElectricity."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Obecne połączenie symboliczne `cot` nie wskazuje działającego CotEditora."
+            "value" : "Obecne połączenie symboliczne `cot` nie wskazuje działającego AntiElectricitya."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O destino do link simbólico ‘cot’ atual não é o CotEditor em execução."
+            "value" : "O destino do link simbólico ‘cot’ atual não é o AntiElectricity em execução."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Текущая символическая ссылка `cot` не указывает на запущенный CotEditor."
+            "value" : "Текущая символическая ссылка `cot` не указывает на запущенный AntiElectricity."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Geçerli `cot` sembolik bağı, çalışan CotEditor’ü hedeflemiyor."
+            "value" : "Geçerli `cot` sembolik bağı, çalışan AntiElectricity’ü hedeflemiyor."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "当前的`cot`符号链接没有指向正在运行的CotEditor。"
+            "value" : "当前的`cot`符号链接没有指向正在运行的AntiElectricity。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "當前的`cot`符號鏈接沒有指向正在運行的CotEditor。"
+            "value" : "當前的`cot`符號鏈接沒有指向正在運行的AntiElectricity。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "目前`cot`符號連結的目標不是正在執行的CotEditor。"
+            "value" : "目前`cot`符號連結的目標不是正在執行的AntiElectricity。"
           }
         }
       }
@@ -721,103 +721,103 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zachovat verzi CotEditoru"
+            "value" : "Zachovat verzi AntiElectricityu"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditors Version behalten"
+            "value" : "AntiElectricitys Version behalten"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Keep CotEditor’s version"
+            "value" : "Keep AntiElectricity’s version"
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keep CotEditor’s version"
+            "value" : "Keep AntiElectricity’s version"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mantener la edición de CotEditor"
+            "value" : "Mantener la edición de AntiElectricity"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Garder la version dans CotEditor"
+            "value" : "Garder la version dans AntiElectricity"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mantieni la versione di CotEditor"
+            "value" : "Mantieni la versione di AntiElectricity"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditorの編集内容を保持"
+            "value" : "AntiElectricityの編集内容を保持"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor의 상태를 유지"
+            "value" : "AntiElectricity의 상태를 유지"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bewaar de versie van CotEditor"
+            "value" : "Bewaar de versie van AntiElectricity"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zachowaj wersję CotEditora"
+            "value" : "Zachowaj wersję AntiElectricitya"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Manter edição do CotEditor"
+            "value" : "Manter edição do AntiElectricity"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сохранить редакцию CotEditor’s"
+            "value" : "Сохранить редакцию AntiElectricity’s"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor sürümünü tut"
+            "value" : "AntiElectricity sürümünü tut"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保留CotEditor的版本"
+            "value" : "保留AntiElectricity的版本"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保留CotEditor的版本"
+            "value" : "保留AntiElectricity的版本"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保留CotEditor的版本"
+            "value" : "保留AntiElectricity的版本"
           }
         }
       }
@@ -1643,73 +1643,73 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chcete nyní restartovat CotEditor?"
+            "value" : "Chcete nyní restartovat AntiElectricity?"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Möchtest du CotEditor jetzt neu starten?"
+            "value" : "Möchtest du AntiElectricity jetzt neu starten?"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Do you want to restart CotEditor now?"
+            "value" : "Do you want to restart AntiElectricity now?"
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Do you want to restart CotEditor now?"
+            "value" : "Do you want to restart AntiElectricity now?"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¿Quieres reiniciar CotEditor ahora?"
+            "value" : "¿Quieres reiniciar AntiElectricity ahora?"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Voulez-vous relancer CotEditor maintenant ?"
+            "value" : "Voulez-vous relancer AntiElectricity maintenant ?"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Si desidera riavviare CotEditor adesso?"
+            "value" : "Si desidera riavviare AntiElectricity adesso?"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditorを今すぐ再起動しますか?"
+            "value" : "AntiElectricityを今すぐ再起動しますか?"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor를 재시작하시겠습니까?"
+            "value" : "AntiElectricity를 재시작하시겠습니까?"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wil je CotEditor nu opnieuw opstarten?"
+            "value" : "Wil je AntiElectricity nu opnieuw opstarten?"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Czy chcesz teraz ponownie uruchomić CotEditora?"
+            "value" : "Czy chcesz teraz ponownie uruchomić AntiElectricitya?"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deseja reabrir o CotEditor agora?"
+            "value" : "Deseja reabrir o AntiElectricity agora?"
           }
         },
         "ru" : {
@@ -1721,25 +1721,25 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor’ü şimdi yeniden başlatmak istiyor musunuz?"
+            "value" : "AntiElectricity’ü şimdi yeniden başlatmak istiyor musunuz?"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "现在就重启CotEditor吗？"
+            "value" : "现在就重启AntiElectricity吗？"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "現在就重啟CotEditor嗎？"
+            "value" : "現在就重啟AntiElectricity嗎？"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "你要立即重新啟動CotEditor嗎？"
+            "value" : "你要立即重新啟動AntiElectricity嗎？"
           }
         }
       }
@@ -3180,102 +3180,102 @@
         }
       }
     },
-    "With the `cot` command-line tool, you can launch CotEditor and let it open files from the command line." : {
+    "With the `cot` command-line tool, you can launch AntiElectricity and let it open files from the command line." : {
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pomocí nástroje příkazového řádku `cot` můžete spustit CotEditor a nechat ho otevřít soubory z příkazového řádku."
+            "value" : "Pomocí nástroje příkazového řádku `cot` můžete spustit AntiElectricity a nechat ho otevřít soubory z příkazového řádku."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mit dem „cot“-Kommandozeilenwerkzeug kannst du CotEditor von der Kommandozeile aus aktivieren und es Dateien öffnen lassen."
+            "value" : "Mit dem „cot“-Kommandozeilenwerkzeug kannst du AntiElectricity von der Kommandozeile aus aktivieren und es Dateien öffnen lassen."
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "With the `cot` command-line tool, you can launch CotEditor and let it open files from the command line."
+            "value" : "With the `cot` command-line tool, you can launch AntiElectricity and let it open files from the command line."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Con la herramienta de línea de comandos `cot`, puedes iniciar CotEditor y dejar que abra archivos desde la línea de comandos."
+            "value" : "Con la herramienta de línea de comandos `cot`, puedes iniciar AntiElectricity y dejar que abra archivos desde la línea de comandos."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Avec l’outil en ligne de commande `cot`, vous pouvez lancer CotEditor et ouvrir des fichiers depuis le Terminal."
+            "value" : "Avec l’outil en ligne de commande `cot`, vous pouvez lancer AntiElectricity et ouvrir des fichiers depuis le Terminal."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Con il comando testuale “cot” si può lanciare CotEditor facendogli aprire documenti dalla riga di comando."
+            "value" : "Con il comando testuale “cot” si può lanciare AntiElectricity facendogli aprire documenti dalla riga di comando."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "`cot`コマンドラインツールは、コマンドラインからのCotEditor起動やファイルオープンを可能にします。"
+            "value" : "`cot`コマンドラインツールは、コマンドラインからのAntiElectricity起動やファイルオープンを可能にします。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "`cot` 명령어 라인 도구로, 명령어 라인에서 파일을 CotEditor로 열 수 있습니다."
+            "value" : "`cot` 명령어 라인 도구로, 명령어 라인에서 파일을 AntiElectricity로 열 수 있습니다."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Met de commandoregel `cot` kun je CotEditor starten en bestanden laten openen vanaf de commandoregel."
+            "value" : "Met de commandoregel `cot` kun je AntiElectricity starten en bestanden laten openen vanaf de commandoregel."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Za pomocą narzędzia wiersza poleceń `cot` możesz uruchomić CotEditora i pozwolić mu otwierać pliki z poziomu wiersza poleceń."
+            "value" : "Za pomocą narzędzia wiersza poleceń `cot` możesz uruchomić AntiElectricitya i pozwolić mu otwierać pliki z poziomu wiersza poleceń."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Com a ferramenta ‘cot’, você pode iniciar o CotEditor e abrir arquivos na linha de comando."
+            "value" : "Com a ferramenta ‘cot’, você pode iniciar o AntiElectricity e abrir arquivos na linha de comando."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "С помощью инструмента командной строки `cot` вы можете запустить CotEditor и позволить ему открывать файлы из командной строки."
+            "value" : "С помощью инструмента командной строки `cot` вы можете запустить AntiElectricity и позволить ему открывать файлы из командной строки."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "`cot` komut satırı aracıyla CotEditor’ü çalıştırabilir ve komut satırından dosyalar açabilirsiniz."
+            "value" : "`cot` komut satırı aracıyla AntiElectricity’ü çalıştırabilir ve komut satırından dosyalar açabilirsiniz."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "`cot`命令行工具可以让您使用命令行来启动CotEditor并打开文件。"
+            "value" : "`cot`命令行工具可以让您使用命令行来启动AntiElectricity并打开文件。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "`cot`命令列工具可以讓您使用命令列來啟動CotEditor並開啟檔案。"
+            "value" : "`cot`命令列工具可以讓您使用命令列來啟動AntiElectricity並開啟檔案。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "使用`cot`命令列工具，你可以啟動CotEditor，並讓它透過命令列開啟檔案。"
+            "value" : "使用`cot`命令列工具，你可以啟動AntiElectricity，並讓它透過命令列開啟檔案。"
           }
         }
       }

@@ -7,103 +7,103 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vytvořit nový dokument se zadaným textem v aplikaci CotEditor."
+            "value" : "Vytvořit nový dokument se zadaným textem v aplikaci AntiElectricity."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Einen neues Dokument mit dem angegebenen Text in CotEditor erstellen."
+            "value" : "Einen neues Dokument mit dem angegebenen Text in AntiElectricity erstellen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Create a new document with the specified text in CotEditor."
+            "value" : "Create a new document with the specified text in AntiElectricity."
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Create a new document with the specified text in CotEditor."
+            "value" : "Create a new document with the specified text in AntiElectricity."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Crear un nuevo documento con el texto especificado en CotEditor."
+            "value" : "Crear un nuevo documento con el texto especificado en AntiElectricity."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Créer un nouveau document avec le texte spécifié dans CotEditor."
+            "value" : "Créer un nouveau document avec le texte spécifié dans AntiElectricity."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Crea un nuovo documento con il testo specificato in CotEditor."
+            "value" : "Crea un nuovo documento con il testo specificato in AntiElectricity."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditorで指定されたテキストで新規書類を作成します。"
+            "value" : "AntiElectricityで指定されたテキストで新規書類を作成します。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor에서 지정된 텍스트로 새로운 문서를 생성합니다."
+            "value" : "AntiElectricity에서 지정된 텍스트로 새로운 문서를 생성합니다."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Maak een nieuw document met de opgegeven tekst in CotEditor."
+            "value" : "Maak een nieuw document met de opgegeven tekst in AntiElectricity."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Utwórz nowy dokument z podanym tekstem w CotEditorze."
+            "value" : "Utwórz nowy dokument z podanym tekstem w AntiElectricityze."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Crie um novo documento com texto especificado no CotEditor."
+            "value" : "Crie um novo documento com texto especificado no AntiElectricity."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Создать новый документа с выбранным текстом в CotEditor"
+            "value" : "Создать новый документа с выбранным текстом в AntiElectricity"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Belirtilen metin ile CotEditor’da yeni bir belge oluşturun."
+            "value" : "Belirtilen metin ile AntiElectricity’da yeni bir belge oluşturun."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在CotEditor中使用指定的文本创建新文档。"
+            "value" : "在AntiElectricity中使用指定的文本创建新文档。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在CotEditor內以指定的文字創建新文件。"
+            "value" : "在AntiElectricity內以指定的文字創建新文件。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在CotEditor中製作包括指定文字的新文件。"
+            "value" : "在AntiElectricity中製作包括指定文字的新文件。"
           }
         }
       }

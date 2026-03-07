@@ -7072,103 +7072,103 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Otevřít původní umístění, abyste CotEditoru udělili přístup."
+            "value" : "Otevřít původní umístění, abyste AntiElectricityu udělili přístup."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öffne den ursprünglichen Speicherort, um CotEditor Zugriff zu gewähren."
+            "value" : "Öffne den ursprünglichen Speicherort, um AntiElectricity Zugriff zu gewähren."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Open the original location to grant CotEditor access."
+            "value" : "Open the original location to grant AntiElectricity access."
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open the original location to grant CotEditor access."
+            "value" : "Open the original location to grant AntiElectricity access."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Abre la ubicación original para permitir que CotEditor acceda a ella."
+            "value" : "Abre la ubicación original para permitir que AntiElectricity acceda a ella."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Ouvrez l’emplacement d’origine pour autoriser CotEditor à y accéder."
+            "value" : "Ouvrez l’emplacement d’origine pour autoriser AntiElectricity à y accéder."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Accedi alla posizione originale per autorizzare CotEditor all'accesso."
+            "value" : "Accedi alla posizione originale per autorizzare AntiElectricity all'accesso."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor がアクセスできるように、オリジナルの場所を開いてください。"
+            "value" : "AntiElectricity がアクセスできるように、オリジナルの場所を開いてください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "원본 위치를 열어 CotEditor에 접근 권한을 부여하십시오."
+            "value" : "원본 위치를 열어 AntiElectricity에 접근 권한을 부여하십시오."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Open de oorspronkelijke locatie om CotEditor toegang te geven."
+            "value" : "Open de oorspronkelijke locatie om AntiElectricity toegang te geven."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Otwórz miejsce oryginału, aby udzielić dostępu aplikacji CotEditor."
+            "value" : "Otwórz miejsce oryginału, aby udzielić dostępu aplikacji AntiElectricity."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abra o local original para conceder acesso ao CotEditor."
+            "value" : "Abra o local original para conceder acesso ao AntiElectricity."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Откройте оригинальное местоположение, чтобы предоставить CotEditor доступ к объекту."
+            "value" : "Откройте оригинальное местоположение, чтобы предоставить AntiElectricity доступ к объекту."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor’e erişim izni vermek için özgün konumu açın."
+            "value" : "AntiElectricity’e erişim izni vermek için özgün konumu açın."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "打开原始位置以授予CotEditor存取权限。"
+            "value" : "打开原始位置以授予AntiElectricity存取权限。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "開啟原始位置以授予CotEditor存取權限。"
+            "value" : "開啟原始位置以授予AntiElectricity存取權限。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "開啟原始位置以授予CotEditor取用權限。"
+            "value" : "開啟原始位置以授予AntiElectricity取用權限。"
           }
         }
       }
@@ -14658,25 +14658,25 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zachovat verzi CotEditoru"
+            "value" : "Zachovat verzi AntiElectricityu"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditors Version behalten"
+            "value" : "AntiElectricitys Version behalten"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Keep CotEditor’s Version"
+            "value" : "Keep AntiElectricity’s Version"
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keep CotEditor’s Version"
+            "value" : "Keep AntiElectricity’s Version"
           }
         },
         "es" : {
@@ -14688,73 +14688,73 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Garder la version dans CotEditor"
+            "value" : "Garder la version dans AntiElectricity"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mantieni la versione di CotEditor"
+            "value" : "Mantieni la versione di AntiElectricity"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditorの編集内容を保持"
+            "value" : "AntiElectricityの編集内容を保持"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor의 상태를 유지"
+            "value" : "AntiElectricity의 상태를 유지"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bewaar uitgave van CotEditor"
+            "value" : "Bewaar uitgave van AntiElectricity"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zachowaj wersję CotEditora"
+            "value" : "Zachowaj wersję AntiElectricitya"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Manter Edição do CotEditor"
+            "value" : "Manter Edição do AntiElectricity"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сохранить CotEditor’s редакцию"
+            "value" : "Сохранить AntiElectricity’s редакцию"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor Değişikliklerini Tut"
+            "value" : "AntiElectricity Değişikliklerini Tut"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保留CotEditor编辑的内容"
+            "value" : "保留AntiElectricity编辑的内容"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保留CotEditor編輯的內容"
+            "value" : "保留AntiElectricity編輯的內容"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保留CotEditor編輯的版本"
+            "value" : "保留AntiElectricity編輯的版本"
           }
         }
       }
@@ -14872,103 +14872,103 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chcete zachovat verzi CotEditoru nebo ho aktualizovat na upravenou verzi?"
+            "value" : "Chcete zachovat verzi AntiElectricityu nebo ho aktualizovat na upravenou verzi?"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Möchtest du die Version des CotEditors behalten oder auf die geänderte Version aktualisieren?"
+            "value" : "Möchtest du die Version des AntiElectricitys behalten oder auf die geänderte Version aktualisieren?"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Do you want to keep CotEditor’s version or update it to the modified version?"
+            "value" : "Do you want to keep AntiElectricity’s version or update it to the modified version?"
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Do you want to keep CotEditor’s version or update it to the modified version?"
+            "value" : "Do you want to keep AntiElectricity’s version or update it to the modified version?"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¿Quieres conservar la edición de CotEditor o actualizarla a la edición modificada?"
+            "value" : "¿Quieres conservar la edición de AntiElectricity o actualizarla a la edición modificada?"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Voulez-vous garder la version dans CotEditor ou rafraîchir vers la version modifiée ?"
+            "value" : "Voulez-vous garder la version dans AntiElectricity ou rafraîchir vers la version modifiée ?"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Si desidera mantenere la versione di CotEditor oppure aggiornarla a quella modificata?"
+            "value" : "Si desidera mantenere la versione di AntiElectricity oppure aggiornarla a quella modificata?"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditorでの編集内容を保持しますか、それとも変更された内容に更新しますか?"
+            "value" : "AntiElectricityでの編集内容を保持しますか、それとも変更された内容に更新しますか?"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor에 열린 상태를 유지하시겠습니까, 또는 수정된 상태로 업데이트하시겠습니까?"
+            "value" : "AntiElectricity에 열린 상태를 유지하시겠습니까, 또는 수정된 상태로 업데이트하시겠습니까?"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wil je de uitgave van CotEditor behouden of deze bijwerken naar de gewijzigde uitgave?"
+            "value" : "Wil je de uitgave van AntiElectricity behouden of deze bijwerken naar de gewijzigde uitgave?"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Czy chcesz zachować wersję CotEditora czy uaktualnić go do zmienionej wersji?"
+            "value" : "Czy chcesz zachować wersję AntiElectricitya czy uaktualnić go do zmienionej wersji?"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deseja manter a edição do CotEditor ou atualizar para a edição modificada?"
+            "value" : "Deseja manter a edição do AntiElectricity ou atualizar para a edição modificada?"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Вы хотите сохранить редакцию CotEditor, или обновить до модифицированной версии?"
+            "value" : "Вы хотите сохранить редакцию AntiElectricity, или обновить до модифицированной версии?"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor’da yapılan değişiklikler mi kullanılsın veya daha önce değiştirilen sürüme mi güncellensin?"
+            "value" : "AntiElectricity’da yapılan değişiklikler mi kullanılsın veya daha önce değiştirilen sürüme mi güncellensin?"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保留CotEditor的版本还是更新至被编辑过的版本？"
+            "value" : "保留AntiElectricity的版本还是更新至被编辑过的版本？"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保留CotEditor的版本還是更新至被編輯過的版本？"
+            "value" : "保留AntiElectricity的版本還是更新至被編輯過的版本？"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "你要保留CotEditor的版本，還是將其更新到修改後的版本？"
+            "value" : "你要保留AntiElectricity的版本，還是將其更新到修改後的版本？"
           }
         }
       }
@@ -15086,103 +15086,103 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Soubor byl změněn v jiné aplikaci. V CotEditoru jsou také neuložené změny."
+            "value" : "Soubor byl změněn v jiné aplikaci. V AntiElectricityu jsou také neuložené změny."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die Datei wurde von einem anderen Programm geändert. Es gibt auch ungespeicherte Änderungen in CotEditor."
+            "value" : "Die Datei wurde von einem anderen Programm geändert. Es gibt auch ungespeicherte Änderungen in AntiElectricity."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "The file has been changed by another application. There are also unsaved changes in CotEditor."
+            "value" : "The file has been changed by another application. There are also unsaved changes in AntiElectricity."
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The file has been changed by another application. There are also unsaved changes in CotEditor."
+            "value" : "The file has been changed by another application. There are also unsaved changes in AntiElectricity."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Otra aplicación ha modificado el archivo. También hay cambios no guardados en CotEditor."
+            "value" : "Otra aplicación ha modificado el archivo. También hay cambios no guardados en AntiElectricity."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le fichier a été modifié par une autre application. Il y a des modifcations non sauvegardées dans CotEditor."
+            "value" : "Le fichier a été modifié par une autre application. Il y a des modifcations non sauvegardées dans AntiElectricity."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Il file è stato modificato da un’altra applicazione. Ci sono anche delle modifiche non salvate in CotEditor."
+            "value" : "Il file è stato modificato da un’altra applicazione. Ci sono anche delle modifiche non salvate in AntiElectricity."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "このファイルは、別のアプリケーションによって変更されました。CotEditorで加えた編集もまだ保存されていません。"
+            "value" : "このファイルは、別のアプリケーションによって変更されました。AntiElectricityで加えた編集もまだ保存されていません。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "파일이 다른 응용 프로그램에 의해 수정되었습니다. CotEditor에 아직 저장하지 않은 변경사항이 있습니다."
+            "value" : "파일이 다른 응용 프로그램에 의해 수정되었습니다. AntiElectricity에 아직 저장하지 않은 변경사항이 있습니다."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Het bestand is gewijzigd door een andere app. Er zijn ook niet-opgeslagen wijzigingen in CotEditor."
+            "value" : "Het bestand is gewijzigd door een andere app. Er zijn ook niet-opgeslagen wijzigingen in AntiElectricity."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Plik został zmieniony przez inną aplikację. Są też niezachowane zmiany w CotEditorze."
+            "value" : "Plik został zmieniony przez inną aplikację. Są też niezachowane zmiany w AntiElectricityze."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O arquivo foi alterado por outro aplicativo. Também há alterações não salvas no CotEditor."
+            "value" : "O arquivo foi alterado por outro aplicativo. Também há alterações não salvas no AntiElectricity."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Файл был изменен другим приложением. Есть также не сохраненные изменения в CotEditor."
+            "value" : "Файл был изменен другим приложением. Есть также не сохраненные изменения в AntiElectricity."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dosya başka bir uygulama tarafından değiştirilmiş. Aynı zamanda CotEditor’da kaydedilmemiş değişiklikler var."
+            "value" : "Dosya başka bir uygulama tarafından değiştirilmiş. Aynı zamanda AntiElectricity’da kaydedilmemiş değişiklikler var."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "该文件已被其他应用程序更改。CotEditor中还有未保存的变更。"
+            "value" : "该文件已被其他应用程序更改。AntiElectricity中还有未保存的变更。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "其他應用程式已對此檔案進行修改。CotEditor中還有未儲存的變更。"
+            "value" : "其他應用程式已對此檔案進行修改。AntiElectricity中還有未儲存的變更。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "其他應用程式已對此檔案進行修改。CotEditor中亦有尚未儲存的變更。"
+            "value" : "其他應用程式已對此檔案進行修改。AntiElectricity中亦有尚未儲存的變更。"
           }
         }
       }

@@ -499,103 +499,103 @@
         }
       }
     },
-    "What’s New in CotEditor %@" : {
+    "What’s New in AntiElectricity %@" : {
       "comment" : "%@ is version number",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Co je nového v aplikaci CotEditor %@"
+            "value" : "Co je nového v aplikaci AntiElectricity %@"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Neue Funktionen in CotEditor %@"
+            "value" : "Neue Funktionen in AntiElectricity %@"
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "What’s New in CotEditor %@"
+            "value" : "What’s New in AntiElectricity %@"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Novedades de CotEditor %@"
+            "value" : "Novedades de AntiElectricity %@"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nouveautés de CotEditor %@"
+            "value" : "Nouveautés de AntiElectricity %@"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le novità di CotEditor %@"
+            "value" : "Le novità di AntiElectricity %@"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor %@の新機能"
+            "value" : "AntiElectricity %@の新機能"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor %@의 새로운 기능"
+            "value" : "AntiElectricity %@의 새로운 기능"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wat is er nieuw in CotEditor %@?"
+            "value" : "Wat is er nieuw in AntiElectricity %@?"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nowości w aplikacji CotEditor %@"
+            "value" : "Nowości w aplikacji AntiElectricity %@"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Novidades no CotEditor %@"
+            "value" : "Novidades no AntiElectricity %@"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Что нового в CotEditor %@"
+            "value" : "Что нового в AntiElectricity %@"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor %@ sürümünde neler yeni"
+            "value" : "AntiElectricity %@ sürümünde neler yeni"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor %@的新功能"
+            "value" : "AntiElectricity %@的新功能"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor %@的新功能"
+            "value" : "AntiElectricity %@的新功能"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor %@的新功能"
+            "value" : "AntiElectricity %@的新功能"
           }
         }
       }

@@ -1,38 +1,38 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "New CotEditor Window Containing Selection" : {
+    "New AntiElectricity Window Containing Selection" : {
       "comment" : "Refer to how Apple translates “New TextEdit Window Containing Selection”",
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nové okno CotEditoru s výběrem"
+            "value" : "Nové okno AntiElectricityu s výběrem"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Auswahl in neuem CotEditor-Fenster"
+            "value" : "Auswahl in neuem AntiElectricity-Fenster"
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "New CotEditor Window Containing Selection"
+            "value" : "New AntiElectricity Window Containing Selection"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abrir fichero en CotEditor"
+            "value" : "Abrir fichero en AntiElectricity"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Nouveau document CotEditor avec la sélection"
+            "value" : "Nouveau document AntiElectricity avec la sélection"
           }
         },
         "it" : {
@@ -44,162 +44,162 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "選択部分を含む新しいCotEditorウインドウを開く"
+            "value" : "選択部分を含む新しいAntiElectricityウインドウを開く"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "새로운 CotEditor 윈도우에서 선택 부분 열기"
+            "value" : "새로운 AntiElectricity 윈도우에서 선택 부분 열기"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nieuw CotEditor-venster met selectie"
+            "value" : "Nieuw AntiElectricity-venster met selectie"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nowe okno CotEditora zawierające zaznaczenie"
+            "value" : "Nowe okno AntiElectricitya zawierające zaznaczenie"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nova Janela do CotEditor Contendo Seleção"
+            "value" : "Nova Janela do AntiElectricity Contendo Seleção"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Новое окно CotEditor, которое содержит выделенное"
+            "value" : "Новое окно AntiElectricity, которое содержит выделенное"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seçimi İçeren Yeni CotEditor Belgesi"
+            "value" : "Seçimi İçeren Yeni AntiElectricity Belgesi"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "使用选中内容创建新的CotEditor 窗口"
+            "value" : "使用选中内容创建新的AntiElectricity 窗口"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "使用選中的內容創建新的CotEditor文件"
+            "value" : "使用選中的內容創建新的AntiElectricity文件"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "新增包括所選範圍的CotEditor視窗"
+            "value" : "新增包括所選範圍的AntiElectricity視窗"
           }
         }
       }
     },
-    "Open in CotEditor" : {
+    "Open in AntiElectricity" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Otevřít v CotEditoru"
+            "value" : "Otevřít v AntiElectricityu"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "In CotEditor öffnen"
+            "value" : "In AntiElectricity öffnen"
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open in CotEditor"
+            "value" : "Open in AntiElectricity"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abrir en CotEditor"
+            "value" : "Abrir en AntiElectricity"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ouvrir dans CotEditor"
+            "value" : "Ouvrir dans AntiElectricity"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apri in CotEditor"
+            "value" : "Apri in AntiElectricity"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditorで開く"
+            "value" : "AntiElectricityで開く"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor에서 열기"
+            "value" : "AntiElectricity에서 열기"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open in CotEditor"
+            "value" : "Open in AntiElectricity"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Otwórz w CotEditorze"
+            "value" : "Otwórz w AntiElectricityze"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abrir no CotEditor"
+            "value" : "Abrir no AntiElectricity"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Открыть в CotEditor"
+            "value" : "Открыть в AntiElectricity"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CotEditor’de Aç"
+            "value" : "AntiElectricity’de Aç"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在CotEditor中打开"
+            "value" : "在AntiElectricity中打开"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在CotEditor中開啟"
+            "value" : "在AntiElectricity中開啟"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在CotEditor中開啟"
+            "value" : "在AntiElectricity中開啟"
           }
         }
       }
