@@ -151,6 +151,27 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
             return (text: text, syntax: syntax)
         }
         
+        // Set up targeted search-and-replace edit callback
+        chatViewModel.onApplyEdit = { [weak self] searchText, replaceText in
+            guard let textView = self?.documentViewController?.focusedTextView else { return false }
+            
+            let nsString = textView.string as NSString
+            let range = nsString.range(of: searchText)
+            
+            guard range.location != NSNotFound else { return false }
+            
+            textView.insertText(replaceText, replacementRange: range)
+            return true
+        }
+        
+        // Set up full text replacement fallback
+        chatViewModel.onReplaceAll = { [weak self] text in
+            guard let textView = self?.documentViewController?.focusedTextView else { return }
+            
+            textView.selectAll(nil)
+            textView.insertText(text, replacementRange: textView.selectedRange())
+        }
+        
         let chatView = AIChatView(viewModel: chatViewModel)
         let chatHostingController = NSHostingController(rootView: chatView)
         let chatItem = NSSplitViewItem(inspectorWithViewController: chatHostingController)
@@ -387,9 +408,7 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
         
         chatItem.animator().isCollapsed.toggle()
         
-        if !chatItem.isCollapsed {
-            self.syncAIChatContext()
-        }
+
     }
     
     
@@ -440,37 +459,6 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
         
         self.statusBarModel.document = self.document
         
-        // Sync AI chat context if visible
-        if self.aiChatViewItem?.isCollapsed == false {
-            self.syncAIChatContext()
-        }
-    }
-    
-    
-    /// Syncs the current document content to the AI chat view model.
-    private func syncAIChatContext() {
-        
-        guard let vm = self.aiChatViewModel else { return }
-        
-        // Targeted search-and-replace edit
-        vm.onApplyEdit = { [weak self] searchText, replaceText in
-            guard let textView = self?.documentViewController?.focusedTextView else { return false }
-            
-            let nsString = textView.string as NSString
-            let range = nsString.range(of: searchText)
-            
-            guard range.location != NSNotFound else { return false }
-            
-            textView.insertText(replaceText, replacementRange: range)
-            return true
-        }
-        
-        // Full text replacement fallback
-        vm.onReplaceAll = { [weak self] text in
-            guard let textView = self?.documentViewController?.focusedTextView else { return }
-            
-            textView.selectAll(nil)
-            textView.insertText(text, replacementRange: textView.selectedRange())
-        }
+
     }
 }
