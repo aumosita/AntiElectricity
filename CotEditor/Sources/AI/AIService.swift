@@ -37,6 +37,7 @@ enum AIProviderType: String, CaseIterable, Sendable {
     
     case ollama = "Ollama"
     case anthropic = "Anthropic"
+    case copilot = "GitHub Copilot"
 }
 
 
@@ -109,6 +110,17 @@ final class AIService {
         
         if self.providerType == .anthropic {
             self.provider = AnthropicProvider(apiKey: key)
+        }
+    }
+    
+    
+    /// Updates the GitHub Copilot token.
+    func updateCopilotToken(_ token: String) {
+        
+        UserDefaults.standard.set(token, forKey: "copilotGitHubToken")
+        
+        if self.providerType == .copilot {
+            self.provider = CopilotProvider(githubToken: token)
         }
     }
     
@@ -188,6 +200,10 @@ final class AIService {
             case .anthropic:
                 let apiKey = UserDefaults.standard.string(forKey: "anthropicAPIKey") ?? ""
                 return AnthropicProvider(apiKey: apiKey)
+                
+            case .copilot:
+                let token = UserDefaults.standard.string(forKey: "copilotGitHubToken") ?? ""
+                return CopilotProvider(githubToken: token)
         }
     }
 }

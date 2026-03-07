@@ -25,6 +25,13 @@ struct AISettingsView: View {
     // Anthropic
     @State private var anthropicAPIKey: String = UserDefaults.standard.string(forKey: "anthropicAPIKey") ?? ""
     
+    // Copilot
+    @State private var copilotToken: String = UserDefaults.standard.string(forKey: "copilotGitHubToken") ?? ""
+    @State private var copilotUserCode: String = ""
+    @State private var copilotVerificationURL: String = ""
+    @State private var isCopilotAuthenticating = false
+    @State private var copilotAuthStatus: String = ""
+    
     // Shared
     @State private var selectedModel: String = AIService.shared.model
     @State private var availableModels: [String] = []
@@ -52,7 +59,7 @@ struct AISettingsView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .frame(width: 250)
+                .frame(width: 380)
                 .onChange(of: providerType) {
                     AIService.shared.switchProvider(to: providerType)
                     self.selectedModel = AIService.shared.model
@@ -70,8 +77,10 @@ struct AISettingsView: View {
                 Grid(alignment: .leadingFirstTextBaseline, verticalSpacing: 8) {
                     if providerType == .ollama {
                         self.ollamaSettings
-                    } else {
+                    } else if providerType == .anthropic {
                         self.anthropicSettings
+                    } else {
+                        self.copilotSettings
                     }
                     
                     // Model picker (shared)
@@ -298,6 +307,104 @@ struct AISettingsView: View {
                 self.availableModels = []
             }
             self.isLoadingModels = false
+        }
+    }
+    
+    
+    @ViewBuilder
+    private var copilotSettings: some View {
+        
+        GridRow {
+            Text("GitHub:")
+                .gridColumnAlignment(.trailing)
+            
+            HStack {
+                if copilotToken.isEmpty {
+                    if isCopilotAuthenticating {
+                        VStack(alignment: .leading, spacing: 6) {
+                            HStack(spacing: 8) {
+                                Text("Code:")
+                                    .font(.caption)
+                                Text(copilotUserCode)
+                                    .font(.system(.title3, design: .monospaced))
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(.purple)
+                                    .textSelection(.enabled)
+                                
+                                Button {
+                                    NSPasteboard.general.clearContents()
+                                    NSPasteboard.general.setString(copilotUserCode, forType: .string)
+                                } label: {
+                                    Image(systemName: "doc.on.doc")
+                                }
+                                .buttonStyle(.borderless)
+                            }
+                            
+                            HStack(spacing: 8) {
+                                ProgressView()
+                                    .controlSize(.small)
+                                Text(copilotAuthStatus)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    } else {
+                        Button("Sign in with GitHub") {
+                            self.startCopilotAuth()
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.purple)
+                    }
+                } else {
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundStyle(.green)
+                    Text("Connected")
+                        .foregroundStyle(.secondary)
+                    
+                    Button("Sign Out") {
+                        self.copilotToken = ""
+                        UserDefaults.standard.removeObject(forKey: "copilotGitHubToken")
+                        AIService.shared.updateCopilotToken("")
+                    }
+                    .foregroundStyle(.red)
+                }
+            }
+        }
+    }
+    
+    
+    private func startCopilotAuth() {
+        
+        self.isCopilotAuthenticating = true
+        self.copilotAuthStatus = "Starting…"
+        
+        Task {
+            do {
+                let flow = try await CopilotProvider.startDeviceFlow()
+                self.copilotUserCode = flow.userCode
+                self.copilotVerificationURL = flow.verificationUri
+                self.copilotAuthStatus = "Open browser and enter the code"
+                
+                // Open verification URL in browser
+                if let url = URL(string: flow.verificationUri) {
+                    NSWorkspace.shared.open(url)
+                }
+                
+                // Poll for token
+                let token = try await CopilotProvider.pollForToken(
+                    deviceCode: flow.deviceCode,
+                    interval: flow.interval
+                )
+                
+                self.copilotToken = token
+                AIService.shared.updateCopilotToken(token)
+                self.connectionStatus = .connected
+                self.copilotAuthStatus = ""
+                self.loadModels()
+            } catch {
+                self.copilotAuthStatus = "Auth failed: \(error.localizedDescription)"
+            }
+            self.isCopilotAuthenticating = false
         }
     }
 }
