@@ -277,6 +277,7 @@ private struct DocumentStatusBar: View {
             }
             .help(String(localized: "Text Encoding", table: "Document"))
             .labelsHidden()
+            .foregroundStyle(.primary)
             
             Divider()
                 .padding(.vertical, isLiquidGlass ? 0 : 4)
@@ -403,6 +404,7 @@ private struct LineEndingPicker: NSViewRepresentable {
         popUpButton.isBordered = false
         popUpButton.controlSize = .small
         popUpButton.font = .menuFont(ofSize: NSFont.smallSystemFontSize)
+        popUpButton.contentTintColor = .labelColor
         
         return popUpButton
     }
