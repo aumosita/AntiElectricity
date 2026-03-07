@@ -44,13 +44,11 @@ struct AnthropicProvider: LLMProvider {
     
     func availableModels() async throws -> [String] {
         
-        // Anthropic doesn't provide a models list API; return known models
+        // Anthropic doesn't provide a models list API; return latest models
         [
             "claude-sonnet-4-20250514",
             "claude-haiku-4-20250414",
-            "claude-3-5-sonnet-20241022",
-            "claude-3-5-haiku-20241022",
-            "claude-3-opus-20240229",
+            "claude-opus-4-20250514",
         ]
     }
     
