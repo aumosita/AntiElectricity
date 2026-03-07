@@ -31,12 +31,18 @@ struct CopilotProvider: LLMProvider {
     
     func availableModels() async throws -> [String] {
         
-        // Copilot models available through the API
+        // GitHub Copilot supported models (as of March 2026)
         [
-            "gpt-4o",
-            "gpt-4o-mini",
-            "claude-3.5-sonnet",
-            "o3-mini",
+            "gpt-5.1-codex",
+            "gpt-5.1-codex-mini",
+            "gpt-4.1",
+            "claude-sonnet-4.6",
+            "claude-opus-4.6",
+            "claude-haiku-4.5",
+            "gemini-3.1-pro",
+            "gemini-2.5-pro",
+            "o3-pro",
+            "o4-mini",
         ]
     }
     
