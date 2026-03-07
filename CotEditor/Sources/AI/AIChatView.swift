@@ -38,6 +38,16 @@ struct AIChatMessage: Identifiable {
 }
 
 
+/// A parsed edit block from AI response.
+struct EditBlock: Identifiable {
+    
+    let id = UUID()
+    let searchText: String
+    let replaceText: String
+    var isApplied = false
+}
+
+
 /// The view model for the AI chat panel.
 @MainActor @Observable
 final class AIChatViewModel {
@@ -50,8 +60,14 @@ final class AIChatViewModel {
     var documentText: String = ""
     var syntaxName: String?
     
-    /// Callback to apply text to the document.
-    var onApplyToDocument: ((String) -> Void)?
+    /// Callback to apply a targeted search-and-replace edit.
+    var onApplyEdit: ((_ search: String, _ replace: String) -> Bool)?
+    
+    /// Callback to replace all document text (fallback).
+    var onReplaceAll: ((String) -> Void)?
+    
+    /// Track applied states for edit blocks per message.
+    var appliedEdits: Set<UUID> = []
     
     
     func sendMessage() {
@@ -65,7 +81,6 @@ final class AIChatViewModel {
         
         Task {
             do {
-                // Build system prompt with document context
                 let systemPrompt = self.buildSystemPrompt()
                 
                 let response = try await AIService.shared.provider.send(
@@ -86,6 +101,109 @@ final class AIChatViewModel {
     func clearChat() {
         
         self.messages.removeAll()
+        self.appliedEdits.removeAll()
+    }
+    
+    
+    /// Parses SEARCH/REPLACE blocks from AI response text.
+    static func parseEditBlocks(_ text: String) -> [EditBlock] {
+        
+        var blocks: [EditBlock] = []
+        let lines = text.components(separatedBy: "\n")
+        var i = 0
+        
+        while i < lines.count {
+            let line = lines[i].trimmingCharacters(in: .whitespaces)
+            
+            // Detect <<<SEARCH marker
+            if line.hasPrefix("<<<SEARCH") || line.hasPrefix("<<<search") || line == "<<<" {
+                var searchLines: [String] = []
+                var replaceLines: [String] = []
+                i += 1
+                
+                // Collect search text until === or >>>REPLACE
+                while i < lines.count {
+                    let l = lines[i].trimmingCharacters(in: .whitespaces)
+                    if l.hasPrefix("===") || l.hasPrefix(">>>REPLACE") || l.hasPrefix(">>>replace") {
+                        break
+                    }
+                    searchLines.append(lines[i])
+                    i += 1
+                }
+                
+                // Skip the separator
+                if i < lines.count {
+                    let sep = lines[i].trimmingCharacters(in: .whitespaces)
+                    if sep.hasPrefix("===") {
+                        i += 1
+                        // Skip >>>REPLACE after ===
+                        if i < lines.count {
+                            let rLine = lines[i].trimmingCharacters(in: .whitespaces)
+                            if rLine.hasPrefix(">>>REPLACE") || rLine.hasPrefix(">>>replace") {
+                                i += 1
+                            }
+                        }
+                    } else {
+                        i += 1  // Skip >>>REPLACE
+                    }
+                }
+                
+                // Collect replace text until >>> or next <<<
+                while i < lines.count {
+                    let l = lines[i].trimmingCharacters(in: .whitespaces)
+                    if l == ">>>" || l.hasPrefix("<<<SEARCH") || l.hasPrefix("<<<search") {
+                        break
+                    }
+                    replaceLines.append(lines[i])
+                    i += 1
+                }
+                
+                // Skip closing >>>
+                if i < lines.count && lines[i].trimmingCharacters(in: .whitespaces) == ">>>" {
+                    i += 1
+                }
+                
+                let search = searchLines.joined(separator: "\n")
+                    .trimmingCharacters(in: .whitespacesAndNewlines)
+                let replace = replaceLines.joined(separator: "\n")
+                    .trimmingCharacters(in: .whitespacesAndNewlines)
+                
+                if !search.isEmpty {
+                    blocks.append(EditBlock(searchText: search, replaceText: replace))
+                }
+            } else {
+                i += 1
+            }
+        }
+        
+        return blocks
+    }
+    
+    
+    /// Returns the text content with edit blocks removed (for display as prose).
+    static func textWithoutEditBlocks(_ text: String) -> String {
+        
+        let lines = text.components(separatedBy: "\n")
+        var result: [String] = []
+        var i = 0
+        var inBlock = false
+        
+        while i < lines.count {
+            let line = lines[i].trimmingCharacters(in: .whitespaces)
+            
+            if line.hasPrefix("<<<SEARCH") || line.hasPrefix("<<<search") || line == "<<<" {
+                inBlock = true
+            } else if inBlock && (line == ">>>" || (line.hasPrefix("<<<") && i > 0)) {
+                if line == ">>>" {
+                    inBlock = false
+                }
+            } else if !inBlock {
+                result.append(lines[i])
+            }
+            i += 1
+        }
+        
+        return result.joined(separator: "\n").trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
     
@@ -95,16 +213,27 @@ final class AIChatViewModel {
             You are an AI assistant integrated into a text editor called AntiElectricity.
             You help users with writing, editing, and coding tasks.
             You can see the user's current document content.
-            
-            When the user asks you to modify text, provide the modified text in a code block.
-            The user can then apply your changes directly to their document.
-            
             Respond in the same language the user uses.
+            
+            IMPORTANT: When you want to modify the document, use SEARCH/REPLACE blocks:
+            
+            <<<SEARCH
+            exact text to find in the document
+            ===
+            >>>REPLACE
+            replacement text
+            >>>
+            
+            Rules for SEARCH/REPLACE blocks:
+            - The SEARCH text must EXACTLY match text in the document (including whitespace).
+            - You can use multiple blocks to make multiple changes.
+            - Only include the minimal context needed to uniquely identify the location.
+            - For non-edit responses (explanations, questions), just write normally without blocks.
             """
         
         if !self.documentText.isEmpty {
-            let preview = self.documentText.prefix(4000)
-            prompt += "\n\nCurrent document content:\n```\n\(preview)\n```"
+            let preview = String(self.documentText.prefix(6000))
+            prompt += "\n\n--- CURRENT DOCUMENT ---\n\(preview)\n--- END DOCUMENT ---"
         }
         
         if let syntax = self.syntaxName {
@@ -157,8 +286,11 @@ struct AIChatView: View {
                     ScrollView {
                         LazyVStack(alignment: .leading, spacing: 12) {
                             ForEach(viewModel.messages) { message in
-                                MessageBubble(message: message, onApply: viewModel.onApplyToDocument)
-                                    .id(message.id)
+                                MessageBubble(
+                                    message: message,
+                                    viewModel: viewModel
+                                )
+                                .id(message.id)
                             }
                             
                             if viewModel.isProcessing {
@@ -247,11 +379,11 @@ struct AIChatView: View {
 }
 
 
-/// A single chat message bubble.
+/// A single chat message bubble with edit block detection.
 private struct MessageBubble: View {
     
     let message: AIChatMessage
-    let onApply: ((String) -> Void)?
+    let viewModel: AIChatViewModel
     
     @State private var isHovering = false
     
@@ -263,32 +395,57 @@ private struct MessageBubble: View {
                 Spacer(minLength: 40)
             }
             
-            VStack(alignment: message.role == .user ? .trailing : .leading, spacing: 4) {
-                Text(message.content)
-                    .font(.body)
-                    .textSelection(.enabled)
-                    .padding(10)
-                    .background(self.bubbleBackground)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            VStack(alignment: message.role == .user ? .trailing : .leading, spacing: 6) {
                 
-                if message.role == .assistant && isHovering {
-                    HStack(spacing: 8) {
-                        Button("Copy") {
-                            NSPasteboard.general.clearContents()
-                            NSPasteboard.general.setString(message.content, forType: .string)
-                        }
-                        .buttonStyle(.borderless)
-                        .font(.caption)
-                        
-                        if let onApply {
-                            Button("Apply to Document") {
-                                onApply(message.content)
+                if message.role == .assistant {
+                    let editBlocks = AIChatViewModel.parseEditBlocks(message.content)
+                    let proseText = AIChatViewModel.textWithoutEditBlocks(message.content)
+                    
+                    // Show prose text
+                    if !proseText.isEmpty {
+                        Text(proseText)
+                            .font(.body)
+                            .textSelection(.enabled)
+                            .padding(10)
+                            .background(Color.primary.opacity(0.06))
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                    
+                    // Show edit blocks with apply buttons
+                    ForEach(editBlocks) { block in
+                        EditBlockView(
+                            block: block,
+                            isApplied: viewModel.appliedEdits.contains(block.id),
+                            onApply: {
+                                if let apply = viewModel.onApplyEdit {
+                                    let success = apply(block.searchText, block.replaceText)
+                                    if success {
+                                        viewModel.appliedEdits.insert(block.id)
+                                    }
+                                }
+                            }
+                        )
+                    }
+                    
+                    // Show no-block fallback actions on hover
+                    if editBlocks.isEmpty && isHovering {
+                        HStack(spacing: 8) {
+                            Button("Copy") {
+                                NSPasteboard.general.clearContents()
+                                NSPasteboard.general.setString(message.content, forType: .string)
                             }
                             .buttonStyle(.borderless)
                             .font(.caption)
-                            .foregroundStyle(.purple)
                         }
                     }
+                } else {
+                    // User / system message
+                    Text(message.content)
+                        .font(.body)
+                        .textSelection(.enabled)
+                        .padding(10)
+                        .background(self.bubbleBackground)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
             }
             .onHover { self.isHovering = $0 }
@@ -311,5 +468,94 @@ private struct MessageBubble: View {
             case .system:
                 Color.red.opacity(0.1)
         }
+    }
+}
+
+
+/// Displays a single SEARCH/REPLACE edit block with diff preview and apply button.
+private struct EditBlockView: View {
+    
+    let block: EditBlock
+    let isApplied: Bool
+    let onApply: () -> Void
+    
+    
+    var body: some View {
+        
+        VStack(alignment: .leading, spacing: 0) {
+            // Header
+            HStack {
+                Image(systemName: "pencil.line")
+                    .font(.caption)
+                    .foregroundStyle(.purple)
+                Text("Edit")
+                    .font(.caption)
+                    .fontWeight(.medium)
+                    .foregroundStyle(.purple)
+                
+                Spacer()
+                
+                if isApplied {
+                    Label("Applied", systemImage: "checkmark.circle.fill")
+                        .font(.caption)
+                        .foregroundStyle(.green)
+                } else {
+                    Button {
+                        self.onApply()
+                    } label: {
+                        Label("Apply", systemImage: "arrow.right.circle.fill")
+                            .font(.caption)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.purple)
+                    .controlSize(.small)
+                }
+            }
+            .padding(.horizontal, 10)
+            .padding(.vertical, 6)
+            .background(Color.purple.opacity(0.08))
+            
+            Divider()
+            
+            // Diff view
+            VStack(alignment: .leading, spacing: 2) {
+                // Removed text
+                HStack(alignment: .top, spacing: 4) {
+                    Text("−")
+                        .font(.system(.caption, design: .monospaced))
+                        .foregroundStyle(.red)
+                        .frame(width: 14)
+                    Text(block.searchText)
+                        .font(.system(.caption, design: .monospaced))
+                        .foregroundStyle(.red.opacity(0.8))
+                        .textSelection(.enabled)
+                }
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.red.opacity(0.06))
+                
+                // Added text
+                HStack(alignment: .top, spacing: 4) {
+                    Text("+")
+                        .font(.system(.caption, design: .monospaced))
+                        .foregroundStyle(.green)
+                        .frame(width: 14)
+                    Text(block.replaceText)
+                        .font(.system(.caption, design: .monospaced))
+                        .foregroundStyle(.green.opacity(0.8))
+                        .textSelection(.enabled)
+                }
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.green.opacity(0.06))
+            }
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color.purple.opacity(0.2), lineWidth: 1)
+        )
     }
 }

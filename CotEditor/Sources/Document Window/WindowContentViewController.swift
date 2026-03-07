@@ -448,16 +448,30 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
         
         chatView.viewModel.documentText = docText
         chatView.viewModel.syntaxName = syntaxName
-        chatView.viewModel.onApplyToDocument = { [weak self] text in
+        
+        // Targeted search-and-replace edit
+        chatView.viewModel.onApplyEdit = { [weak self] searchText, replaceText in
+            guard let textView = self?.documentViewController?.focusedTextView else { return false }
+            
+            let nsString = textView.string as NSString
+            let range = nsString.range(of: searchText)
+            
+            guard range.location != NSNotFound else { return false }
+            
+            textView.insertText(replaceText, replacementRange: range)
+            
+            // Update document text in chat view model
+            chatView.viewModel.documentText = textView.string
+            return true
+        }
+        
+        // Full text replacement fallback
+        chatView.viewModel.onReplaceAll = { [weak self] text in
             guard let textView = self?.documentViewController?.focusedTextView else { return }
             
-            let selectedRange = textView.selectedRange()
-            if selectedRange.length > 0 {
-                textView.insertText(text, replacementRange: selectedRange)
-            } else {
-                textView.selectAll(nil)
-                textView.insertText(text, replacementRange: textView.selectedRange())
-            }
+            textView.selectAll(nil)
+            textView.insertText(text, replacementRange: textView.selectedRange())
+            chatView.viewModel.documentText = textView.string
         }
     }
 }
