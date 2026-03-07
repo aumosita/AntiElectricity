@@ -58,12 +58,12 @@
 				<string>org.scala-lang.scala-source</string>
 				<string>org.tug.bibtex.bib</string>
 				<string>org.tug.tex</string>
-				<string>com.coteditor.conf</string>
-				<string>com.coteditor.lisp</string>
-				<string>com.coteditor.mojo</string>
-				<string>com.coteditor.scheme</string>
-				<string>com.coteditor.verilog</string>
-				<string>com.coteditor.vhdl</string>
+				<string>com.lyon.AntiElectricity.conf</string>
+				<string>com.lyon.AntiElectricity.lisp</string>
+				<string>com.lyon.AntiElectricity.mojo</string>
+				<string>com.lyon.AntiElectricity.scheme</string>
+				<string>com.lyon.AntiElectricity.verilog</string>
+				<string>com.lyon.AntiElectricity.vhdl</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string>$(PRODUCT_MODULE_NAME).Document</string>
@@ -89,14 +89,14 @@
 			<key>CFBundleTypeIconSystemGenerated</key>
 			<true/>
 			<key>CFBundleTypeName</key>
-			<string>CotEditor Syntax</string>
+			<string>AntiElectricity Syntax</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.coteditor.CotEditor.syntax</string>
+				<string>com.lyon.AntiElectricity.syntax</string>
 			</array>
 			<key>LSTypeIsPackage</key>
 			<true/>
@@ -105,7 +105,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleHelpBookFolder</key>
-	<string>CotEditor.help</string>
+	<string>AntiElectricity.help</string>
 	<key>CFBundleHelpBookName</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER).help</string>
 	<key>CFBundleIconName</key>
@@ -121,7 +121,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSpokenName</key>
-	<string>Cot editor</string>
+	<string>Anti Electricity</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -146,7 +146,7 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>New CotEditor Window Containing Selection</string>
+				<string>New AntiElectricity Window Containing Selection</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>openSelection</string>
@@ -161,7 +161,7 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>Open in CotEditor</string>
+				<string>Open in AntiElectricity</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>openFile</string>
@@ -183,12 +183,12 @@
 	<true/>
 	<key>NSUbiquitousContainers</key>
 	<dict>
-		<key>iCloud.com.coteditor.CotEditor</key>
+		<key>iCloud.com.lyon.AntiElectricity</key>
 		<dict>
 			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
 			<true/>
 			<key>NSUbiquitousContainerName</key>
-			<string>CotEditor</string>
+			<string>AntiElectricity</string>
 			<key>NSUbiquitousContainerSupportedFolderLevels</key>
 			<string>Any</string>
 		</dict>
@@ -207,7 +207,7 @@
 				<string>com.apple.package</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>CotEditor Settings Archive</string>
+			<string>AntiElectricity Settings Archive</string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconBadgeName</key>
@@ -216,7 +216,7 @@
 				<string>settings</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>com.coteditor.CotEditor.settings</string>
+			<string>com.lyon.AntiElectricity.settings</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -231,7 +231,7 @@
 				<string>public.json</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>CotEditor Theme</string>
+			<string>AntiElectricity Theme</string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconBadgeName</key>
@@ -240,7 +240,7 @@
 				<string>theme</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>com.coteditor.CotEditor.theme</string>
+			<string>com.lyon.AntiElectricity.theme</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -255,7 +255,7 @@
 				<string>com.apple.package</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>CotEditor Syntax</string>
+			<string>AntiElectricity Syntax</string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconBadgeName</key>
@@ -264,7 +264,7 @@
 				<string>syntax</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>com.coteditor.CotEditor.syntax</string>
+			<string>com.lyon.AntiElectricity.syntax</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -279,7 +279,7 @@
 				<string>public.json</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>CotEditor Replace Definition</string>
+			<string>AntiElectricity Replace Definition</string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconBadgeName</key>
@@ -288,7 +288,7 @@
 				<string>replace</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>com.coteditor.CotEditor.replacement</string>
+			<string>com.lyon.AntiElectricity.replacement</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -312,7 +312,7 @@
 				<string>config</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>com.coteditor.awk</string>
+			<string>com.lyon.AntiElectricity.awk</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -336,7 +336,7 @@
 				<string>config</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>com.coteditor.conf</string>
+			<string>com.lyon.AntiElectricity.conf</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -360,7 +360,7 @@
 				<string>lisp</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>com.coteditor.lisp</string>
+			<string>com.lyon.AntiElectricity.lisp</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -385,7 +385,7 @@
 				<string>mojo</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>com.coteditor.mojo</string>
+			<string>com.lyon.AntiElectricity.mojo</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -410,7 +410,7 @@
 				<string>scheme</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>com.coteditor.scheme</string>
+			<string>com.lyon.AntiElectricity.scheme</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -435,7 +435,7 @@
 				<string>verilog</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>com.coteditor.verilog</string>
+			<string>com.lyon.AntiElectricity.verilog</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -459,7 +459,7 @@
 				<string>VHDL</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>com.coteditor.vhdl</string>
+			<string>com.lyon.AntiElectricity.vhdl</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -482,7 +482,7 @@
 			<key>UTTypeIcons</key>
 			<dict/>
 			<key>UTTypeIdentifier</key>
-			<string>com.coteditor.uuid</string>
+			<string>com.lyon.AntiElectricity.uuid</string>
 			<key>UTTypeTagSpecification</key>
 			<dict/>
 		</dict>

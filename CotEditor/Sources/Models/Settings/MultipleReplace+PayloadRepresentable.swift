@@ -29,7 +29,7 @@ import TextFind
 
 extension UTType {
     
-    static let cotReplacement = UTType(exportedAs: "com.coteditor.CotEditor.replacement")
+    static let cotReplacement = UTType(exportedAs: "com.lyon.AntiElectricity.replacement")
 }
 
 

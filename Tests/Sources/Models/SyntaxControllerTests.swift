@@ -27,7 +27,7 @@ import AppKit
 import Testing
 import ValueRange
 import Syntax
-@testable import CotEditor
+@testable import AntiElectricity
 
 @MainActor struct SyntaxControllerTests {
     

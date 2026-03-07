@@ -28,7 +28,7 @@ import UniformTypeIdentifiers
 
 extension UTType {
     
-    static let cotTheme = UTType(exportedAs: "com.coteditor.CotEditor.theme")
+    static let cotTheme = UTType(exportedAs: "com.lyon.AntiElectricity.theme")
 }
 
 

@@ -26,7 +26,7 @@
 
 import AppKit
 import Testing
-@testable import CotEditor
+@testable import AntiElectricity
 
 @MainActor struct TextFinderTests {
     

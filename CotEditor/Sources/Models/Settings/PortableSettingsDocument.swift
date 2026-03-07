@@ -31,7 +31,7 @@ import URLUtils
 
 extension UTType {
     
-    static let cotSettings = UTType(exportedAs: "com.coteditor.CotEditor.settings")
+    static let cotSettings = UTType(exportedAs: "com.lyon.AntiElectricity.settings")
 }
 
 

@@ -29,7 +29,7 @@ import Syntax
 
 extension UTType {
     
-    static let cotSyntax = UTType(exportedAs: "com.coteditor.CotEditor.syntax")
+    static let cotSyntax = UTType(exportedAs: "com.lyon.AntiElectricity.syntax")
 }
 
 

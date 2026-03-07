@@ -29,7 +29,7 @@ import UniformTypeIdentifiers
 import Testing
 import Numerics
 import Syntax
-@testable import CotEditor
+@testable import AntiElectricity
 
 actor ThemeTests {
     

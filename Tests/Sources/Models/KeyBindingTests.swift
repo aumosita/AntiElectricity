@@ -26,7 +26,7 @@
 import Testing
 import Shortcut
 import AppKit.NSEvent
-@testable import CotEditor
+@testable import AntiElectricity
 
 @MainActor struct KeyBindingTests {
     

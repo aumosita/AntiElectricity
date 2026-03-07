@@ -28,7 +28,7 @@ import Testing
 import LineEnding
 import ValueRange
 import StringUtils
-@testable import CotEditor
+@testable import AntiElectricity
 
 struct LineEndingScannerTests {
     

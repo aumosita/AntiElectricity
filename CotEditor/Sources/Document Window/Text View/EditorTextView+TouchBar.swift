@@ -28,15 +28,15 @@ import ControlUI
 
 private extension NSTouchBar.CustomizationIdentifier {
     
-    static let textView = NSTouchBar.CustomizationIdentifier("com.coteditor.CotEditor.touchBar.textView")
+    static let textView = NSTouchBar.CustomizationIdentifier("com.lyon.AntiElectricity.touchBar.textView")
 }
 
 
 extension NSTouchBarItem.Identifier {
     
-    static let shift = NSTouchBarItem.Identifier("com.coteditor.CotEditor.TouchBarItem.shift")
-    static let comment = NSTouchBarItem.Identifier("com.coteditor.CotEditor.TouchBarItem.comment")
-    static let textSize = NSTouchBarItem.Identifier("com.coteditor.CotEditor.TouchBarItem.textSize")
+    static let shift = NSTouchBarItem.Identifier("com.lyon.AntiElectricity.TouchBarItem.shift")
+    static let comment = NSTouchBarItem.Identifier("com.lyon.AntiElectricity.TouchBarItem.comment")
+    static let textSize = NSTouchBarItem.Identifier("com.lyon.AntiElectricity.TouchBarItem.textSize")
 }
 
 

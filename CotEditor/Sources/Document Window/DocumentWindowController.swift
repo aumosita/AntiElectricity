@@ -454,7 +454,7 @@ private extension NSToolbar.Identifier {
 
 private extension NSToolbarItem.Identifier {
     
-    private static let prefix = "com.coteditor.CotEditor.ToolbarItem."
+    private static let prefix = "com.lyon.AntiElectricity.ToolbarItem."
     
     
     static let syntax = Self(Self.prefix + "syntaxStyle")

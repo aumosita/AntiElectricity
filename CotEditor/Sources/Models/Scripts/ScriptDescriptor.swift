@@ -29,7 +29,7 @@ import Shortcut
 
 private extension UTType {
     
-    static let awkScript = UTType(exportedAs: "com.coteditor.awk")
+    static let awkScript = UTType(exportedAs: "com.lyon.AntiElectricity.awk")
 }
 
 

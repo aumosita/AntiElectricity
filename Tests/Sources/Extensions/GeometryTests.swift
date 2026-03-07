@@ -26,7 +26,7 @@
 
 import CoreGraphics
 import Testing
-@testable import CotEditor
+@testable import AntiElectricity
 
 struct GeometryTests {
     

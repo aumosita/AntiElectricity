@@ -28,7 +28,7 @@ public import CoreTransferable
 
 extension UTType {
     
-    nonisolated static let uuid = UTType(exportedAs: "com.coteditor.uuid")
+    nonisolated static let uuid = UTType(exportedAs: "com.lyon.AntiElectricity.uuid")
 }
 
 

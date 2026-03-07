@@ -40,7 +40,7 @@ let isLiquidGlass = if #available(macOS 26, *) { true } else { false }
 
 extension Logger {
     
-    static let app = Logger(subsystem: "com.coteditor.CotEditor", category: "application")
+    static let app = Logger(subsystem: "com.lyon.AntiElectricity", category: "application")
 }
 
 
@@ -78,8 +78,8 @@ extension Logger {
     
     private enum AppWebURL: String {
         
-        case website = "https://coteditor.com"
-        case issueTracker = "https://github.com/coteditor/CotEditor/issues"
+        case website = "https://github.com/lyon/AntiElectricity"
+        case issueTracker = "https://github.com/lyon/AntiElectricity/issues"
         
         var url: URL  { URL(string: self.rawValue)! }
     }
@@ -336,7 +336,7 @@ extension Logger {
         
         let panel = NSOpenPanel()
         panel.allowedContentTypes = [.cotSettings]
-        panel.message = String(localized: "Choose a CotEditor settings archive to import.", table: "SettingsPorting")
+        panel.message = String(localized: "Choose an AntiElectricity settings archive to import.", table: "SettingsPorting")
         panel.prompt = String(localized: "Action.import.label", defaultValue: "Import")
         
         self.isSettingsImporterPresented = true
@@ -541,6 +541,9 @@ extension Logger {
                 ]
             }
             .store(in: &self.menuUpdateObservers)
+        
+        // install AI menu
+        AIMenuBuilder.installAIMenu()
     }
 }
 

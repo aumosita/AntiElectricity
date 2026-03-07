@@ -38,6 +38,12 @@ final class ContentViewController: NSSplitViewController {
     }
     
     
+    // MARK: AI Properties
+    
+    private var aiPanelItem: NSSplitViewItem?
+    private var currentAIResult: AIResult?
+    
+    
     // MARK: Lifecycle
     
     init(document: DataDocument?) {
@@ -71,7 +77,157 @@ final class ContentViewController: NSSplitViewController {
     override func splitView(_ splitView: NSSplitView, effectiveRect proposedEffectiveRect: NSRect, forDrawnRect drawnRect: NSRect, ofDividerAt dividerIndex: Int) -> NSRect {
         
         // avoid showing draggable cursor for the status bar boundary
-        .zero
+        // but allow AI panel divider to be draggable
+        if self.aiPanelItem != nil && dividerIndex == self.splitViewItems.count - 2 {
+            return proposedEffectiveRect
+        }
+        return .zero
+    }
+    
+    
+    // MARK: AI Methods
+    
+    /// Executes an AI command on the current editor selection or full text.
+    func executeAICommand(_ command: AICommand) {
+        
+        guard let docVC = self.documentViewController,
+              let textView = docVC.focusedTextView
+        else { return }
+        
+        let selectedRange = textView.selectedRange()
+        let text: String
+        if selectedRange.length > 0,
+           let selectedText = (textView.string as NSString?)?.substring(with: selectedRange) {
+            text = selectedText
+        } else {
+            text = textView.string
+        }
+        
+        guard !text.isEmpty else { return }
+        
+        // Show the AI panel with loading state
+        let syntaxName = (self.document as? Document)?.syntaxName
+        self.showAIPanel(processing: true)
+        
+        Task {
+            do {
+                let result = try await AIService.shared.execute(
+                    command: command,
+                    text: text,
+                    syntaxName: syntaxName
+                )
+                self.currentAIResult = result
+                self.showAIPanel(result: result)
+            } catch {
+                self.showAIPanel(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    
+    /// Executes a free-form AI prompt.
+    func executeFreePrompt(_ prompt: String) {
+        
+        guard let docVC = self.documentViewController,
+              let textView = docVC.focusedTextView
+        else { return }
+        
+        let selectedRange = textView.selectedRange()
+        let text: String
+        if selectedRange.length > 0,
+           let selectedText = (textView.string as NSString?)?.substring(with: selectedRange) {
+            text = selectedText
+        } else {
+            text = textView.string
+        }
+        
+        guard !text.isEmpty else { return }
+        
+        self.showAIPanel(processing: true)
+        
+        Task {
+            do {
+                let result = try await AIService.shared.executeFreePrompt(prompt, text: text)
+                self.currentAIResult = result
+                self.showAIPanel(result: result)
+            } catch {
+                self.showAIPanel(error: error.localizedDescription)
+            }
+        }
+    }
+    
+    
+    /// Accepts the AI result and replaces the original text.
+    func acceptAIResult() {
+        
+        guard let result = self.currentAIResult,
+              let docVC = self.documentViewController,
+              let textView = docVC.focusedTextView
+        else { return }
+        
+        let selectedRange = textView.selectedRange()
+        
+        if selectedRange.length > 0 {
+            // Replace the selection
+            textView.insertText(result.resultText, replacementRange: selectedRange)
+        } else {
+            // Replace the entire document
+            textView.selectAll(nil)
+            textView.insertText(result.resultText, replacementRange: textView.selectedRange())
+        }
+        
+        self.hideAIPanel()
+    }
+    
+    
+    /// Rejects the AI result and closes the panel.
+    func rejectAIResult() {
+        
+        self.hideAIPanel()
+    }
+    
+    
+    // MARK: Private AI Methods
+    
+    private func showAIPanel(processing: Bool = false, result: AIResult? = nil, error: String? = nil) {
+        
+        // Remove existing panel if any
+        if let existingItem = self.aiPanelItem {
+            self.removeSplitViewItem(existingItem)
+        }
+        
+        var resultView = AIResultView(
+            result: result,
+            isProcessing: processing,
+            errorMessage: error
+        )
+        resultView.onAccept = { [weak self] in self?.acceptAIResult() }
+        resultView.onReject = { [weak self] in self?.rejectAIResult() }
+        resultView.onCopy = { [weak self] in
+            guard let text = self?.currentAIResult?.resultText else { return }
+            NSPasteboard.general.clearContents()
+            NSPasteboard.general.setString(text, forType: .string)
+        }
+        
+        let hostingController = NSHostingController(rootView: resultView)
+        let item = NSSplitViewItem(viewController: hostingController)
+        item.minimumThickness = 120
+        item.canCollapse = false
+        
+        // Insert before the last item (status bar) if it exists, otherwise append
+        let insertIndex = max(self.splitViewItems.count - 1, 1)
+        self.insertSplitViewItem(item, at: insertIndex)
+        self.aiPanelItem = item
+    }
+    
+    
+    private func hideAIPanel() {
+        
+        if let item = self.aiPanelItem {
+            self.removeSplitViewItem(item)
+            self.aiPanelItem = nil
+        }
+        self.currentAIResult = nil
     }
     
     

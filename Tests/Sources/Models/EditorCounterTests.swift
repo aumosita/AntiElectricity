@@ -25,7 +25,7 @@
 
 import Foundation
 import Testing
-@testable import CotEditor
+@testable import AntiElectricity
 
 @MainActor final class EditorCounterTests {
     

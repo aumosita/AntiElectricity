@@ -29,8 +29,8 @@ import ControlUI
 
 private extension NSTouchBarItem.Identifier {
     
-    static let textSizeActual = NSTouchBarItem.Identifier("com.coteditor.CotEditor.TouchBarItem.textSizeActual")
-    static let textSizeSlider = NSTouchBarItem.Identifier("com.coteditor.CotEditor.TouchBarItem.textSizeSlider")
+    static let textSizeActual = NSTouchBarItem.Identifier("com.lyon.AntiElectricity.TouchBarItem.textSizeActual")
+    static let textSizeSlider = NSTouchBarItem.Identifier("com.lyon.AntiElectricity.TouchBarItem.textSizeSlider")
 }
 
 

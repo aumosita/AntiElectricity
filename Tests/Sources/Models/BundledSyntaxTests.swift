@@ -27,7 +27,7 @@
 import Foundation
 import Testing
 @testable import Syntax
-@testable import CotEditor
+@testable import AntiElectricity
 
 actor BundledSyntaxTests {
     

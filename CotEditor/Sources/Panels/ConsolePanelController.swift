@@ -105,7 +105,7 @@ final class ConsolePanelController: NSWindowController {
 
 private extension NSToolbarItem.Identifier {
     
-    private static let prefix = "com.coteditor.CotEditor.Console.ToolbarItem."
+    private static let prefix = "com.lyon.AntiElectricity.Console.ToolbarItem."
     
     static let clear = Self(Self.prefix + "clear")
 }

@@ -32,8 +32,8 @@ enum Donation {
     
     enum Product: String, CaseIterable {
         
-        case onetime = "com.coteditor.CotEditor.donation.onetime"
-        case continuous = "com.coteditor.CotEditor.donation.subscription.yearly"
+        case onetime = "com.lyon.AntiElectricity.donation.onetime"
+        case continuous = "com.lyon.AntiElectricity.donation.subscription.yearly"
         
         var id: String  { self.rawValue }
     }
