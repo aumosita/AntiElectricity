@@ -2,7 +2,7 @@
 //  AISettingsView.swift
 //
 //  AntiElectricity
-//  https://github.com/lyon/AntiElectricity
+//  https://github.com/aumosita/AntiElectricity
 //
 //  Created by AntiElectricity on 2026-03-08.
 //
@@ -17,8 +17,16 @@ import SwiftUI
 
 struct AISettingsView: View {
     
+    @State private var providerType: AIProviderType = AIService.shared.providerType
+    
+    // Ollama
     @State private var ollamaURL: String = UserDefaults.standard.string(forKey: "ollamaURL") ?? "http://localhost:11434"
-    @State private var selectedModel: String = UserDefaults.standard.string(forKey: "ollamaModel") ?? ""
+    
+    // Anthropic
+    @State private var anthropicAPIKey: String = UserDefaults.standard.string(forKey: "anthropicAPIKey") ?? ""
+    
+    // Shared
+    @State private var selectedModel: String = AIService.shared.model
     @State private var availableModels: [String] = []
     @State private var connectionStatus: ConnectionStatus = .unknown
     @State private var isLoadingModels = false
@@ -36,27 +44,37 @@ struct AISettingsView: View {
     var body: some View {
         
         VStack(alignment: .leading, spacing: 20) {
-            // Ollama Connection
+            // Provider Selection
+            Section {
+                Picker(String(localized: "Provider:", table: "AI"), selection: $providerType) {
+                    ForEach(AIProviderType.allCases, id: \.self) { type in
+                        Text(type.rawValue).tag(type)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .frame(width: 250)
+                .onChange(of: providerType) {
+                    AIService.shared.switchProvider(to: providerType)
+                    self.selectedModel = AIService.shared.model
+                    self.connectionStatus = .unknown
+                    self.availableModels = []
+                    self.loadModels()
+                }
+            } header: {
+                Text(String(localized: "AI Provider", table: "AI"))
+                    .font(.headline)
+            }
+            
+            // Provider-specific settings
             Section {
                 Grid(alignment: .leadingFirstTextBaseline, verticalSpacing: 8) {
-                    GridRow {
-                        Text("Server URL:")
-                            .gridColumnAlignment(.trailing)
-                        
-                        HStack {
-                            TextField("http://localhost:11434", text: $ollamaURL)
-                                .textFieldStyle(.roundedBorder)
-                                .frame(width: 250)
-                                .onSubmit { self.saveURL() }
-                            
-                            self.connectionIndicator
-                            
-                            Button(String(localized: "Test", table: "AI")) {
-                                self.testConnection()
-                            }
-                        }
+                    if providerType == .ollama {
+                        self.ollamaSettings
+                    } else {
+                        self.anthropicSettings
                     }
                     
+                    // Model picker (shared)
                     GridRow {
                         Text("Model:")
                             .gridColumnAlignment(.trailing)
@@ -66,7 +84,7 @@ struct AISettingsView: View {
                                 ProgressView()
                                     .controlSize(.small)
                             } else if availableModels.isEmpty {
-                                Text("No models found")
+                                Text("No models")
                                     .foregroundStyle(.secondary)
                             } else {
                                 Picker("", selection: $selectedModel) {
@@ -75,7 +93,7 @@ struct AISettingsView: View {
                                     }
                                 }
                                 .labelsHidden()
-                                .frame(width: 200)
+                                .frame(width: 250)
                                 .onChange(of: selectedModel) {
                                     AIService.shared.model = selectedModel
                                 }
@@ -88,8 +106,9 @@ struct AISettingsView: View {
                     }
                 }
             } header: {
-                Text("Ollama")
-                    .font(.headline)
+                Text(providerType.rawValue)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
             }
             
             Divider()
@@ -176,6 +195,60 @@ struct AISettingsView: View {
     }
     
     
+    // MARK: - Provider-specific Settings
+    
+    @ViewBuilder
+    private var ollamaSettings: some View {
+        
+        GridRow {
+            Text("Server URL:")
+                .gridColumnAlignment(.trailing)
+            
+            HStack {
+                TextField("http://localhost:11434", text: $ollamaURL)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(width: 250)
+                    .onSubmit {
+                        AIService.shared.updateOllamaURL(self.ollamaURL)
+                    }
+                
+                self.connectionIndicator
+                
+                Button(String(localized: "Test", table: "AI")) {
+                    AIService.shared.updateOllamaURL(self.ollamaURL)
+                    self.testConnection()
+                }
+            }
+        }
+    }
+    
+    
+    @ViewBuilder
+    private var anthropicSettings: some View {
+        
+        GridRow {
+            Text("API Key:")
+                .gridColumnAlignment(.trailing)
+            
+            HStack {
+                SecureField("sk-ant-...", text: $anthropicAPIKey)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(width: 250)
+                    .onSubmit {
+                        AIService.shared.updateAnthropicAPIKey(self.anthropicAPIKey)
+                    }
+                
+                self.connectionIndicator
+                
+                Button(String(localized: "Test", table: "AI")) {
+                    AIService.shared.updateAnthropicAPIKey(self.anthropicAPIKey)
+                    self.testConnection()
+                }
+            }
+        }
+    }
+    
+    
     @ViewBuilder
     private var connectionIndicator: some View {
         
@@ -193,15 +266,9 @@ struct AISettingsView: View {
     }
     
     
-    private func saveURL() {
-        
-        AIService.shared.updateOllamaURL(self.ollamaURL)
-    }
-    
+    // MARK: - Actions
     
     private func testConnection() {
-        
-        self.saveURL()
         
         Task {
             let result = await AIService.shared.testConnection()
@@ -212,21 +279,22 @@ struct AISettingsView: View {
     
     private func loadModels() {
         
-        self.saveURL()
         self.isLoadingModels = true
         
         Task {
             do {
                 let models = try await AIService.shared.fetchModels()
                 self.availableModels = models
-                self.connectionStatus = .connected
+                self.connectionStatus = (providerType == .ollama) ? .connected : .unknown
                 
                 if !models.isEmpty && (self.selectedModel.isEmpty || !models.contains(self.selectedModel)) {
                     self.selectedModel = models[0]
                     AIService.shared.model = models[0]
                 }
             } catch {
-                self.connectionStatus = .failed
+                if providerType == .ollama {
+                    self.connectionStatus = .failed
+                }
                 self.availableModels = []
             }
             self.isLoadingModels = false

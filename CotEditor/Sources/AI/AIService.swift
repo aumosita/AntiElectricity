@@ -2,7 +2,7 @@
 //  AIService.swift
 //
 //  AntiElectricity
-//  https://github.com/lyon/AntiElectricity
+//  https://github.com/aumosita/AntiElectricity
 //
 //  Created by AntiElectricity on 2026-03-08.
 //
@@ -32,6 +32,14 @@ struct AIResult: Sendable {
 }
 
 
+/// Supported AI provider types.
+enum AIProviderType: String, CaseIterable, Sendable {
+    
+    case ollama = "Ollama"
+    case anthropic = "Anthropic"
+}
+
+
 /// Coordinates AI command execution between the editor and LLM providers.
 @MainActor @Observable
 final class AIService {
@@ -44,18 +52,40 @@ final class AIService {
     /// The current LLM provider.
     private(set) var provider: any LLMProvider
     
+    /// The active provider type.
+    private(set) var providerType: AIProviderType
+    
     /// The model to use.
     var model: String {
-        get { UserDefaults.standard.string(forKey: "ollamaModel") ?? "llama3.2" }
-        set { UserDefaults.standard.set(newValue, forKey: "ollamaModel") }
+        get {
+            let key = "\(self.providerType.rawValue)_model"
+            return UserDefaults.standard.string(forKey: key) ?? ""
+        }
+        set {
+            let key = "\(self.providerType.rawValue)_model"
+            UserDefaults.standard.set(newValue, forKey: key)
+        }
     }
     
     
     private init() {
         
-        let urlString = UserDefaults.standard.string(forKey: "ollamaURL") ?? "http://localhost:11434"
-        let url = URL(string: urlString) ?? URL(string: "http://localhost:11434")!
-        self.provider = OllamaProvider(baseURL: url)
+        let savedType = UserDefaults.standard.string(forKey: "aiProviderType")
+            .flatMap(AIProviderType.init(rawValue:)) ?? .ollama
+        
+        self.providerType = savedType
+        self.provider = Self.createProvider(type: savedType)
+    }
+    
+    
+    // MARK: Provider Management
+    
+    /// Switches to the specified provider type.
+    func switchProvider(to type: AIProviderType) {
+        
+        self.providerType = type
+        UserDefaults.standard.set(type.rawValue, forKey: "aiProviderType")
+        self.provider = Self.createProvider(type: type)
     }
     
     
@@ -65,17 +95,27 @@ final class AIService {
         guard let url = URL(string: urlString) else { return }
         
         UserDefaults.standard.set(urlString, forKey: "ollamaURL")
-        self.provider = OllamaProvider(baseURL: url)
+        
+        if self.providerType == .ollama {
+            self.provider = OllamaProvider(baseURL: url)
+        }
     }
     
     
+    /// Updates the Anthropic API key.
+    func updateAnthropicAPIKey(_ key: String) {
+        
+        UserDefaults.standard.set(key, forKey: "anthropicAPIKey")
+        
+        if self.providerType == .anthropic {
+            self.provider = AnthropicProvider(apiKey: key)
+        }
+    }
+    
+    
+    // MARK: Execution
+    
     /// Executes an AI command on the given text.
-    ///
-    /// - Parameters:
-    ///   - command: The AI command to execute.
-    ///   - text: The input text.
-    ///   - syntaxName: The current syntax name (for code-related commands).
-    /// - Returns: The AI result.
     func execute(command: AICommand, text: String, syntaxName: String? = nil) async throws -> AIResult {
         
         self.isProcessing = true
@@ -83,9 +123,8 @@ final class AIService {
         
         defer { self.isProcessing = false }
         
-        // Build the prompt with optional syntax context
         var prompt = text
-        if let syntaxName, command.id.hasPrefix("builtin.code") {
+        if let syntaxName, command.id.hasPrefix("example.code") {
             prompt = "Language: \(syntaxName)\n\n\(text)"
         }
         
@@ -110,11 +149,6 @@ final class AIService {
     
     
     /// Executes a free-form prompt on the given text.
-    ///
-    /// - Parameters:
-    ///   - userPrompt: The user's custom instruction.
-    ///   - text: The input text.
-    /// - Returns: The AI result.
     func executeFreePrompt(_ userPrompt: String, text: String) async throws -> AIResult {
         
         let command = AICommand(
@@ -138,5 +172,22 @@ final class AIService {
     func testConnection() async -> Bool {
         
         await self.provider.testConnection()
+    }
+    
+    
+    // MARK: Private
+    
+    private static func createProvider(type: AIProviderType) -> any LLMProvider {
+        
+        switch type {
+            case .ollama:
+                let urlString = UserDefaults.standard.string(forKey: "ollamaURL") ?? "http://localhost:11434"
+                let url = URL(string: urlString) ?? URL(string: "http://localhost:11434")!
+                return OllamaProvider(baseURL: url)
+                
+            case .anthropic:
+                let apiKey = UserDefaults.standard.string(forKey: "anthropicAPIKey") ?? ""
+                return AnthropicProvider(apiKey: apiKey)
+        }
     }
 }
