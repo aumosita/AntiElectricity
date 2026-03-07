@@ -59,8 +59,9 @@ final class AIChatViewModel {
     /// Lazy provider that returns current document text and syntax name.
     var documentTextProvider: (() -> (text: String, syntax: String?))?
     
-    /// Callback to apply a targeted search-and-replace edit.
-    var onApplyEdit: ((_ search: String, _ replace: String) -> Bool)?
+    /// Callback to preview an edit in the editor (highlight + popover).
+    /// Parameters: searchText, replaceText, blockID (to mark as applied on accept).
+    var onPreviewEdit: ((_ search: String, _ replace: String, _ blockID: UUID) -> Void)?
     
     /// Callback to replace all document text (fallback).
     var onReplaceAll: ((String) -> Void)?
@@ -418,12 +419,7 @@ private struct MessageBubble: View {
                             block: block,
                             isApplied: viewModel.appliedEdits.contains(block.id),
                             onApply: {
-                                if let apply = viewModel.onApplyEdit {
-                                    let success = apply(block.searchText, block.replaceText)
-                                    if success {
-                                        viewModel.appliedEdits.insert(block.id)
-                                    }
-                                }
+                                viewModel.onPreviewEdit?(block.searchText, block.replaceText, block.id)
                             }
                         )
                     }

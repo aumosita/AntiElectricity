@@ -151,17 +151,58 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
             return (text: text, syntax: syntax)
         }
         
-        // Set up targeted search-and-replace edit callback
-        chatViewModel.onApplyEdit = { [weak self] searchText, replaceText in
-            guard let textView = self?.documentViewController?.focusedTextView else { return false }
+        // Set up inline diff preview callback (highlight + popover)
+        chatViewModel.onPreviewEdit = { [weak self] searchText, replaceText, blockID in
+            guard let textView = self?.documentViewController?.focusedTextView else { return }
             
             let nsString = textView.string as NSString
             let range = nsString.range(of: searchText)
+            guard range.location != NSNotFound else { return }
             
-            guard range.location != NSNotFound else { return false }
+            // 1. Highlight the target range in yellow
+            guard let layoutManager = textView.layoutManager else { return }
+            layoutManager.addTemporaryAttribute(
+                .backgroundColor,
+                value: NSColor.systemYellow.withAlphaComponent(0.35),
+                forCharacterRange: range
+            )
             
-            textView.insertText(replaceText, replacementRange: range)
-            return true
+            // 2. Scroll to the highlighted range
+            textView.scrollRangeToVisible(range)
+            textView.showFindIndicator(for: range)
+            
+            // 3. Calculate rect for popover positioning
+            let glyphRange = layoutManager.glyphRange(forCharacterRange: range, actualCharacterRange: nil)
+            let rect = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textView.textContainer!)
+            let positionRect = NSRect(
+                x: rect.origin.x + textView.textContainerOrigin.x,
+                y: rect.origin.y + textView.textContainerOrigin.y,
+                width: rect.width,
+                height: rect.height
+            )
+            
+            // 4. Show diff preview popover
+            let popover = DiffPreviewPopover(
+                searchText: searchText,
+                replaceText: replaceText,
+                onAccept: { [weak self] in
+                    // Apply the edit
+                    guard let textView = self?.documentViewController?.focusedTextView else { return }
+                    textView.insertText(replaceText, replacementRange: range)
+                    
+                    // Remove highlight
+                    layoutManager.removeTemporaryAttribute(.backgroundColor, forCharacterRange: range)
+                    
+                    // Mark as applied
+                    chatViewModel.appliedEdits.insert(blockID)
+                },
+                onReject: {
+                    // Just remove highlight
+                    layoutManager.removeTemporaryAttribute(.backgroundColor, forCharacterRange: range)
+                }
+            )
+            
+            popover.show(relativeTo: positionRect, of: textView, preferredEdge: .maxY)
         }
         
         // Set up full text replacement fallback
