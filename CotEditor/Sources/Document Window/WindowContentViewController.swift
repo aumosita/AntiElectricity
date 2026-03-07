@@ -47,7 +47,7 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
     @ViewLoading private var contentViewItem: NSSplitViewItem
     @ViewLoading private var inspectorViewItem: NSSplitViewItem
     private var aiChatViewItem: NSSplitViewItem?
-    private var aiChatView: AIChatView?
+    private var aiChatViewModel: AIChatViewModel?
     
     private var versionBrowserEnterObservationTask: Task<Void, Never>?
     private var versionBrowserExitObservationTask: Task<Void, Never>?
@@ -141,8 +141,9 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
         self.addSplitViewItem(self.inspectorViewItem)
         
         // AI Chat panel (right side, starts collapsed)
-        let chatView = AIChatView()
-        self.aiChatView = chatView
+        let chatViewModel = AIChatViewModel()
+        self.aiChatViewModel = chatViewModel
+        let chatView = AIChatView(viewModel: chatViewModel)
         let chatHostingController = NSHostingController(rootView: chatView)
         let chatItem = NSSplitViewItem(inspectorWithViewController: chatHostingController)
         chatItem.minimumThickness = 280
@@ -441,23 +442,23 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
     /// Syncs the current document content to the AI chat view model.
     private func syncAIChatContext() {
         
-        guard let chatView = self.aiChatView else { return }
+        guard let vm = self.aiChatViewModel else { return }
         
         let docText = self.documentViewController?.focusedTextView?.string ?? ""
         let syntaxName = (self.document as? Document)?.syntaxName
         
-        chatView.viewModel.documentText = docText
-        chatView.viewModel.syntaxName = syntaxName
+        vm.documentText = docText
+        vm.syntaxName = syntaxName
         
         // Live refresh: fetch current document text before each message send
-        chatView.viewModel.onRefreshDocumentText = { [weak self] in
+        vm.onRefreshDocumentText = { [weak self] in
             guard let textView = self?.documentViewController?.focusedTextView else { return }
-            chatView.viewModel.documentText = textView.string
-            chatView.viewModel.syntaxName = (self?.document as? Document)?.syntaxName
+            vm.documentText = textView.string
+            vm.syntaxName = (self?.document as? Document)?.syntaxName
         }
         
         // Targeted search-and-replace edit
-        chatView.viewModel.onApplyEdit = { [weak self] searchText, replaceText in
+        vm.onApplyEdit = { [weak self] searchText, replaceText in
             guard let textView = self?.documentViewController?.focusedTextView else { return false }
             
             let nsString = textView.string as NSString
@@ -468,17 +469,17 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
             textView.insertText(replaceText, replacementRange: range)
             
             // Update document text in chat view model
-            chatView.viewModel.documentText = textView.string
+            vm.documentText = textView.string
             return true
         }
         
         // Full text replacement fallback
-        chatView.viewModel.onReplaceAll = { [weak self] text in
+        vm.onReplaceAll = { [weak self] text in
             guard let textView = self?.documentViewController?.focusedTextView else { return }
             
             textView.selectAll(nil)
             textView.insertText(text, replacementRange: textView.selectedRange())
-            chatView.viewModel.documentText = textView.string
+            vm.documentText = textView.string
         }
     }
 }

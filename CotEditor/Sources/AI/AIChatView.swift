@@ -254,7 +254,7 @@ final class AIChatViewModel {
 /// The main AI chat panel view.
 struct AIChatView: View {
     
-    @State var viewModel = AIChatViewModel()
+    @Bindable var viewModel: AIChatViewModel
     @FocusState private var isInputFocused: Bool
     
     
