@@ -66,6 +66,9 @@ final class AIChatViewModel {
     /// Callback to replace all document text (fallback).
     var onReplaceAll: ((String) -> Void)?
     
+    /// Callback to refresh document text right before sending a message.
+    var onRefreshDocumentText: (() -> Void)?
+    
     /// Track applied states for edit blocks per message.
     var appliedEdits: Set<UUID> = []
     
@@ -74,6 +77,9 @@ final class AIChatViewModel {
         
         let userText = self.inputText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !userText.isEmpty else { return }
+        
+        // Refresh document text right before sending
+        self.onRefreshDocumentText?()
         
         self.messages.append(AIChatMessage(role: .user, content: userText))
         self.inputText = ""

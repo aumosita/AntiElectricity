@@ -449,6 +449,13 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
         chatView.viewModel.documentText = docText
         chatView.viewModel.syntaxName = syntaxName
         
+        // Live refresh: fetch current document text before each message send
+        chatView.viewModel.onRefreshDocumentText = { [weak self] in
+            guard let textView = self?.documentViewController?.focusedTextView else { return }
+            chatView.viewModel.documentText = textView.string
+            chatView.viewModel.syntaxName = (self?.document as? Document)?.syntaxName
+        }
+        
         // Targeted search-and-replace edit
         chatView.viewModel.onApplyEdit = { [weak self] searchText, replaceText in
             guard let textView = self?.documentViewController?.focusedTextView else { return false }
