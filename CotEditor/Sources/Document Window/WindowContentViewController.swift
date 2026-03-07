@@ -46,6 +46,8 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
     private var sidebarViewItem: NSSplitViewItem?
     @ViewLoading private var contentViewItem: NSSplitViewItem
     @ViewLoading private var inspectorViewItem: NSSplitViewItem
+    private var aiChatViewItem: NSSplitViewItem?
+    private var aiChatView: AIChatView?
     
     private var versionBrowserEnterObservationTask: Task<Void, Never>?
     private var versionBrowserExitObservationTask: Task<Void, Never>?
@@ -137,6 +139,18 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
         self.inspectorViewItem.isCollapsed = true
         self.inspectorViewItem.titlebarSeparatorStyle = .none
         self.addSplitViewItem(self.inspectorViewItem)
+        
+        // AI Chat panel (right side, starts collapsed)
+        let chatView = AIChatView()
+        self.aiChatView = chatView
+        let chatHostingController = NSHostingController(rootView: chatView)
+        let chatItem = NSSplitViewItem(inspectorWithViewController: chatHostingController)
+        chatItem.minimumThickness = 280
+        chatItem.preferredThicknessFraction = 0.3
+        chatItem.isCollapsed = true
+        chatItem.titlebarSeparatorStyle = .none
+        self.addSplitViewItem(chatItem)
+        self.aiChatViewItem = chatItem
     }
     
     
@@ -357,6 +371,19 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
     }
     
     
+    /// Toggles the AI chat panel.
+    @objc func toggleAIChat(_ sender: Any?) {
+        
+        guard let chatItem = self.aiChatViewItem else { return }
+        
+        chatItem.animator().isCollapsed.toggle()
+        
+        if !chatItem.isCollapsed {
+            self.syncAIChatContext()
+        }
+    }
+    
+    
     // MARK: Private Methods
     
     /// The view controller for the content view.
@@ -403,5 +430,34 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
         }
         
         self.statusBarModel.document = self.document
+        
+        // Sync AI chat context if visible
+        if self.aiChatViewItem?.isCollapsed == false {
+            self.syncAIChatContext()
+        }
+    }
+    
+    
+    /// Syncs the current document content to the AI chat view model.
+    private func syncAIChatContext() {
+        
+        guard let chatView = self.aiChatView else { return }
+        
+        let docText = self.documentViewController?.focusedTextView?.string ?? ""
+        let syntaxName = (self.document as? Document)?.syntaxName
+        
+        chatView.viewModel.documentText = docText
+        chatView.viewModel.syntaxName = syntaxName
+        chatView.viewModel.onApplyToDocument = { [weak self] text in
+            guard let textView = self?.documentViewController?.focusedTextView else { return }
+            
+            let selectedRange = textView.selectedRange()
+            if selectedRange.length > 0 {
+                textView.insertText(text, replacementRange: selectedRange)
+            } else {
+                textView.selectAll(nil)
+                textView.insertText(text, replacementRange: textView.selectedRange())
+            }
+        }
     }
 }

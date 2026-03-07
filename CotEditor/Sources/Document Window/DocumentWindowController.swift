@@ -492,6 +492,7 @@ private extension NSToolbarItem.Identifier {
     static let print = Self(Self.prefix + "print")
     static let share = Self(Self.prefix + "share")
     static let ai = Self(Self.prefix + "ai")
+    static let aiChat = Self(Self.prefix + "aiChat")
 }
 
 
@@ -522,6 +523,7 @@ extension DocumentWindowController: NSToolbarDelegate {
         self.directoryIdentifiers + [
             .syntax,
             .ai,
+            .aiChat,
             .inspectorTrackingSeparator,
             .flexibleSpace,
             .inspector,
@@ -552,6 +554,7 @@ extension DocumentWindowController: NSToolbarDelegate {
             .print,
             .share,
             .ai,
+            .aiChat,
             .space,
             .flexibleSpace,
         ]
@@ -907,6 +910,17 @@ extension DocumentWindowController: NSToolbarDelegate {
                 item.image = NSImage(systemSymbolName: "sparkles", accessibilityDescription: item.label)
                 item.showsIndicator = true
                 item.menu = AIMenuBuilder.buildAISubmenu()
+                return item
+                
+            case .aiChat:
+                let item = NSToolbarItem(itemIdentifier: itemIdentifier)
+                item.isBordered = true
+                item.label = String(localized: "Toolbar.aiChat.label",
+                                    defaultValue: "AI Chat", table: "Document")
+                item.toolTip = String(localized: "Toolbar.aiChat.tooltip",
+                                      defaultValue: "Toggle AI Chat Panel", table: "Document")
+                item.image = NSImage(systemSymbolName: "bubble.left.and.text.bubble.right", accessibilityDescription: item.label)
+                item.action = #selector(WindowContentViewController.toggleAIChat)
                 return item
                 
             case .share:

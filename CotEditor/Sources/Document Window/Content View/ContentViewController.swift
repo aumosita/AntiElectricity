@@ -169,6 +169,9 @@ final class ContentViewController: NSSplitViewController {
                 let result = try await AIService.shared.executeFreePrompt(prompt, text: text)
                 self.currentAIResult = result
                 self.showAIPanel(result: result)
+                
+                // Ask user to save as preset
+                self.offerSaveAsPreset(prompt: prompt)
             } catch {
                 self.showAIPanel(error: error.localizedDescription)
             }
@@ -248,6 +251,34 @@ final class ContentViewController: NSSplitViewController {
             let dividerPosition = totalHeight * (1.0 - ratio)
             
             self.splitView.setPosition(dividerPosition, ofDividerAt: insertIndex - 1)
+        }
+    }
+    
+    
+    /// Offers to save a free prompt as a reusable preset.
+    private func offerSaveAsPreset(prompt: String) {
+        
+        let alert = NSAlert()
+        alert.messageText = String(localized: "Save as Preset?", table: "AI")
+        alert.informativeText = String(localized: "Would you like to save this prompt as a reusable preset?", table: "AI")
+        alert.addButton(withTitle: String(localized: "Save", table: "AI"))
+        alert.addButton(withTitle: String(localized: "Don't Save", table: "AI"))
+        alert.alertStyle = .informational
+        
+        // Add a text field for the preset name
+        let nameField = NSTextField(frame: NSRect(x: 0, y: 0, width: 260, height: 24))
+        nameField.placeholderString = String(localized: "Preset Name", table: "AI")
+        nameField.stringValue = String(prompt.prefix(40))
+        alert.accessoryView = nameField
+        
+        guard let window = self.view.window else { return }
+        
+        alert.beginSheetModal(for: window) { response in
+            guard response == .alertFirstButtonReturn else { return }
+            
+            let name = nameField.stringValue.isEmpty ? String(prompt.prefix(40)) : nameField.stringValue
+            let command = AICommand(label: name, systemPrompt: prompt)
+            AICommandManager.shared.addCommand(command)
         }
     }
     
