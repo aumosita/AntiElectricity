@@ -85,6 +85,25 @@ final class ContentViewController: NSSplitViewController {
     }
     
     
+    override func splitViewDidResizeSubviews(_ notification: Notification) {
+        
+        super.splitViewDidResizeSubviews(notification)
+        
+        // Save AI panel split ratio when user drags the divider
+        guard let aiItem = self.aiPanelItem,
+              let aiView = aiItem.viewController.viewIfLoaded
+        else { return }
+        
+        let totalHeight = self.splitView.frame.height
+        guard totalHeight > 0 else { return }
+        
+        let ratio = aiView.frame.height / totalHeight
+        if ratio > 0.05 {
+            UserDefaults.standard.set(ratio, forKey: "aiPanelSplitRatio")
+        }
+    }
+    
+    
     // MARK: AI Methods
     
     /// Executes an AI command on the current editor selection or full text.
@@ -218,6 +237,18 @@ final class ContentViewController: NSSplitViewController {
         let insertIndex = max(self.splitViewItems.count - 1, 1)
         self.insertSplitViewItem(item, at: insertIndex)
         self.aiPanelItem = item
+        
+        // Set the AI panel height: use saved ratio or default 50%
+        DispatchQueue.main.async {
+            let totalHeight = self.splitView.frame.height
+            guard totalHeight > 0 else { return }
+            
+            let savedRatio = UserDefaults.standard.double(forKey: "aiPanelSplitRatio")
+            let ratio = (savedRatio > 0.1 && savedRatio < 0.9) ? savedRatio : 0.5
+            let dividerPosition = totalHeight * (1.0 - ratio)
+            
+            self.splitView.setPosition(dividerPosition, ofDividerAt: insertIndex - 1)
+        }
     }
     
     
