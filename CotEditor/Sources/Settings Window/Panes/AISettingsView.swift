@@ -23,7 +23,7 @@ struct AISettingsView: View {
     @State private var connectionStatus: ConnectionStatus = .unknown
     @State private var isLoadingModels = false
     
-    @State private var customCommands: [AICommand] = AICommandManager.shared.customCommands
+    @State private var commands: [AICommand] = AICommandManager.shared.commands
     @State private var isAddingCommand = false
     @State private var editingCommand: AICommand?
     
@@ -94,16 +94,16 @@ struct AISettingsView: View {
             
             Divider()
             
-            // Custom Commands
+            // Command Presets
             Section {
-                if customCommands.isEmpty {
-                    Text("No custom commands. Click + to add one.")
+                if commands.isEmpty {
+                    Text("No presets. Add your own or import examples.")
                         .foregroundStyle(.secondary)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .padding(.vertical, 8)
                 } else {
                     List {
-                        ForEach(customCommands) { command in
+                        ForEach(commands) { command in
                             HStack {
                                 VStack(alignment: .leading) {
                                     Text(command.label)
@@ -126,16 +126,22 @@ struct AISettingsView: View {
                         }
                         .onDelete { indexSet in
                             for index in indexSet {
-                                AICommandManager.shared.removeCommand(id: customCommands[index].id)
+                                AICommandManager.shared.removeCommand(id: commands[index].id)
                             }
-                            self.customCommands = AICommandManager.shared.customCommands
+                            self.commands = AICommandManager.shared.commands
                         }
                     }
                     .frame(height: 150)
                 }
                 
                 HStack {
+                    Button(String(localized: "Import Examples", table: "AI")) {
+                        AICommandManager.shared.importExamples()
+                        self.commands = AICommandManager.shared.commands
+                    }
+                    
                     Spacer()
+                    
                     Button {
                         self.isAddingCommand = true
                     } label: {
@@ -143,7 +149,7 @@ struct AISettingsView: View {
                     }
                 }
             } header: {
-                Text(String(localized: "Custom Commands", table: "AI"))
+                Text(String(localized: "Command Presets", table: "AI"))
                     .font(.headline)
             }
             
@@ -152,18 +158,19 @@ struct AISettingsView: View {
         .padding(20)
         .frame(minWidth: 480)
         .onAppear {
+            self.commands = AICommandManager.shared.commands
             self.loadModels()
         }
         .sheet(isPresented: $isAddingCommand) {
             AICommandEditView { command in
                 AICommandManager.shared.addCommand(command)
-                self.customCommands = AICommandManager.shared.customCommands
+                self.commands = AICommandManager.shared.commands
             }
         }
         .sheet(item: $editingCommand) { command in
             AICommandEditView(command: command) { updated in
                 AICommandManager.shared.updateCommand(updated)
-                self.customCommands = AICommandManager.shared.customCommands
+                self.commands = AICommandManager.shared.commands
             }
         }
     }
@@ -253,11 +260,11 @@ private struct AICommandEditView: View {
         
         VStack(spacing: 16) {
             Text(existingCommand == nil
-                 ? String(localized: "New Command", table: "AI")
-                 : String(localized: "Edit Command", table: "AI"))
+                 ? String(localized: "New Preset", table: "AI")
+                 : String(localized: "Edit Preset", table: "AI"))
                 .font(.headline)
             
-            TextField(String(localized: "Command Name", table: "AI"), text: $label)
+            TextField(String(localized: "Preset Name", table: "AI"), text: $label)
                 .textFieldStyle(.roundedBorder)
             
             VStack(alignment: .leading, spacing: 4) {

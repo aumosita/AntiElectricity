@@ -304,6 +304,14 @@ final class EditorTextViewController: NSViewController, NSServicesMenuRequestor,
                             at: 1)
         }
         
+        // add AI submenu
+        let aiSubmenuItem = NSMenuItem()
+        aiSubmenuItem.title = String(localized: "AI", table: "AI")
+        aiSubmenuItem.image = NSImage(systemSymbolName: "sparkles", accessibilityDescription: "AI")
+        aiSubmenuItem.submenu = AIMenuBuilder.buildAISubmenu()
+        menu.addItem(.separator())
+        menu.addItem(aiSubmenuItem)
+        
         return menu
     }
     

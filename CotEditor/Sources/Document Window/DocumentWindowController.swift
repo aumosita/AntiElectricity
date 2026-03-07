@@ -491,6 +491,7 @@ private extension NSToolbarItem.Identifier {
     static let find = Self(Self.prefix + "find")
     static let print = Self(Self.prefix + "print")
     static let share = Self(Self.prefix + "share")
+    static let ai = Self(Self.prefix + "ai")
 }
 
 
@@ -520,6 +521,7 @@ extension DocumentWindowController: NSToolbarDelegate {
         
         self.directoryIdentifiers + [
             .syntax,
+            .ai,
             .inspectorTrackingSeparator,
             .flexibleSpace,
             .inspector,
@@ -549,6 +551,7 @@ extension DocumentWindowController: NSToolbarDelegate {
             .find,
             .print,
             .share,
+            .ai,
             .space,
             .flexibleSpace,
         ]
@@ -892,6 +895,18 @@ extension DocumentWindowController: NSToolbarDelegate {
                                       defaultValue: "Print document", table: "Document")
                 item.image = NSImage(systemSymbolName: "printer", accessibilityDescription: item.label)
                 item.action = #selector(NSDocument.printDocument)
+                return item
+                
+            case .ai:
+                let item = NSMenuToolbarItem(itemIdentifier: itemIdentifier)
+                item.isBordered = true
+                item.label = String(localized: "Toolbar.ai.label",
+                                    defaultValue: "AI", table: "Document")
+                item.toolTip = String(localized: "Toolbar.ai.tooltip",
+                                      defaultValue: "AI Commands", table: "Document")
+                item.image = NSImage(systemSymbolName: "sparkles", accessibilityDescription: item.label)
+                item.showsIndicator = true
+                item.menu = AIMenuBuilder.buildAISubmenu()
                 return item
                 
             case .share:
