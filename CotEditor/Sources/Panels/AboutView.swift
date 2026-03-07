@@ -60,8 +60,12 @@ struct AboutView: View {
                      tableName: "About",
                      comment: "%1$@ is version number and %2$@ is build number")
                 
-                Link(String("coteditor.com"), destination: URL(string: "https://coteditor.com")!)
+                Link(String("github.com/aumosita/AntiElectricity"), destination: URL(string: "https://github.com/aumosita/AntiElectricity")!)
                     .foregroundStyle(.tint)
+                
+                Text("Forked from CotEditor by 1024jp")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
                 
                 Text(Bundle.main.copyright)
                     .font(.footnote)
@@ -222,7 +226,7 @@ private struct CreditsView: View {
     var body: some View {
         
         VStack(spacing: 6) {
-            SectionView(String(localized: "The CotEditor Project", table: "About", comment: "section heading")) {
+            SectionView(String(localized: "The AntiElectricity Project", table: "About", comment: "section heading")) {
                 ForEach(self.credits.project, id: \.name) {
                     ContributorView(contributor: $0)
                 }
@@ -262,7 +266,7 @@ private struct CreditsView: View {
                             ContributorView(contributor: original)
                         }
                     }
-                    Text("and everyone who supports CotEditor!", tableName: "About",
+                    Text("and everyone who supports AntiElectricity!", tableName: "About",
                          comment: "last line of the Special Thanks section")
                 }
             }
@@ -272,10 +276,10 @@ private struct CreditsView: View {
                 .foregroundStyle(.tertiary)
                 .accessibilityHidden(true)
             
-            Text("CotEditor is an open source program\nlicensed under the Apache License, Version 2.0.", tableName: "About")
+            Text("AntiElectricity is an open source program\nforked from CotEditor, licensed under the Apache License, Version 2.0.", tableName: "About")
                 .textSelection(.enabled)
-            Link(String("https://github.com/coteditor"),
-                 destination: URL(string: "https://github.com/coteditor")!)
+            Link(String("https://github.com/aumosita/AntiElectricity"),
+                 destination: URL(string: "https://github.com/aumosita/AntiElectricity")!)
             .foregroundStyle(.tint)
         }
         .task {
@@ -351,7 +355,7 @@ private struct LicenseView: View {
     var body: some View {
         
         LazyVStack(alignment: .leading, spacing: 16) {
-            Text("CotEditor uses the following awesome technologies. We are deeply grateful for those who let us use their valuable work.", tableName: "About")
+            Text("AntiElectricity uses the following awesome technologies. We are deeply grateful for those who let us use their valuable work.", tableName: "About")
                 .lineSpacing(2)
             
             ItemView(name: "swift-tree-sitter",
