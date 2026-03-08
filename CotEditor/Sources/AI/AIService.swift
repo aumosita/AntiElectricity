@@ -36,6 +36,7 @@ struct AIResult: Sendable {
 enum AIProviderType: String, CaseIterable, Sendable {
     
     case ollama = "Ollama"
+    case openai = "OpenAI"
     case anthropic = "Anthropic"
     case copilot = "GitHub Copilot"
 }
@@ -110,6 +111,17 @@ final class AIService {
         
         if self.providerType == .anthropic {
             self.provider = AnthropicProvider(apiKey: key)
+        }
+    }
+    
+    
+    /// Updates the OpenAI API key.
+    func updateOpenAIAPIKey(_ key: String) {
+        
+        UserDefaults.standard.set(key, forKey: "openaiAPIKey")
+        
+        if self.providerType == .openai {
+            self.provider = OpenAIProvider(apiKey: key)
         }
     }
     
@@ -200,6 +212,10 @@ final class AIService {
             case .anthropic:
                 let apiKey = UserDefaults.standard.string(forKey: "anthropicAPIKey") ?? ""
                 return AnthropicProvider(apiKey: apiKey)
+                
+            case .openai:
+                let apiKey = UserDefaults.standard.string(forKey: "openaiAPIKey") ?? ""
+                return OpenAIProvider(apiKey: apiKey)
                 
             case .copilot:
                 let token = UserDefaults.standard.string(forKey: "copilotGitHubToken") ?? ""

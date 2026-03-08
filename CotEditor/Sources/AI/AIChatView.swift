@@ -113,66 +113,69 @@ final class AIChatViewModel {
         var i = 0
         
         while i < lines.count {
-            let line = lines[i].trimmingCharacters(in: .whitespaces)
+            let trimmed = lines[i].trimmingCharacters(in: .whitespaces)
             
-            // Detect <<<SEARCH marker
-            if line.hasPrefix("<<<SEARCH") || line.hasPrefix("<<<search") || line == "<<<" {
-                var searchLines: [String] = []
-                var replaceLines: [String] = []
+            // Detect <<<SEARCH marker (case-insensitive)
+            guard trimmed.lowercased().hasPrefix("<<<search") || trimmed == "<<<" else {
                 i += 1
-                
-                // Collect search text until === or >>>REPLACE
-                while i < lines.count {
-                    let l = lines[i].trimmingCharacters(in: .whitespaces)
-                    if l.hasPrefix("===") || l.hasPrefix(">>>REPLACE") || l.hasPrefix(">>>replace") {
-                        break
-                    }
-                    searchLines.append(lines[i])
-                    i += 1
+                continue
+            }
+            
+            i += 1
+            
+            // --- Phase 1: Collect SEARCH lines ---
+            var searchLines: [String] = []
+            while i < lines.count {
+                let l = lines[i].trimmingCharacters(in: .whitespaces)
+                let ll = l.lowercased()
+                // Stop at separator (===) or directly at >>>REPLACE
+                if l.hasPrefix("===") || ll.hasPrefix(">>>replace") {
+                    break
                 }
-                
-                // Skip the separator
-                if i < lines.count {
-                    let sep = lines[i].trimmingCharacters(in: .whitespaces)
-                    if sep.hasPrefix("===") {
-                        i += 1
-                        // Skip >>>REPLACE after ===
-                        if i < lines.count {
-                            let rLine = lines[i].trimmingCharacters(in: .whitespaces)
-                            if rLine.hasPrefix(">>>REPLACE") || rLine.hasPrefix(">>>replace") {
-                                i += 1
-                            }
-                        }
-                    } else {
-                        i += 1  // Skip >>>REPLACE
-                    }
-                }
-                
-                // Collect replace text until >>> or next <<<
-                while i < lines.count {
-                    let l = lines[i].trimmingCharacters(in: .whitespaces)
-                    if l == ">>>" || l.hasPrefix("<<<SEARCH") || l.hasPrefix("<<<search") {
-                        break
-                    }
-                    replaceLines.append(lines[i])
-                    i += 1
-                }
-                
-                // Skip closing >>>
-                if i < lines.count && lines[i].trimmingCharacters(in: .whitespaces) == ">>>" {
-                    i += 1
-                }
-                
-                let search = searchLines.joined(separator: "\n")
-                    .trimmingCharacters(in: .whitespacesAndNewlines)
-                let replace = replaceLines.joined(separator: "\n")
-                    .trimmingCharacters(in: .whitespacesAndNewlines)
-                
-                if !search.isEmpty {
-                    blocks.append(EditBlock(searchText: search, replaceText: replace))
-                }
-            } else {
+                searchLines.append(lines[i])
                 i += 1
+            }
+            
+            // --- Phase 2: Skip separator(s) ---
+            // Handle patterns: "===" alone, "===\n>>>REPLACE", or just ">>>REPLACE"
+            if i < lines.count {
+                let sep = lines[i].trimmingCharacters(in: .whitespaces)
+                if sep.hasPrefix("===") {
+                    i += 1
+                }
+            }
+            if i < lines.count {
+                let sep = lines[i].trimmingCharacters(in: .whitespaces).lowercased()
+                if sep.hasPrefix(">>>replace") {
+                    i += 1
+                }
+            }
+            
+            // --- Phase 3: Collect REPLACE lines ---
+            var replaceLines: [String] = []
+            while i < lines.count {
+                let l = lines[i].trimmingCharacters(in: .whitespaces)
+                let ll = l.lowercased()
+                // Stop at closing >>> or start of next <<<SEARCH block
+                if l == ">>>" || ll.hasPrefix("<<<search") || l == "<<<" {
+                    break
+                }
+                replaceLines.append(lines[i])
+                i += 1
+            }
+            
+            // Skip closing >>>
+            if i < lines.count && lines[i].trimmingCharacters(in: .whitespaces) == ">>>" {
+                i += 1
+            }
+            
+            let search = searchLines.joined(separator: "\n")
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            let replace = replaceLines.joined(separator: "\n")
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            if !search.isEmpty {
+                blocks.append(EditBlock(searchText: search, replaceText: replace))
             }
         }
         

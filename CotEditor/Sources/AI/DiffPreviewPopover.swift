@@ -25,6 +25,8 @@ final class DiffPreviewPopover: NSPopover {
         super.init()
         
         self.behavior = .semitransient
+        self.animates = true
+        self.contentSize = NSSize(width: 420, height: 300)
         self.contentViewController = self.makeContentViewController()
     }
     

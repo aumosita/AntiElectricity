@@ -48,6 +48,7 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
     @ViewLoading private var inspectorViewItem: NSSplitViewItem
     private var aiChatViewItem: NSSplitViewItem?
     private var aiChatViewModel: AIChatViewModel?
+    private var currentDiffController: InlineDiffController?
     
     private var versionBrowserEnterObservationTask: Task<Void, Never>?
     private var versionBrowserExitObservationTask: Task<Void, Never>?
@@ -151,58 +152,114 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
             return (text: text, syntax: syntax)
         }
         
-        // Set up inline diff preview callback (highlight + popover)
+        // Set up inline diff preview callback
         chatViewModel.onPreviewEdit = { [weak self] searchText, replaceText, blockID in
-            guard let textView = self?.documentViewController?.focusedTextView else { return }
+            guard let strongSelf = self else { return }
+            guard let textView = strongSelf.documentViewController?.focusedTextView else {
+                NSLog("[AI InlineDiff] focusedTextView is nil")
+                return
+            }
             
-            let nsString = textView.string as NSString
-            let range = nsString.range(of: searchText)
-            guard range.location != NSNotFound else { return }
+            // Dismiss any existing diff first
+            if let existing = strongSelf.currentDiffController, existing.isActive {
+                existing.rejectClicked()
+            }
+            strongSelf.currentDiffController = nil
             
-            // 1. Highlight the target range in yellow
-            guard let layoutManager = textView.layoutManager else { return }
-            layoutManager.addTemporaryAttribute(
-                .backgroundColor,
-                value: NSColor.systemYellow.withAlphaComponent(0.35),
-                forCharacterRange: range
-            )
+            let docString = textView.string as NSString
             
-            // 2. Scroll to the highlighted range
-            textView.scrollRangeToVisible(range)
-            textView.showFindIndicator(for: range)
+            // --- Helper: strip markdown formatting ---
+            func stripMarkdown(_ text: String) -> String {
+                var s = text
+                s = s.replacingOccurrences(of: "**", with: "")
+                s = s.replacingOccurrences(of: "__", with: "")
+                s = s.replacingOccurrences(of: "```", with: "")
+                s = s.replacingOccurrences(of: "`", with: "")
+                while s.hasPrefix("#") { s = String(s.dropFirst()) }
+                return s.trimmingCharacters(in: .whitespacesAndNewlines)
+            }
             
-            // 3. Calculate rect for popover positioning
-            let glyphRange = layoutManager.glyphRange(forCharacterRange: range, actualCharacterRange: nil)
-            let rect = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textView.textContainer!)
-            let positionRect = NSRect(
-                x: rect.origin.x + textView.textContainerOrigin.x,
-                y: rect.origin.y + textView.textContainerOrigin.y,
-                width: rect.width,
-                height: rect.height
-            )
+            // --- Multi-level matching ---
+            var matchedRange: NSRange = NSRange(location: NSNotFound, length: 0)
             
-            // 4. Show diff preview popover
-            let popover = DiffPreviewPopover(
-                searchText: searchText,
-                replaceText: replaceText,
-                onAccept: { [weak self] in
-                    // Apply the edit
-                    guard let textView = self?.documentViewController?.focusedTextView else { return }
-                    textView.insertText(replaceText, replacementRange: range)
-                    
-                    // Remove highlight
-                    layoutManager.removeTemporaryAttribute(.backgroundColor, forCharacterRange: range)
-                    
-                    // Mark as applied
-                    chatViewModel.appliedEdits.insert(blockID)
-                },
-                onReject: {
-                    // Just remove highlight
-                    layoutManager.removeTemporaryAttribute(.backgroundColor, forCharacterRange: range)
+            // Level 1: exact match
+            matchedRange = docString.range(of: searchText)
+            
+            // Level 2: trimmed
+            if matchedRange.location == NSNotFound {
+                let trimmed = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+                matchedRange = docString.range(of: trimmed)
+            }
+            
+            // Level 3: markdown stripped
+            if matchedRange.location == NSNotFound {
+                let stripped = stripMarkdown(searchText)
+                if !stripped.isEmpty {
+                    matchedRange = docString.range(of: stripped)
                 }
-            )
+            }
             
-            popover.show(relativeTo: positionRect, of: textView, preferredEdge: .maxY)
+            // Level 4: longest matching line
+            if matchedRange.location == NSNotFound {
+                let lines = searchText.components(separatedBy: "\n")
+                    .map { stripMarkdown($0) }
+                    .filter { $0.count > 3 }
+                    .sorted { $0.count > $1.count }
+                for line in lines {
+                    let r = docString.range(of: line)
+                    if r.location != NSNotFound {
+                        matchedRange = r
+                        break
+                    }
+                }
+            }
+            
+            if matchedRange.location != NSNotFound {
+                // ✅ Match found → show true inline diff
+                let controller = InlineDiffController(
+                    textView: textView,
+                    searchRange: matchedRange,
+                    searchText: searchText,
+                    replaceText: replaceText
+                )
+                controller.onAccept = {
+                    chatViewModel.appliedEdits.insert(blockID)
+                    strongSelf.currentDiffController = nil
+                }
+                controller.onReject = {
+                    strongSelf.currentDiffController = nil
+                }
+                strongSelf.currentDiffController = controller
+                controller.activate()
+            } else {
+                // ❌ No match → fallback to popover at cursor
+                NSLog("[AI InlineDiff] No match, falling back to popover. Search: '%@'",
+                      searchText.prefix(80).description)
+                
+                guard let layoutManager = textView.layoutManager else { return }
+                let sel = textView.selectedRange()
+                let cursorRange = sel.length > 0 ? sel : NSRange(location: max(sel.location, 0), length: 1)
+                let glyphRange = layoutManager.glyphRange(forCharacterRange: cursorRange, actualCharacterRange: nil)
+                let rect = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textView.textContainer!)
+                let positionRect = NSRect(
+                    x: rect.origin.x + textView.textContainerOrigin.x,
+                    y: rect.origin.y + textView.textContainerOrigin.y,
+                    width: max(rect.width, 1),
+                    height: max(rect.height, 14)
+                )
+                
+                let popover = DiffPreviewPopover(
+                    searchText: searchText,
+                    replaceText: replaceText,
+                    onAccept: {
+                        let sel = textView.selectedRange()
+                        textView.insertText(replaceText, replacementRange: sel)
+                        chatViewModel.appliedEdits.insert(blockID)
+                    },
+                    onReject: { }
+                )
+                popover.show(relativeTo: positionRect, of: textView, preferredEdge: .maxY)
+            }
         }
         
         // Set up full text replacement fallback
