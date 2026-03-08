@@ -152,6 +152,13 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
             return (text: text, syntax: syntax)
         }
         
+        // Sync font size from editor to chat
+        chatViewModel.fontSize = self.documentViewController?.focusedTextView?.font?.pointSize ?? NSFont.systemFontSize
+        NotificationCenter.default.addObserver(forName: NSTextView.didChangeTypingAttributesNotification, object: nil, queue: .main) { [weak self, weak chatViewModel] _ in
+            guard let fontSize = self?.documentViewController?.focusedTextView?.font?.pointSize else { return }
+            chatViewModel?.fontSize = fontSize
+        }
+        
         // Set up inline diff preview callback
         chatViewModel.onPreviewEdit = { [weak self] searchText, replaceText, blockID in
             guard let strongSelf = self else { return }

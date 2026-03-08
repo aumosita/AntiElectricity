@@ -218,10 +218,13 @@ final class ContentViewController: NSSplitViewController {
             self.removeSplitViewItem(existingItem)
         }
         
+        let editorFontSize = self.documentViewController?.focusedTextView?.font?.pointSize ?? NSFont.systemFontSize
+        
         var resultView = AIResultView(
             result: result,
             isProcessing: processing,
-            errorMessage: error
+            errorMessage: error,
+            fontSize: editorFontSize
         )
         resultView.onAccept = { [weak self] in self?.acceptAIResult() }
         resultView.onReject = { [weak self] in self?.rejectAIResult() }

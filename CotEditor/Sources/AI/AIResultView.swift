@@ -22,6 +22,7 @@ struct AIResultView: View {
     let result: AIResult?
     let isProcessing: Bool
     let errorMessage: String?
+    var fontSize: CGFloat = NSFont.systemFontSize
     
     var onAccept: (() -> Void)?
     var onReject: (() -> Void)?
@@ -112,7 +113,7 @@ struct AIResultView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .padding()
                 } else if let result {
-                    AIResultTextView(text: result.resultText)
+                    AIResultTextView(text: result.resultText, fontSize: fontSize)
                 } else {
                     Text(String(localized: "No result yet.", table: "AI"))
                         .foregroundStyle(.secondary)
@@ -130,6 +131,7 @@ struct AIResultView: View {
 struct AIResultTextView: NSViewRepresentable {
     
     let text: String
+    var fontSize: CGFloat = NSFont.systemFontSize
     
     
     func makeNSView(context: Context) -> NSScrollView {
@@ -139,7 +141,7 @@ struct AIResultTextView: NSViewRepresentable {
         
         textView.isEditable = false
         textView.isSelectable = true
-        textView.font = .systemFont(ofSize: NSFont.systemFontSize)
+        textView.font = .systemFont(ofSize: fontSize)
         textView.textContainerInset = NSSize(width: 8, height: 8)
         textView.backgroundColor = .textBackgroundColor
         textView.string = self.text
@@ -155,5 +157,6 @@ struct AIResultTextView: NSViewRepresentable {
         if textView.string != self.text {
             textView.string = self.text
         }
+        textView.font = .systemFont(ofSize: fontSize)
     }
 }

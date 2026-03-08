@@ -33,6 +33,9 @@ struct ClaudeOAuthProvider: LLMProvider {
     
     // MARK: OAuth Constants
     
+    /// The OAuth client ID (same as Claude Code CLI).
+    static let clientId = "9d1c250a-e61b-44d9-88ed-5944d1962f5e"
+    
     /// The authorization endpoint on claude.ai.
     static let authorizationURL = "https://claude.ai/oauth/authorize"
     
@@ -42,14 +45,14 @@ struct ClaudeOAuthProvider: LLMProvider {
     /// The Messages API base URL.
     static let apiBaseURL = URL(string: "https://api.anthropic.com")!
     
-    /// The OAuth scope for API access.
-    static let scope = "claude:api"
+    /// The OAuth scope for API access (matches Claude Code CLI).
+    static let scope = "org:create_api_key user:profile user:inference"
     
     /// The local redirect URI for catching the OAuth callback.
-    static let redirectURI = "http://localhost:19284/callback"
-    
-    /// The port for the local HTTP server.
-    static let redirectPort: UInt16 = 19284
+    /// Uses port 0 to let the OS assign a random available port.
+    private static func makeRedirectURI(port: UInt16) -> String {
+        "http://localhost:\(port)/callback"
+    }
     
     /// The Keychain service identifier.
     private static let keychainService = "com.antielectricity.claude-oauth"
@@ -60,6 +63,10 @@ struct ClaudeOAuthProvider: LLMProvider {
     /// The API version header.
     private static let apiVersion = "2023-06-01"
     
+    /// Stored PKCE code verifier for manual code exchange.
+    private static var pendingCodeVerifier: String?
+    private static var pendingRedirectURI: String?
+    
     
     // MARK: - LLMProvider
     
@@ -67,9 +74,10 @@ struct ClaudeOAuthProvider: LLMProvider {
         
         // Models available on Claude Pro/Max subscription
         [
-            "claude-sonnet-4-6-20250627",
-            "claude-opus-4-6-20250627",
-            "claude-haiku-4-5-20250627",
+            "claude-sonnet-4-6",
+            "claude-opus-4-6",
+            "claude-sonnet-4",
+            "claude-haiku-3-5",
         ]
     }
     
@@ -79,13 +87,21 @@ struct ClaudeOAuthProvider: LLMProvider {
         // Get a valid access token (refresh if needed)
         let accessToken = try await Self.getValidAccessToken()
         
-        let url = Self.apiBaseURL.appendingPathComponent("v1/messages")
+        NSLog("[ClaudeOAuth] Token prefix: %@", String(accessToken.prefix(20)))
+        
+        // Claude Code CLI uses ?beta=true query parameter
+        var urlComponents = URLComponents(url: Self.apiBaseURL.appendingPathComponent("v1/messages"), resolvingAgainstBaseURL: false)!
+        urlComponents.queryItems = [URLQueryItem(name: "beta", value: "true")]
+        let url = urlComponents.url!
+        
+        NSLog("[ClaudeOAuth] Request URL: %@", url.absoluteString)
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        // Try both auth methods: x-api-key AND Authorization Bearer
+        request.setValue(accessToken, forHTTPHeaderField: "x-api-key")
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        request.setValue(Self.oauthBetaHeader, forHTTPHeaderField: "anthropic-beta")
         request.setValue(Self.apiVersion, forHTTPHeaderField: "anthropic-version")
         request.timeoutInterval = 120
         
@@ -111,7 +127,7 @@ struct ClaudeOAuthProvider: LLMProvider {
             let refreshedToken = try await Self.refreshAccessToken()
             
             var retryRequest = request
-            retryRequest.setValue("Bearer \(refreshedToken)", forHTTPHeaderField: "Authorization")
+            retryRequest.setValue(refreshedToken, forHTTPHeaderField: "x-api-key")
             
             let (retryData, retryResponse) = try await URLSession.shared.data(for: retryRequest)
             
@@ -144,7 +160,7 @@ struct ClaudeOAuthProvider: LLMProvider {
             _ = try await self.send(
                 prompt: "Hi",
                 systemPrompt: "Reply with just 'ok'",
-                model: "claude-haiku-4-5-20250627"
+                model: "claude-haiku-3-5"
             )
             return true
         } catch {
@@ -155,24 +171,37 @@ struct ClaudeOAuthProvider: LLMProvider {
     
     // MARK: - OAuth Flow
     
-    /// Starts the OAuth PKCE authorization flow.
+    /// OAuth flow result containing everything needed for the flow.
+    struct OAuthFlowParams {
+        let authURL: URL
+        let codeVerifier: String
+        let redirectURI: String
+        let state: String
+    }
+    
+    
+    /// Prepares the OAuth PKCE parameters and returns the authorization URL.
     ///
-    /// This opens the user's browser to claude.ai for authentication,
-    /// starts a local HTTP server to catch the redirect, and exchanges
-    /// the authorization code for access and refresh tokens.
-    ///
-    /// - Returns: `true` if the flow completed successfully.
-    @MainActor
-    static func startOAuthFlow() async throws -> Bool {
+    /// This does NOT open the browser or start any servers.
+    /// The caller is responsible for opening the URL.
+    static func prepareOAuthFlow() -> OAuthFlowParams {
         
-        // Generate PKCE code verifier and challenge
-        let codeVerifier = Self.generateCodeVerifier()
-        let codeChallenge = Self.generateCodeChallenge(from: codeVerifier)
+        let codeVerifier = generateCodeVerifier()
+        let codeChallenge = generateCodeChallenge(from: codeVerifier)
         let state = UUID().uuidString
+        
+        // Use a fixed well-known port that's more likely to work
+        let port: UInt16 = 18923
+        let redirectURI = makeRedirectURI(port: port)
+        
+        // Store for manual code exchange
+        Self.pendingCodeVerifier = codeVerifier
+        Self.pendingRedirectURI = redirectURI
         
         // Build authorization URL
         var components = URLComponents(string: authorizationURL)!
         components.queryItems = [
+            URLQueryItem(name: "client_id", value: clientId),
             URLQueryItem(name: "response_type", value: "code"),
             URLQueryItem(name: "redirect_uri", value: redirectURI),
             URLQueryItem(name: "scope", value: scope),
@@ -181,59 +210,30 @@ struct ClaudeOAuthProvider: LLMProvider {
             URLQueryItem(name: "code_challenge_method", value: "S256"),
         ]
         
-        guard let authURL = components.url else {
-            throw LLMError.connectionFailed("Failed to build authorization URL")
-        }
-        
-        // Start local HTTP server to catch the redirect
-        let authCode = try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<String, Error>) in
-            Task.detached {
-                do {
-                    let code = try await self.startLocalServer(expectedState: state)
-                    continuation.resume(returning: code)
-                } catch {
-                    continuation.resume(throwing: error)
-                }
-            }
-            
-            // Open browser after a brief delay to ensure server is ready
-            Task { @MainActor in
-                try? await Task.sleep(for: .milliseconds(500))
-                NSWorkspace.shared.open(authURL)
-            }
-        }
-        
-        // Exchange authorization code for tokens
-        let tokens = try await exchangeCodeForTokens(code: authCode, codeVerifier: codeVerifier)
-        
-        // Save tokens to Keychain
-        try Self.saveTokens(tokens)
-        
-        return true
+        return OAuthFlowParams(
+            authURL: components.url!,
+            codeVerifier: codeVerifier,
+            redirectURI: redirectURI,
+            state: state
+        )
     }
     
     
-    /// Starts a minimal local HTTP server that listens for the OAuth redirect.
+    /// Starts a local server and waits for the OAuth redirect callback.
     ///
-    /// - Parameter expectedState: The state parameter to validate.
-    /// - Returns: The authorization code from the redirect.
-    private static func startLocalServer(expectedState: String) async throws -> String {
+    /// - Returns: The authorization code, or nil if the server couldn't start.
+    static func waitForCallback(params: OAuthFlowParams) async -> String? {
         
         let serverSocket = socket(AF_INET, SOCK_STREAM, 0)
-        guard serverSocket >= 0 else {
-            throw LLMError.connectionFailed("Failed to create server socket")
-        }
+        guard serverSocket >= 0 else { return nil }
         
-        defer { close(serverSocket) }
-        
-        // Allow address reuse
         var yes: Int32 = 1
         setsockopt(serverSocket, SOL_SOCKET, SO_REUSEADDR, &yes, socklen_t(MemoryLayout<Int32>.size))
         
         var addr = sockaddr_in()
         addr.sin_family = sa_family_t(AF_INET)
-        addr.sin_port = redirectPort.bigEndian
-        addr.sin_addr.s_addr = INADDR_ANY
+        addr.sin_port = UInt16(18923).bigEndian
+        addr.sin_addr.s_addr = UInt32(INADDR_LOOPBACK).bigEndian
         
         let bindResult = withUnsafePointer(to: &addr) {
             $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
@@ -242,75 +242,118 @@ struct ClaudeOAuthProvider: LLMProvider {
         }
         
         guard bindResult == 0 else {
-            throw LLMError.connectionFailed("Failed to bind to port \(redirectPort)")
+            close(serverSocket)
+            return nil
         }
         
         guard listen(serverSocket, 1) == 0 else {
-            throw LLMError.connectionFailed("Failed to listen on port \(redirectPort)")
+            close(serverSocket)
+            return nil
         }
         
-        // Set a timeout (120 seconds)
-        var timeout = timeval(tv_sec: 120, tv_usec: 0)
+        // Set a timeout (180 seconds)
+        var timeout = timeval(tv_sec: 180, tv_usec: 0)
         setsockopt(serverSocket, SOL_SOCKET, SO_RCVTIMEO, &timeout, socklen_t(MemoryLayout<timeval>.size))
         
-        // Accept one connection
-        var clientAddr = sockaddr_in()
-        var clientAddrLen = socklen_t(MemoryLayout<sockaddr_in>.size)
-        
-        let clientSocket = withUnsafeMutablePointer(to: &clientAddr) {
-            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
-                accept(serverSocket, $0, &clientAddrLen)
+        return await withCheckedContinuation { continuation in
+            Task.detached {
+                defer { close(serverSocket) }
+                
+                var clientAddr = sockaddr_in()
+                var clientAddrLen = socklen_t(MemoryLayout<sockaddr_in>.size)
+                
+                let clientSocket = withUnsafeMutablePointer(to: &clientAddr) {
+                    $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                        accept(serverSocket, $0, &clientAddrLen)
+                    }
+                }
+                
+                guard clientSocket >= 0 else {
+                    continuation.resume(returning: nil)
+                    return
+                }
+                
+                defer { close(clientSocket) }
+                
+                var buffer = [UInt8](repeating: 0, count: 4096)
+                let bytesRead = recv(clientSocket, &buffer, buffer.count, 0)
+                
+                guard bytesRead > 0 else {
+                    continuation.resume(returning: nil)
+                    return
+                }
+                
+                let requestString = String(bytes: buffer[0..<bytesRead], encoding: .utf8) ?? ""
+                
+                guard let requestLine = requestString.components(separatedBy: "\r\n").first,
+                      let urlPath = requestLine.components(separatedBy: " ").dropFirst().first,
+                      let fullURL = URL(string: "http://localhost\(urlPath)"),
+                      let queryItems = URLComponents(url: fullURL, resolvingAgainstBaseURL: false)?.queryItems
+                else {
+                    Self.sendHTTPResponse(to: clientSocket, success: false)
+                    continuation.resume(returning: nil)
+                    return
+                }
+                
+                // Validate state
+                let receivedState = queryItems.first(where: { $0.name == "state" })?.value
+                guard receivedState == params.state else {
+                    Self.sendHTTPResponse(to: clientSocket, success: false)
+                    continuation.resume(returning: nil)
+                    return
+                }
+                
+                guard let code = queryItems.first(where: { $0.name == "code" })?.value else {
+                    Self.sendHTTPResponse(to: clientSocket, success: false)
+                    continuation.resume(returning: nil)
+                    return
+                }
+                
+                Self.sendHTTPResponse(to: clientSocket, success: true)
+                continuation.resume(returning: code)
             }
         }
+    }
+    
+    
+    /// Completes the OAuth flow by exchanging the authorization code for tokens.
+    static func completeOAuthFlow(code: String, params: OAuthFlowParams) async throws {
         
-        guard clientSocket >= 0 else {
-            throw LLMError.connectionFailed("OAuth callback timed out")
-        }
+        let tokens = try await exchangeCodeForTokens(
+            code: code,
+            codeVerifier: params.codeVerifier,
+            redirectURI: params.redirectURI
+        )
         
-        defer { close(clientSocket) }
+        try Self.saveTokens(tokens)
+        Self.pendingCodeVerifier = nil
+        Self.pendingRedirectURI = nil
+    }
+    
+    
+    /// Exchanges a manually-pasted authorization code for tokens.
+    ///
+    /// Use this when the automatic redirect doesn't work and the user
+    /// copies the code from the browser.
+    static func exchangeManualCode(_ code: String) async throws -> Bool {
         
-        // Read the HTTP request
-        var buffer = [UInt8](repeating: 0, count: 4096)
-        let bytesRead = recv(clientSocket, &buffer, buffer.count, 0)
-        
-        guard bytesRead > 0 else {
-            throw LLMError.connectionFailed("Failed to read OAuth callback")
-        }
-        
-        let requestString = String(bytes: buffer[0..<bytesRead], encoding: .utf8) ?? ""
-        
-        // Parse the authorization code from the URL
-        guard let requestLine = requestString.components(separatedBy: "\r\n").first,
-              let urlPath = requestLine.components(separatedBy: " ").dropFirst().first,
-              let fullURL = URL(string: "http://localhost\(urlPath)"),
-              let queryItems = URLComponents(url: fullURL, resolvingAgainstBaseURL: false)?.queryItems
+        guard let codeVerifier = pendingCodeVerifier,
+              let redirectURI = pendingRedirectURI
         else {
-            Self.sendHTTPResponse(to: clientSocket, success: false)
-            throw LLMError.connectionFailed("Invalid OAuth callback request")
+            throw LLMError.connectionFailed("No pending OAuth flow. Please start sign-in first.")
         }
         
-        // Validate state
-        let receivedState = queryItems.first(where: { $0.name == "state" })?.value
-        guard receivedState == expectedState else {
-            Self.sendHTTPResponse(to: clientSocket, success: false)
-            throw LLMError.connectionFailed("OAuth state mismatch")
-        }
+        let tokens = try await exchangeCodeForTokens(
+            code: code,
+            codeVerifier: codeVerifier,
+            redirectURI: redirectURI
+        )
         
-        // Check for error
-        if let error = queryItems.first(where: { $0.name == "error" })?.value {
-            Self.sendHTTPResponse(to: clientSocket, success: false)
-            throw LLMError.connectionFailed("OAuth error: \(error)")
-        }
+        try Self.saveTokens(tokens)
+        Self.pendingCodeVerifier = nil
+        Self.pendingRedirectURI = nil
         
-        // Extract authorization code
-        guard let code = queryItems.first(where: { $0.name == "code" })?.value else {
-            Self.sendHTTPResponse(to: clientSocket, success: false)
-            throw LLMError.connectionFailed("No authorization code in callback")
-        }
-        
-        Self.sendHTTPResponse(to: clientSocket, success: true)
-        
-        return code
+        return true
     }
     
     
@@ -344,7 +387,8 @@ struct ClaudeOAuthProvider: LLMProvider {
     // MARK: - Token Exchange & Refresh
     
     /// Exchanges an authorization code for access and refresh tokens.
-    private static func exchangeCodeForTokens(code: String, codeVerifier: String) async throws -> OAuthTokens {
+    /// Exchanges an authorization code for access and refresh tokens.
+    private static func exchangeCodeForTokens(code: String, codeVerifier: String, redirectURI: String) async throws -> OAuthTokens {
         
         let url = URL(string: tokenURL)!
         
@@ -355,6 +399,7 @@ struct ClaudeOAuthProvider: LLMProvider {
         
         let bodyString = [
             "grant_type=authorization_code",
+            "client_id=\(clientId)",
             "code=\(code.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? code)",
             "redirect_uri=\(redirectURI.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? redirectURI)",
             "code_verifier=\(codeVerifier)",
@@ -417,6 +462,7 @@ struct ClaudeOAuthProvider: LLMProvider {
         
         let bodyString = [
             "grant_type=refresh_token",
+            "client_id=\(clientId)",
             "refresh_token=\(refreshToken.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? refreshToken)",
         ].joined(separator: "&")
         
@@ -517,13 +563,20 @@ struct ClaudeOAuthProvider: LLMProvider {
         var result: AnyObject?
         let status = SecItemCopyMatching(query as CFDictionary, &result)
         
+        NSLog("[ClaudeOAuth] loadTokens keychain status: %d", status)
+        
         guard status == errSecSuccess,
               let data = result as? Data
         else {
+            NSLog("[ClaudeOAuth] loadTokens: no data in keychain")
             return nil
         }
         
-        return try? JSONDecoder().decode(OAuthTokens.self, from: data)
+        let tokens = try? JSONDecoder().decode(OAuthTokens.self, from: data)
+        NSLog("[ClaudeOAuth] loadTokens: decoded=%@, tokenPrefix=%@",
+              tokens != nil ? "YES" : "NO",
+              tokens.map { String($0.accessToken.prefix(25)) } ?? "nil")
+        return tokens
     }
     
     
@@ -542,8 +595,9 @@ struct ClaudeOAuthProvider: LLMProvider {
     
     /// Returns whether the user is currently authenticated.
     static var isAuthenticated: Bool {
-        
-        loadTokens() != nil
+        let result = loadTokens() != nil
+        NSLog("[ClaudeOAuth] isAuthenticated: %@", result ? "YES" : "NO")
+        return result
     }
     
     

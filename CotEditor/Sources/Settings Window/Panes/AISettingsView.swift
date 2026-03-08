@@ -25,6 +25,9 @@ struct AISettingsView: View {
     // Anthropic
     @State private var anthropicAPIKey: String = UserDefaults.standard.string(forKey: "anthropicAPIKey") ?? ""
     
+    // OpenAI
+    @State private var openaiAPIKey: String = UserDefaults.standard.string(forKey: "openaiAPIKey") ?? ""
+    
     // Copilot
     @State private var copilotToken: String = UserDefaults.standard.string(forKey: "copilotGitHubToken") ?? ""
     @State private var copilotUserCode: String = ""
@@ -79,7 +82,9 @@ struct AISettingsView: View {
                         self.ollamaSettings
                     } else if providerType == .anthropic {
                         self.anthropicSettings
-                    } else {
+                    } else if providerType == .openai {
+                        self.openaiSettings
+                    } else if providerType == .copilot {
                         self.copilotSettings
                     }
                     
@@ -259,6 +264,32 @@ struct AISettingsView: View {
     
     
     @ViewBuilder
+    private var openaiSettings: some View {
+        
+        GridRow {
+            Text("API Key:")
+                .gridColumnAlignment(.trailing)
+            
+            HStack {
+                SecureField("sk-...", text: $openaiAPIKey)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(width: 250)
+                    .onSubmit {
+                        AIService.shared.updateOpenAIAPIKey(self.openaiAPIKey)
+                    }
+                
+                self.connectionIndicator
+                
+                Button(String(localized: "Test", table: "AI")) {
+                    AIService.shared.updateOpenAIAPIKey(self.openaiAPIKey)
+                    self.testConnection()
+                }
+            }
+        }
+    }
+    
+    
+    @ViewBuilder
     private var connectionIndicator: some View {
         
         switch connectionStatus {
@@ -407,6 +438,8 @@ struct AISettingsView: View {
             self.isCopilotAuthenticating = false
         }
     }
+    
+    
 }
 
 

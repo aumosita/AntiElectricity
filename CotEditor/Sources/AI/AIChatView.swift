@@ -56,6 +56,9 @@ final class AIChatViewModel {
     var inputText: String = ""
     var isProcessing = false
     
+    /// Font size synced from the text editor.
+    var fontSize: CGFloat = NSFont.systemFontSize
+    
     /// Lazy provider that returns current document text and syntax name.
     var documentTextProvider: (() -> (text: String, syntax: String?))?
     
@@ -90,6 +93,14 @@ final class AIChatViewModel {
                 )
                 
                 self.messages.append(AIChatMessage(role: .assistant, content: response.content))
+                
+                // Auto-trigger inline diff for the first edit block
+                let editBlocks = Self.parseEditBlocks(response.content)
+                if let first = editBlocks.first {
+                    // Small delay to let the UI update before activating inline diff
+                    try? await Task.sleep(for: .milliseconds(200))
+                    self.onPreviewEdit?(first.searchText, first.replaceText, first.id)
+                }
             } catch {
                 self.messages.append(AIChatMessage(role: .system, content: "Error: \(error.localizedDescription)"))
             }
@@ -327,16 +338,43 @@ struct AIChatView: View {
             Divider()
             
             // Input
-            HStack(spacing: 8) {
-                TextField("Ask AI anything…", text: $viewModel.inputText, axis: .vertical)
-                    .textFieldStyle(.plain)
-                    .lineLimit(1...5)
-                    .focused($isInputFocused)
-                    .onSubmit {
-                        if !NSEvent.modifierFlags.contains(.shift) {
-                            self.viewModel.sendMessage()
-                        }
+            HStack(alignment: .bottom, spacing: 8) {
+                ZStack(alignment: .topLeading) {
+                    // Hidden text to measure content height
+                    Text(viewModel.inputText.isEmpty ? " " : viewModel.inputText + " ")
+                        .font(.system(size: viewModel.fontSize))
+                        .padding(.horizontal, 5)
+                        .padding(.vertical, 4)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .opacity(0)
+                    
+                    // Placeholder
+                    if viewModel.inputText.isEmpty {
+                        Text("Ask AI anything…")
+                            .font(.system(size: viewModel.fontSize))
+                            .foregroundStyle(.tertiary)
+                            .padding(.horizontal, 5)
+                            .padding(.vertical, 4)
+                            .allowsHitTesting(false)
                     }
+                    
+                    TextEditor(text: $viewModel.inputText)
+                        .font(.system(size: viewModel.fontSize))
+                        .scrollContentBackground(.hidden)
+                        .scrollDisabled(true)
+                        .focused($isInputFocused)
+                        .onKeyPress(.return, phases: .down) { keyPress in
+                            if keyPress.modifiers.contains(.shift) {
+                                viewModel.inputText += "\n"
+                                return .handled
+                            } else {
+                                viewModel.sendMessage()
+                                return .handled
+                            }
+                        }
+                }
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxHeight: viewModel.fontSize * 8)
                 
                 Button {
                     self.viewModel.sendMessage()
@@ -347,7 +385,6 @@ struct AIChatView: View {
                 }
                 .buttonStyle(.borderless)
                 .disabled(viewModel.inputText.isEmpty || viewModel.isProcessing)
-                .keyboardShortcut(.return, modifiers: [])
             }
             .padding(10)
         }
@@ -409,26 +446,29 @@ private struct MessageBubble: View {
                     // Show prose text
                     if !proseText.isEmpty {
                         Text(proseText)
-                            .font(.body)
+                            .font(.system(size: viewModel.fontSize))
                             .textSelection(.enabled)
                             .padding(10)
                             .background(Color.primary.opacity(0.06))
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
                     
-                    // Show edit blocks with apply buttons
-                    ForEach(editBlocks) { block in
-                        EditBlockView(
-                            block: block,
-                            isApplied: viewModel.appliedEdits.contains(block.id),
-                            onApply: {
-                                viewModel.onPreviewEdit?(block.searchText, block.replaceText, block.id)
-                            }
-                        )
+                    // Show simple notification for edit blocks
+                    if !editBlocks.isEmpty {
+                        HStack(spacing: 6) {
+                            Image(systemName: "pencil.line")
+                                .foregroundStyle(.purple)
+                            Text("Changes applied to editor — check the inline diff.")
+                                .foregroundStyle(.secondary)
+                        }
+                        .font(.system(size: max(viewModel.fontSize - 2, 10)))
+                        .padding(8)
+                        .background(Color.purple.opacity(0.06))
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
                     }
                     
-                    // Show no-block fallback actions on hover
-                    if editBlocks.isEmpty && isHovering {
+                    // Copy button on hover
+                    if isHovering {
                         HStack(spacing: 8) {
                             Button("Copy") {
                                 NSPasteboard.general.clearContents()
@@ -441,7 +481,7 @@ private struct MessageBubble: View {
                 } else {
                     // User / system message
                     Text(message.content)
-                        .font(.body)
+                        .font(.system(size: viewModel.fontSize))
                         .textSelection(.enabled)
                         .padding(10)
                         .background(self.bubbleBackground)

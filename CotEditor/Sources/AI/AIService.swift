@@ -38,7 +38,6 @@ enum AIProviderType: String, CaseIterable, Sendable {
     case ollama = "Ollama"
     case openai = "OpenAI"
     case anthropic = "Anthropic"
-    case claudeOAuth = "Claude (OAuth)"
     case copilot = "GitHub Copilot"
 }
 
@@ -138,30 +137,23 @@ final class AIService {
     }
     
     
-    /// Starts the Claude OAuth PKCE flow.
-    ///
-    /// Opens the user's browser for authentication with claude.ai.
-    /// On success, the OAuth tokens are stored in the Keychain.
-    @discardableResult
-    func startClaudeOAuth() async throws -> Bool {
+    /// Activates Claude OAuth mode on the Anthropic provider.
+    func enableClaudeOAuth() {
         
-        let success = try await ClaudeOAuthProvider.startOAuthFlow()
-        
-        if success {
-            self.switchProvider(to: .claudeOAuth)
-        }
-        
-        return success
+        UserDefaults.standard.set(true, forKey: "anthropicUseOAuth")
+        self.provider = ClaudeOAuthProvider()
     }
     
     
-    /// Logs out from Claude OAuth and clears stored tokens.
+    /// Logs out from Claude OAuth and reverts to API key mode.
     func logoutClaudeOAuth() {
         
         ClaudeOAuthProvider.logout()
+        UserDefaults.standard.set(false, forKey: "anthropicUseOAuth")
         
-        if self.providerType == .claudeOAuth {
-            self.switchProvider(to: .ollama)
+        if self.providerType == .anthropic {
+            let apiKey = UserDefaults.standard.string(forKey: "anthropicAPIKey") ?? ""
+            self.provider = AnthropicProvider(apiKey: apiKey)
         }
     }
     
@@ -241,9 +233,6 @@ final class AIService {
             case .anthropic:
                 let apiKey = UserDefaults.standard.string(forKey: "anthropicAPIKey") ?? ""
                 return AnthropicProvider(apiKey: apiKey)
-                
-            case .claudeOAuth:
-                return ClaudeOAuthProvider()
                 
             case .openai:
                 let apiKey = UserDefaults.standard.string(forKey: "openaiAPIKey") ?? ""
