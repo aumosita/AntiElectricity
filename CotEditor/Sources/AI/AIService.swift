@@ -38,6 +38,7 @@ enum AIProviderType: String, CaseIterable, Sendable {
     case ollama = "Ollama"
     case openai = "OpenAI"
     case anthropic = "Anthropic"
+    case claudeOAuth = "Claude (OAuth)"
     case copilot = "GitHub Copilot"
 }
 
@@ -137,6 +138,34 @@ final class AIService {
     }
     
     
+    /// Starts the Claude OAuth PKCE flow.
+    ///
+    /// Opens the user's browser for authentication with claude.ai.
+    /// On success, the OAuth tokens are stored in the Keychain.
+    @discardableResult
+    func startClaudeOAuth() async throws -> Bool {
+        
+        let success = try await ClaudeOAuthProvider.startOAuthFlow()
+        
+        if success {
+            self.switchProvider(to: .claudeOAuth)
+        }
+        
+        return success
+    }
+    
+    
+    /// Logs out from Claude OAuth and clears stored tokens.
+    func logoutClaudeOAuth() {
+        
+        ClaudeOAuthProvider.logout()
+        
+        if self.providerType == .claudeOAuth {
+            self.switchProvider(to: .ollama)
+        }
+    }
+    
+    
     // MARK: Execution
     
     /// Executes an AI command on the given text.
@@ -212,6 +241,9 @@ final class AIService {
             case .anthropic:
                 let apiKey = UserDefaults.standard.string(forKey: "anthropicAPIKey") ?? ""
                 return AnthropicProvider(apiKey: apiKey)
+                
+            case .claudeOAuth:
+                return ClaudeOAuthProvider()
                 
             case .openai:
                 let apiKey = UserDefaults.standard.string(forKey: "openaiAPIKey") ?? ""
