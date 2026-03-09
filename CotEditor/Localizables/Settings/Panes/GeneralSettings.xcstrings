@@ -1,3285 +1,818 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "A system feature that automatically overwrites your files while editing. Even if turned off, AntiElectricity covertly creates a backup in case it unexpectedly quits." : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Systémová funkce, která automaticky přepíše soubory během úprav. V případě, že není povolena, AntiElectricity vytvoří skryté zálohy pro případ neočekávaného selhání."
+  "sourceLanguage": "en",
+  "strings": {
+    "A system feature that automatically overwrites your files while editing. Even if turned off, AntiElectricity covertly creates a backup in case it unexpectedly quits.": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fonctionnalité du système qui enregistre automatiquement vos fichiers pendant que vous les éditez. Si vous désactivez cette option, AntiElectricity créera quand même des sauvegardes pour prévenir les arrêts imprévus."
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eine Systemfunktion, die deine Dateien während der Bearbeitung automatisch überschreibt. Selbst wenn nicht aktiviert, erstellt AntiElectricity verdeckt Backups für unerwartete Beenden."
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "書類の編集中に自動でファイルを上書きするmacOSの機能です。この機能を無効にした場合も、AntiElectricityは予期しない終了に備えて裏でバックアップを作成します。"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A system feature that automatically overwrites your files while editing. Even if turned off, AntiElectricity covertly creates a backup in case it unexpectedly quits."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Una función del sistema que sobrescribe automáticamente sus archivos mientras los edita. Incluso si se apaga, AntiElectricity crea una copia de seguridad de forma encubierta ante un cierre inesperado."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fonctionnalité du système qui enregistre automatiquement vos fichiers pendant que vous les éditez. Si vous désactivez cette option, AntiElectricity créera quand même des sauvegardes pour prévenir les arrêts imprévus."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Questa funzione sovrascrive automaticamente i tuoi file durante la lavorazione. Anche se disabilitata, AntiElectricity crea dei backup in caso di chiusura inaspettata."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "書類の編集中に自動でファイルを上書きするmacOSの機能です。この機能を無効にした場合も、AntiElectricityは予期しない終了に備えて裏でバックアップを作成します。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "편집하는 동안 파일을 자동으로 덮어쓰는 시스템 기능입니다. 이 옵션을 끄더라도, AntiElectricity는 예상하지 못한 종료로부터 복원하기 위해 백업을 생성합니다."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Een systeemfunctie die automatisch uw bestanden overschrijft tijdens het bewerken. Zelfs als deze functie is uitgeschakeld, maakt AntiElectricity heimelijk een back-up voor het geval het programma onverwacht wordt afgesloten."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Funkcja systemu, która automatycznie nadpisuje Twoje pliki podczas edycji. Nawet jeśli jest wyłączona, AntiElectricity tworzy w ukryciu kopię zapasową na wypadek nieoczekiwanego zamknięcia."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Um recurso do sistema que salva os arquivos automaticamente durante a edição. Mesmo se inativo, o AntiElectricity cria um backup em segundo plano para o caso de falhas inesperadas."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Системная функция, которая автоматически перезаписывает файлы во время редактирования. Даже если она отключена, AntiElectricity незаметно создаёт резервную копию на случай неожиданного завершения работы."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Düzenleme sırasında dosyalarınızın üzerine kendiliğinden yazan bir sistem özelliği. Kapalı olsa bile AntiElectricity beklenmedik çıkmalar için arka planda yedek oluşturur."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "编辑文件时自动覆盖保存文件的系统特性。即使被禁用，AntiElectricity也会在程序退出时自动保存备份。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "編輯檔案時自動覆蓋儲存檔案的系統特性。即使被禁用，AntiElectricity也會在程式退出時自動儲存備份。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "編輯時可以自動覆寫檔案的系統功能。即使關閉此功能，AntiElectricity亦會秘密製作一個備份，以備程式意外結束。"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "편집하는 동안 파일을 자동으로 덮어쓰는 시스템 기능입니다. 이 옵션을 끄더라도, AntiElectricity는 예상하지 못한 종료로부터 복원하기 위해 백업을 생성합니다."
           }
         }
       }
     },
-    "Check for updates automatically" : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vyhledat aktualizace automaticky"
+    "Check for updates automatically": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vérifier les mises à jour automatiquement"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Automatisch nach Updates suchen"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自動的にアップデートを確認"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Check for updates automatically"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Comprueba si hay actualizaciones automáticamente"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vérifier les mises à jour automatiquement"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Controlla automaticamente gli aggiornamenti"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自動的にアップデートを確認"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "업데이트를 수동으로 확인"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Controleer automatisch op updates"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sprawdź dostępność aktualizacji automatycznie"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Buscar atualizações automaticamente"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Проверять обновление автоматически"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Güncellemeleri kendiliğinden denetle"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自动检查更新"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自動檢查更新"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自動檢查更新項目"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "업데이트를 수동으로 확인"
           }
         }
       }
     },
-    "Command-line tool:" : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nástroj příkazového řádku:"
+    "Command-line tool:": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Outil en ligne de commande :"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kommandozeilenwerkzeug:"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "コマンドラインツール:"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Command-line tool:"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Herramienta de línea de comandos:"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Outil en ligne de commande :"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "linea di comando:"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "コマンドラインツール:"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "명령어 라인 도구:"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Commandoregeltool:"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Narzędzie wiersza poleceń:"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ferramenta da linha de comando:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Инструмент командной строки:"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Komut satırı aracı:"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "命令行工具："
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "命令列工具："
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "命令列工具："
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "명령어 라인 도구:"
           }
         }
       }
     },
-    "CommandLineToolManager.Status.differentTarget.message" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aktuální symbolický odkaz `cot` není zaměřen na spuštěný AntiElectricity."
+    "CommandLineToolManager.Status.differentTarget.message": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "The current `cot` symbolic link doesn’t target the running AntiElectricity."
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Der aktuelle `cot` symbolische Link zielt nicht auf den laufenden AntiElectricity."
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le lien symbolique `cot` actuel ne pointe pas vers la version de AntiElectricity en cours d’éxécution."
           }
         },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "The current `cot` symbolic link doesn’t target the running AntiElectricity."
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "現在の`cot`シンボリックリンクはこのAntiElectricity以外に向けられています。"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The current `cot` symbolic link doesn’t target the running AntiElectricity."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "El enlace simbólico `cot` actual no se dirige al AntiElectricity en ejecución."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Le lien symbolique `cot` actuel ne pointe pas vers la version de AntiElectricity en cours d’éxécution."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Il link simbolico `cot` attuale non punta al AntiElectricity in esecuzione."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "現在の`cot`シンボリックリンクはこのAntiElectricity以外に向けられています。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "현재 `cot` 심볼릭 링크가 실행 중인 AntiElectricity를 가리키지 않습니다."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "De huidige `cot` symbolische link richt zich niet op de actieve AntiElectricity."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Obecne połączenie symboliczne `cot` nie wskazuje działającego AntiElectricitya."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O destino do link simbólico ‘cot’ atual não é o AntiElectricity em execução."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Текущая символическая ссылка `cot` не указывает на запущенный AntiElectricity."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geçerli `cot` sembolik bağı, çalışan AntiElectricity’ü hedeflemiyor."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "当前的`cot`符号链接没有指向正在运行的AntiElectricity。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "當前的`cot`符號鏈接沒有指向正在運行的AntiElectricity。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "目前`cot`符號連結的目標不是正在執行的AntiElectricity。"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "현재 `cot` 심볼릭 링크가 실행 중인 AntiElectricity를 가리키지 않습니다."
           }
         }
       }
     },
-    "CommandLineToolManager.Status.invalidTarget.message" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aktuální symbolický odkaz `cot` může být zaměřen na neplatnou cestu."
+    "CommandLineToolManager.Status.invalidTarget.message": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "The current `cot` symbolic link may target an invalid path."
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Der aktuelle `cot` symbolische Link könnte auf einen ungültigen Pfad zielen."
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il se peut que le lien symbolique `cot` pointe vers un chemin invalide."
           }
         },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "The current `cot` symbolic link may target an invalid path."
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "現在の`cot`シンボリックリンクは無効なパスに向けられています。"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The current `cot` symbolic link may target an invalid path."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "El enlace simbólico `cot` actual puede apuntar a una ruta no válida."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Il se peut que le lien symbolique `cot` pointe vers un chemin invalide."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Il link simbolico `cot` attuale potrebbe puntare ad un percorso non valido."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "現在の`cot`シンボリックリンクは無効なパスに向けられています。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "현재 `cot` 심볼릭 링크가 유효하지 않은 경로를 가리키고 있는 것 같습니다."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "De huidige `cot` symbolische link kan een ongeldig pad als doel hebben."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Obecne połączenie symboliczne `cot` może wskazywać nieprawidłową ścieżkę."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O destino do link simbólico ‘cot’ atual pode ser um caminho inválido."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Текущая символическая ссылка `cot` может указывать на недопустимый путь."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geçerli `cot` sembolik bağı, geçersiz bir yolu hedefleyebilir."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "当前的`cot`符号链接可能指向无效路径。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "當前的`cot`符號鏈接可能指向無效路徑。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "目前`cot`符號連結的目標可能是無效路徑。"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "현재 `cot` 심볼릭 링크가 유효하지 않은 경로를 가리키고 있는 것 같습니다."
           }
         }
       }
     },
-    "Dialog warnings:" : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dialog varování:"
+    "Dialog warnings:": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avertissements :"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dialogwarnungen:"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "警告ダイアログ:"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dialogue warnings:"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Advertencias de diálogo:"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Avertissements :"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Avvisi:"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "警告ダイアログ:"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "경고 대화상자:"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dialoogwaarschuwingen:"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ostrzeżenia:"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diálogo de avisos:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Предупреждения:"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İletişim kutusu uyarıları:"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "对话框警告："
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "警示窗："
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "對話框警告："
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "경고 대화상자:"
           }
         }
       }
     },
-    "Document save:" : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uložení dokumentu:"
+    "Document save:": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enregistrement :"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dokumentensicherung:"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "書類の保存:"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Document save:"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Guardar documento:"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enregistrement :"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Salva documento:"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "書類の保存:"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "문서 저장:"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Document bewaren:"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zachowywanie dokumentu:"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Salvamento de documentos:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сохранение документа:"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Belge kaydı:"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "文稿保存："
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "文件儲存："
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "儲存文件："
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "문서 저장:"
           }
         }
       }
     },
-    "DocumentConflictOption.ignore.label" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zachovat verzi AntiElectricityu"
+    "DocumentConflictOption.ignore.label": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Keep AntiElectricity’s version"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AntiElectricitys Version behalten"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Garder la version dans AntiElectricity"
           }
         },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Keep AntiElectricity’s version"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AntiElectricityの編集内容を保持"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Keep AntiElectricity’s version"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mantener la edición de AntiElectricity"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Garder la version dans AntiElectricity"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mantieni la versione di AntiElectricity"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AntiElectricityの編集内容を保持"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AntiElectricity의 상태를 유지"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bewaar de versie van AntiElectricity"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zachowaj wersję AntiElectricitya"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Manter edição do AntiElectricity"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сохранить редакцию AntiElectricity’s"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AntiElectricity sürümünü tut"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "保留AntiElectricity的版本"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "保留AntiElectricity的版本"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "保留AntiElectricity的版本"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AntiElectricity의 상태를 유지"
           }
         }
       }
     },
-    "DocumentConflictOption.notify.label" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zeptat se na řešení"
+    "DocumentConflictOption.notify.label": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Ask how to resolve"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nachfragen"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Demander quoi faire"
           }
         },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Ask how to resolve"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解決方法を確認"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ask how to resolve"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pregunta cómo resolver"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Demander quoi faire"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chiedi cosa fare"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "解決方法を確認"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "해결 방법 묻기"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vraag hoe je het oplost"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zapytaj co robić"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Solicitar resolução"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Спросить что сделать"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nasıl çözüleceğini sor"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "询问如何更新"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "詢問如何更新"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "詢問如何解決"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "해결 방법 묻기"
           }
         }
       }
     },
-    "DocumentConflictOption.revert.label" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aktualizovat na upravenou verzi"
+    "DocumentConflictOption.revert.label": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Update to modified version"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Auf geänderte Version aktualisieren"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Charger la nouvelle version"
           }
         },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Update to modified version"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "変更された内容に更新"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Update to modified version"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Actualización de la edición modificada"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Charger la nouvelle version"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aggiorna usando la versione modificata"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "変更された内容に更新"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "수정된 상태로 업데이트"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Update naar gewijzigde editie"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aktualizuj do zmienionej wersji"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Atualizar para edição modificada"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Обновить до отредактированной версии"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Değiştirilmiş sürüme güncelle"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "更新到被更改的版本"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "更新到被更改的版本"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "更新至變更的版本"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "수정된 상태로 업데이트"
           }
         }
       }
     },
-    "Enable Auto Save with Versions" : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Povolit automatické zálohování s verzí"
+    "Enable Auto Save with Versions": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activer l’enregistrement automatique et les versions"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Automatische Sicherung mit Versionen aktivieren"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "オートセーブとバージョンを有効にする"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enable Auto Save with Versions"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Habilitar el guardado automático con versiones"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Activer l’enregistrement automatique et les versions"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abilita il salvataggio automatico delle versioni"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "オートセーブとバージョンを有効にする"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "자동 저장 켜기"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Schakel automatisch bewaren in met versies"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Włącz automatyczne zachowywanie z wersjami"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ativar Salvamento Automático com Versões"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Включить системное автосохранение"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sürümler ile kendiliğinden kaydetmeyi etkinleştir"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "开启带有版本的自动保存"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "開啟帶有版本的自動儲存"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "啟用包括版本的自動儲存"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "자동 저장 켜기"
           }
         }
       }
     },
-    "Inconsistent line endings" : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nekonzistentní konce řádků"
+    "Inconsistent line endings": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fins de ligne inconsistantes"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inkonsistente Zeilenenden"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "改行コードの混在"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inconsistent line endings"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Finales de línea inconsistentes"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fins de ligne inconsistantes"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fine riga non coerenti"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "改行コードの混在"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "일관적이지 않은 줄바꿈"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inconsistente regeleinden"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Niespójne końce wierszy"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fim de linha inconsistente"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Непоследовательные окончания строк"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tutarsız satır sonları"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "行尾不一致"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "不一致的行尾字元"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "不一致的每行結尾"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "일관적이지 않은 줄바꿈"
           }
         }
       }
     },
-    "installed at %@" : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "instalováno v %@"
+    "installed at %@": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installé ici : %@"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "bei %@ installiert"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@にインストール済み"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "installed at %@"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Instalado en %@"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Installé ici : %@"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Installato in bei %@"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@にインストール済み"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@에 설치됨"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "geïnstalleerd op %@"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "zainstalowano w %@"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "instalada em %@"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Установено в %@"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ konumuna yüklendi"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "已安装于 %@"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "已安裝於%@"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "已安装於%@"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@에 설치됨"
           }
         }
       }
     },
-    "Later" : {
-      "comment" : "button label",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Později"
+    "Later": {
+      "comment": "button label",
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plus tard"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Später"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "あとで"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Later"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Más tarde"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plus tard"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Più tardi"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "あとで"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "나중에"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Later"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Później"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mais Tarde"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Позже"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Daha Sonra"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "稍后"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "稍後"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "稍後"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "나중에"
           }
         }
       }
     },
-    "Learn More…" : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zjistit více"
+    "Learn More…": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En savoir plus…"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mehr Infos …"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "詳細情報…"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Learn More"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Más información"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En savoir plus…"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Altre informazioni…"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "詳細情報…"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "더 알아보기…"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meer info…"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dowiedz się więcej…"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mais Informações"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Узнать больше…"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Daha Fazla Öğren"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "了解更多…"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "瞭解更多⋯"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "進一步了解⋯"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "더 알아보기…"
           }
         }
       }
     },
-    "Manage Warnings…" : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Správa varování…"
+    "Manage Warnings…": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gérer les avertissements…"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warnungen verwalten…"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "警告を管理…"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Manage Warnings…"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Administrar advertencias…"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gérer les avertissements…"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gestisci avvisi…"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "警告を管理…"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "경고 관리…"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beheer waarschuwingen…"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zarządzaj ostrzeżeniami…"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gerenciar Alertas…"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Настройка предупреждений…"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uyarıları Yönet…"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "管理警告…"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "管理警示窗⋯"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "管理警告⋯"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "경고 관리…"
           }
         }
       }
     },
-    "NextSessionApplicationConfirmation.message" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chcete nyní restartovat AntiElectricity?"
+    "NextSessionApplicationConfirmation.message": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Do you want to restart AntiElectricity now?"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Möchtest du AntiElectricity jetzt neu starten?"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Voulez-vous relancer AntiElectricity maintenant ?"
           }
         },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Do you want to restart AntiElectricity now?"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AntiElectricityを今すぐ再起動しますか?"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Do you want to restart AntiElectricity now?"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Quieres reiniciar AntiElectricity ahora?"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Voulez-vous relancer AntiElectricity maintenant ?"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Si desidera riavviare AntiElectricity adesso?"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AntiElectricityを今すぐ再起動しますか?"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AntiElectricity를 재시작하시겠습니까?"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wil je AntiElectricity nu opnieuw opstarten?"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Czy chcesz teraz ponownie uruchomić AntiElectricitya?"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deseja reabrir o AntiElectricity agora?"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Произвести перезапуск приложения?"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AntiElectricity’ü şimdi yeniden başlatmak istiyor musunuz?"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "现在就重启AntiElectricity吗？"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "現在就重啟AntiElectricity嗎？"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "你要立即重新啟動AntiElectricity嗎？"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AntiElectricity를 재시작하시겠습니까?"
           }
         }
       }
     },
-    "NextSessionApplicationConfirmation.nextAfterNext.message" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chování aplikace se změní při příštím spuštění po tomto spuštění."
+    "NextSessionApplicationConfirmation.nextAfterNext.message": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "The app’s behavior will change from the next launch after that one."
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Das Verhalten der App ändert sich ab dem nächsten Start nach diesem."
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Le comportement de l'application changera dès le prochain lancement suivant celui-ci."
           }
         },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "The app’s behavior will change from the next launch after that one."
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アプリの挙動が変わるのは、そのさらに次の起動からです。"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The app’s behaviour will change from the next launch after that one."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "El comportamiento de la aplicación cambiará a partir del siguiente reinicio."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Le comportement de l'application changera dès le prochain lancement suivant celui-ci."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Il comportamento dell'app verrà modificato alla prima esecuzione dopo la prossima."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アプリの挙動が変わるのは、そのさらに次の起動からです。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "그다음부터 앱의 동작이 변경됩니다."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Het gedrag van de app verandert vanaf de volgende start daarna."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zachowanie aplikacji zmieni się od następnego uruchomienia."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O comportamento do aplicativo mudará a partir da próxima inicialização após esta."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Поведение приложения изменится со следующего запуска."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uygulamanın davranışı bundan sonraki başlangıçta değişecektir."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "应用的行为将从之后再下一次启动时生效。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App的行為將在之後的下一次啟動時生效。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App的行為將在之後的下次啟動時更改。"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "그다음부터 앱의 동작이 변경됩니다."
           }
         }
       }
     },
-    "NextSessionApplicationConfirmation.title" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Změna bude použita při příštím spuštění."
+    "NextSessionApplicationConfirmation.title": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "The change will be applied first on the next launch."
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Die Änderung wird erst beim nächsten Start angewendet."
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le changement sera appliqué au prochain lancement."
           }
         },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "The change will be applied first on the next launch."
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この変更は次回アプリ起動時に適用されます。"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "translated"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "El cambio se aplicará primero en el próximo reinicio."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Le changement sera appliqué au prochain lancement."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La modifica verrà applicata al prossimo avvio."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "この変更は次回アプリ起動時に適用されます。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이 변화는 다음 시작 때 적용됩니다."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "De wijziging wordt als eerste toegepast wanneer je de volgende keer opstart."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zmiana zostanie zastosowana przy następnym uruchomieniu."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A alteração será aplicada quando o aplicativo for reaberto."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Изменение будет применено при следующем запуске."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Değişiklikler bir sonraki çalıştırmada uygulanacak."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "变更将在下次启动时生效。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "變更將在下次啟動時生效。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "更改將在下次啟󠄁動時首先套用。"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 변화는 다음 시작 때 적용됩니다."
           }
         }
       }
     },
-    "NoDocumentOnLaunchOption.none.label" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nedělat nic"
+    "NoDocumentOnLaunchOption.none.label": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Do Nothing"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Keine Aktion"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ne rien faire"
           }
         },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Do Nothing"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "何もしない"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Do Nothing"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No hacer nada"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ne rien faire"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nessuna azione"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "何もしない"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "아무 것도 안 함"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Doe niets"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nic nie rób"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Não Fazer Nada"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ничего"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hiçbir Şey Yapma"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "不执行任何操作"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "不執行任何動作"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "不執行任何動作"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아무 것도 안 함"
           }
         }
       }
     },
-    "NoDocumentOnLaunchOption.openPanel.label" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zobrazit dialog Otevřít"
+    "NoDocumentOnLaunchOption.openPanel.label": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Show Open Dialog"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "„Datei öffnen“-Dialog anzeigen"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afficher la fenêtre Ouvrir"
           }
         },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Show Open Dialog"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "”開く”ダイアログを表示"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show Open Dialogue"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar diálogo Abrir"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Afficher la fenêtre Ouvrir"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostra la finestra di dialogo Apri"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "”開く”ダイアログを表示"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "열기 대화상자 보기"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toon dialoogvenster open"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wyświetl okno dialogowe Otwórz…"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar Diálogo de Abertura"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Открыть файл"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aç İletişim Kutusunu Göster"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示打开对话框"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顯示開啟對話方塊"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顯示開啟󠄁對話框"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "열기 대화상자 보기"
           }
         }
       }
     },
-    "NoDocumentOnLaunchOption.untitledDocument.label" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vytvořit nový dokument"
+    "NoDocumentOnLaunchOption.untitledDocument.label": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Create New Document"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Neues Dokument erstellen"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Créer un nouveau document"
           }
         },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Create New Document"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新規書類を作成"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Create New Document"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crear nuevo documento"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Créer un nouveau document"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crea un nuovo documento"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "新規書類を作成"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "새 문서 생성"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Maak nieuw document"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Utwórz nowy dokument"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Criar Novo Documento"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Создать новый документ"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yeni Belge Oluştur"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "创建新文稿"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "建立新文件"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "製作新文件"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "새 문서 생성"
           }
         }
       }
     },
-    "On startup:" : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Při spuštění:"
+    "On startup:": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Au lancement :"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beim Start:"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "起動したとき:"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "On startup:"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En el inicio:"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Au lancement :"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "All’avvio:"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "起動したとき:"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "시작할 때:"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bij opstarten:"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Przy uruchamianiu:"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Na inicialização:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "При запуске:"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Başlangıçta:"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "启动时："
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "啟動時："
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在開啟󠄁時："
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시작할 때:"
           }
         }
       }
     },
-    "Regardless of this setting, new prereleases are always included while using a prerelease." : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bez ohledu na toto nastavení jsou při použití předběžné verze vždy zahrnuty nové předběžné verze."
+    "Regardless of this setting, new prereleases are always included while using a prerelease.": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lorsque vous utilisez une version préliminaire, vous recevrez toujours les nouvelles versions préliminaires, peu importe l’activation ou non de cette option."
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beim Verwenden einer Vorabversion werden ungeachtet dieser Einstellung immer nach neuen Vorabversionen gesucht."
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この設定に関わらず、プレリリース版の使用中は必ず新しいプレリリースもアップデート対象に含まれます。"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Regardless of this setting, new pre-releases are always included while using a pre-release."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Independientemente de esta configuración, siempre se incluyen nuevas versiones preliminares mientras se utiliza una versión preliminar."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lorsque vous utilisez une version préliminaire, vous recevrez toujours les nouvelles versions préliminaires, peu importe l’activation ou non de cette option."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Indipendentemente da questa impostazione, se si sta usando una versione preliminare le successive versioni preliminari saranno sempre incluse negli aggiornamenti."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "この設定に関わらず、プレリリース版の使用中は必ず新しいプレリリースもアップデート対象に含まれます。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이 설정과 관계 없이, 사전 발매 버전을 사용 중인 경우 항상 사전 발매 버전을 포함합니다."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ongeacht deze instelling worden nieuwe prereleases altijd opgenomen als je een prerelease gebruikt."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Niezależnie od tego ustawienia, w przypadku korzystania z wersji wstępnej, nowe wersje wstępne są zawsze uwzględniane."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Independentemente deste ajuste, pré-lançamentos novos sempre são incluídos ao usar uma versão de pré-lançamento."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Независимо от этой настройки новые предварительные версии всегда включены."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu ayardan bağımsız olarak, yeni ön sürümler her zaman ön sürümleri kullanırken içerilir."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在预发布版本中，无论该选项如何设定，总是会更新到新的预发布版本。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在預釋出版本中，無論該選項如何設定，總是會更新到新的預釋出版本。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "無論此設定如何，使用預先發佈版本時永遠都會包括新的預先發佈版本。"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 설정과 관계 없이, 사전 발매 버전을 사용 중인 경우 항상 사전 발매 버전을 포함합니다."
           }
         }
       }
     },
-    "Reopen windows from last session" : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Znovu otevřít okna (panely) z poslední relace"
+    "Reopen windows from last session": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rouvrir toutes les fenêtres de la dernière session"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fenster der letzten Sitzung erneut öffnen"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最後のセッションのウインドウを開く"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reopen windows from last session"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vuelva a abrir las ventanas de la última sesión"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rouvrir toutes les fenêtres de la dernière session"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Riapri le finestre dall’ultima sessione"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "最後のセッションのウインドウを開く"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "지난 세션의 창 다시 열기"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Heropen vensters van vorige sessie"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ponownie otwórz okna z ostatniej sesji"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reabrir as janelas da última sessão"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Открыть документы из предыдущего сеанса"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Son oturumdaki pencereleri yeniden aç"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新打开最后关闭的窗口"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新打開最後打開的視窗"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新開啟最後開啟的視窗"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지난 세션의 창 다시 열기"
           }
         }
       }
     },
-    "Restart Now" : {
-      "comment" : "button label",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restartovat"
+    "Restart Now": {
+      "comment": "button label",
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Relancer maintenant"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Neu starten"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今すぐ再起動"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restart Now"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reiniciar ahora"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Relancer maintenant"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Riavvia ora"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "今すぐ再起動"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "지금 재시작"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Herstart nu"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uruchom ponownie teraz"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reabrir Agora"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Перезапустить приложение"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Şimdi Yeniden Başlat"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "现在重启"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "現在重啟"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "立即重新啟動"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지금 재시작"
           }
         }
       }
     },
-    "Software update:" : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aktualizace softwaru:"
+    "Software update:": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mise à jour :"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Softwareupdate:"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ソフトウェアアップデート:"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Software update:"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Actualización de software:"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mise à jour :"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aggiornamento software:"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ソフトウェアアップデート:"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "소프트웨어 업데이트:"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Software-update:"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aktualizacja oprogramowania:"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Atualização de software:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Обновление приложения:"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yazılım güncelleme:"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "软件更新："
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "軟體更新："
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "軟件更新："
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "소프트웨어 업데이트:"
           }
         }
       }
     },
-    "Suppress the following warnings:" : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Potlačit následující varování:"
+    "Suppress the following warnings:": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cacher ces avertissements :"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Folgenden Warnungen ausschalten:"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以下を警告しない:"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Suppress the following warnings:"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Suprimir las siguientes advertencias:"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cacher ces avertissements :"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sopprimi i seguenti avvisi:"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "以下を警告しない:"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "다음 경고 억제:"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Onderdruk de volgende waarschuwingen:"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pomiń następujące ostrzeżenia:"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Omitir os seguintes avisos:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Игнорировать предупреждения:"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aşağıdaki uyarıları sustur"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "阻止以下警告："
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "停用下述警示窗："
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "隱藏以下警告："
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다음 경고 억제:"
           }
         }
       }
     },
-    "Update to prereleases when available" : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aktualizovat na předběžné verze, pokud jsou k dispozici"
+    "Update to prereleases when available": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mettre à jour vers les versions préliminaires, quand disponible"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vorabversionen einschließen"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "プレリリース版を対象に含める"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Update to pre-releases when available"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Actualizar a los pre-lanzamientos cuando estén disponibles"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mettre à jour vers les versions préliminaires, quand disponible"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Includi versioni preliminari"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "プレリリース版を対象に含める"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "가능한 경우 사전 발매 버전으로 업데이트"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Updaten naar prereleases wanneer beschikbaar"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aktualizuj do wersji wstępnych, gdy są dostępne"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Atualizar para pré-lançamentos quando disponíveis"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Обновляться до предварительной версии если она доступна"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kullanılabilir olduğu durumlarda ön sürümlere güncelle"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "包含预发布版本"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "包含預釋出版本"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "如可用，更新到預先發佈版本"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "가능한 경우 사전 발매 버전으로 업데이트"
           }
         }
       }
     },
-    "When document is changed by another application:" : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Při změně dokumentu v jiné aplikaci:"
+    "When document is changed by another application:": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lorsque le document est modifié par une autre application :"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wenn Dokument von einem anderen Programm geändert wird:"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "書類が別のアプリによって変更されたとき:"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "When document is changed by another application:"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cuando otra aplicación cambia el documento:"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lorsque le document est modifié par une autre application :"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quando il documento è modificato da un’altra applicazione:"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "書類が別のアプリによって変更されたとき:"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "문서가 다른 응용프로그램에 의해 수정되었을 때:"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wanneer een document wordt gewijzigd door een andere applicatie:"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gdy dokument zostanie zmieniony przez inną aplikację:"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quando o documento for modificado por outro aplicativo:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Когда документ изменен другим приложением:"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Belge başka bir uygulama tarafından değiştirildiğinde:"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "当文稿被其他应用更改时："
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "當文件被其他應用更改時："
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "當文件被另一個應用程式更改時："
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "문서가 다른 응용프로그램에 의해 수정되었을 때:"
           }
         }
       }
     },
-    "When nothing else is open:" : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Když není nic otevřené:"
+    "When nothing else is open:": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand aucune fenêtre n’est ouverte :"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wenn nichts geöffnet ist:"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "何も開かれていなければ:"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "When nothing else is open:"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cuando no hay nada más abierto:"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quand aucune fenêtre n’est ouverte :"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quando non c’è alcun documento aperto:"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "何も開かれていなければ:"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "아무 것도 열려있지 않을 때:"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Als er niets anders open is:"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gdy nic innego nie jest otwarte:"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quando não houver nada aberto:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Когда больше ничего не открыто:"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Başka bir dosya açık değilken:"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "当无项目可以打开时："
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "當沒有可以開啟的檔案時："
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "當沒有其他檔案開啟時："
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아무 것도 열려있지 않을 때:"
           }
         }
       }
     },
-    "With the `cot` command-line tool, you can launch AntiElectricity and let it open files from the command line." : {
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pomocí nástroje příkazového řádku `cot` můžete spustit AntiElectricity a nechat ho otevřít soubory z příkazového řádku."
+    "With the `cot` command-line tool, you can launch AntiElectricity and let it open files from the command line.": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avec l’outil en ligne de commande `cot`, vous pouvez lancer AntiElectricity et ouvrir des fichiers depuis le Terminal."
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mit dem „cot“-Kommandozeilenwerkzeug kannst du AntiElectricity von der Kommandozeile aus aktivieren und es Dateien öffnen lassen."
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`cot`コマンドラインツールは、コマンドラインからのAntiElectricity起動やファイルオープンを可能にします。"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "With the `cot` command-line tool, you can launch AntiElectricity and let it open files from the command line."
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`cot` 명령어 라인 도구로, 명령어 라인에서 파일을 AntiElectricity로 열 수 있습니다."
+          }
+        }
+      }
+    },
+    "Show welcome screen on new tab": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show welcome screen on new tab"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Con la herramienta de línea de comandos `cot`, puedes iniciar AntiElectricity y dejar que abra archivos desde la línea de comandos."
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "새 탭에서 시작 화면 표시"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Avec l’outil en ligne de commande `cot`, vous pouvez lancer AntiElectricity et ouvrir des fichiers depuis le Terminal."
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新規タブでウェルカム画面を表示"
           }
         },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Con il comando testuale “cot” si può lanciare AntiElectricity facendogli aprire documenti dalla riga di comando."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "`cot`コマンドラインツールは、コマンドラインからのAntiElectricity起動やファイルオープンを可能にします。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "`cot` 명령어 라인 도구로, 명령어 라인에서 파일을 AntiElectricity로 열 수 있습니다."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Met de commandoregel `cot` kun je AntiElectricity starten en bestanden laten openen vanaf de commandoregel."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Za pomocą narzędzia wiersza poleceń `cot` możesz uruchomić AntiElectricitya i pozwolić mu otwierać pliki z poziomu wiersza poleceń."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Com a ferramenta ‘cot’, você pode iniciar o AntiElectricity e abrir arquivos na linha de comando."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "С помощью инструмента командной строки `cot` вы можете запустить AntiElectricity и позволить ему открывать файлы из командной строки."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "`cot` komut satırı aracıyla AntiElectricity’ü çalıştırabilir ve komut satırından dosyalar açabilirsiniz."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "`cot`命令行工具可以让您使用命令行来启动AntiElectricity并打开文件。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "`cot`命令列工具可以讓您使用命令列來啟動AntiElectricity並開啟檔案。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "使用`cot`命令列工具，你可以啟動AntiElectricity，並讓它透過命令列開啟檔案。"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afficher l'écran d'accueil dans un nouvel onglet"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

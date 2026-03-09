@@ -299,43 +299,86 @@ private struct DocumentStatusBar: View {
 }
 
 
+enum EditorCountDisplayMode: String, CaseIterable {
+    
+    case characters
+    case charactersNoSpaces
+    case words
+    case lines
+    case manuscriptPages
+    
+    
+    var label: String {
+        
+        switch self {
+            case .characters:
+                String(localized: "CountType.characters.label", defaultValue: "Characters", table: "Document")
+            case .charactersNoSpaces:
+                String(localized: "CountType.charactersNoSpaces.label", defaultValue: "Chars (No Spaces)", table: "Document")
+            case .words:
+                String(localized: "CountType.words.label", defaultValue: "Words", table: "Document")
+            case .lines:
+                String(localized: "CountType.lines.label", defaultValue: "Lines", table: "Document")
+            case .manuscriptPages:
+                String(localized: "CountType.manuscriptPages.label", defaultValue: "Manuscripts", table: "Document")
+        }
+    }
+    
+    
+    func value(from result: EditorCounter.Result) -> String? {
+        
+        switch self {
+            case .characters:       result.characters.formatted
+            case .charactersNoSpaces: result.charactersNoSpaces.formatted
+            case .words:            result.words.formatted
+            case .lines:            result.lines.formatted
+            case .manuscriptPages:  result.manuscriptPages.formatted
+        }
+    }
+}
+
+
 private struct EditorCountView: View {
     
     var result: EditorCounter.Result
     
-    @AppStorage(.showStatusBarLines) private var showsLines
-    @AppStorage(.showStatusBarChars) private var showsCharacters
-    @AppStorage(.showStatusBarWords) private var showsWords
-    @AppStorage(.showStatusBarCharactersNoSpaces) private var showsCharactersNoSpaces
-    @AppStorage(.showStatusBarManuscriptPages) private var showsManuscriptPages
+    @AppStorage(.statusBarCountMode) private var countModeRaw
     @AppStorage(.showStatusBarLocation) private var showsLocation
     @AppStorage(.showStatusBarLine) private var showsLine
     @AppStorage(.showStatusBarColumn) private var showsColumn
     
     
+    private var countMode: EditorCountDisplayMode {
+        
+        EditorCountDisplayMode(rawValue: self.countModeRaw) ?? .characters
+    }
+    
+    
     var body: some View {
         
-        TruncatingHStack {
-            if self.showsLines {
-                Text(String(localized: "CountType.lines.label", defaultValue: "Lines", table: "Document"),
-                     value: self.result.lines.formatted)
+        HStack(spacing: 4) {
+            // Count mode picker (clickable like encoding picker)
+            Picker(self.countMode.label, selection: $countModeRaw) {
+                Section(String(localized: "CountType.section.label", defaultValue: "Count Type", table: "Document")) {
+                    ForEach(EditorCountDisplayMode.allCases, id: \.rawValue) { mode in
+                        Text(mode.label).tag(mode.rawValue)
+                    }
+                }
             }
-            if self.showsCharacters {
-                Text(String(localized: "CountType.characters.label", defaultValue: "Characters", table: "Document"),
-                     value: self.result.characters.formatted)
+            .labelsHidden()
+            .fixedSize()
+            .foregroundStyle(.primary)
+            
+            if let value = self.countMode.value(from: self.result) {
+                Text(value)
+                    .foregroundStyle(.secondary)
+                    .monospacedDigit()
             }
-            if self.showsWords {
-                Text(String(localized: "CountType.words.label", defaultValue: "Words", table: "Document"),
-                     value: self.result.words.formatted)
-            }
-            if self.showsCharactersNoSpaces {
-                Text(String(localized: "CountType.charactersNoSpaces.label", defaultValue: "Chars (No Spaces)", table: "Document"),
-                     value: self.result.charactersNoSpaces.formatted)
-            }
-            if self.showsManuscriptPages {
-                Text(String(localized: "CountType.manuscriptPages.label", defaultValue: "Manuscripts", table: "Document"),
-                     value: self.result.manuscriptPages.formatted)
-            }
+            
+            Spacer()
+                .frame(width: 8)
+            
+            // Cursor position info (always shown if enabled)
             if self.showsLocation {
                 Text(String(localized: "CountType.location.label", defaultValue: "Location", table: "Document"),
                      value: self.result.location?.formatted())
@@ -463,12 +506,8 @@ private extension UserDefaults {
     /// The info types needed to be calculated.
     var statusBarEditorInfo: EditorCounter.Types {
         
-        EditorCounter.Types()
-            .union(self[.showStatusBarChars] ? .characters : [])
-            .union(self[.showStatusBarLines] ? .lines : [])
-            .union(self[.showStatusBarWords] ? .words : [])
-            .union(self[.showStatusBarCharactersNoSpaces] ? .charactersNoSpaces : [])
-            .union(self[.showStatusBarManuscriptPages] ? .manuscriptPages : [])
+        // Always calculate all count types for the picker menu
+        EditorCounter.Types.count
             .union(self[.showStatusBarLocation] ? .location : [])
             .union(self[.showStatusBarLine] ? .line : [])
             .union(self[.showStatusBarColumn] ? .column : [])

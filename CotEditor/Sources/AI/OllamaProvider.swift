@@ -60,7 +60,7 @@ struct OllamaProvider: LLMProvider {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.timeoutInterval = 120  // LLM can take time
+        request.timeoutInterval = 300  // local LLM can take significant time
         
         var requestMessages: [OllamaChatRequest.Message] = [
             .init(role: "system", content: systemPrompt)

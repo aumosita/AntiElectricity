@@ -80,6 +80,8 @@ extension DefaultKeys {
     static let showStatusBarLocation = DefaultKey<Bool>("showStatusBarLocation")
     static let showStatusBarLine = DefaultKey<Bool>("showStatusBarLine")
     static let showStatusBarColumn = DefaultKey<Bool>("showStatusBarColumn")
+    static let statusBarCountMode = DefaultKey<String>("statusBarCountMode")
+    static let showWelcomeScreen = DefaultKey<Bool>("showWelcomeScreen")
     
     // Edit
     static let autoExpandTab = DefaultKey<Bool>("autoExpandTab")

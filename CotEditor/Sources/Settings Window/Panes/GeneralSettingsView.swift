@@ -25,20 +25,16 @@
 
 import SwiftUI
 import Defaults
-import SemanticVersioning
 
 struct GeneralSettingsView: View {
     
-#if SPARKLE
-    var showsUpdaterSettings = true
-#else
-    var showsUpdaterSettings = false
-#endif
+
     
     @Namespace private var accessibility
     
     @AppStorage(.quitAlwaysKeepsWindows) private var quitAlwaysKeepsWindows: Bool
     @AppStorage(.noDocumentOnLaunchOption) private var noDocumentOnLaunchOption: NoDocumentOnLaunchOption
+    @AppStorage(.showWelcomeScreen) private var showWelcomeScreen
     
     @AppStorage(.enablesAutosaveInPlace) private var enablesAutosaveInPlace: Bool
     @AppStorage(.documentConflictOption) private var documentConflictOption: DocumentConflictOption
@@ -100,6 +96,8 @@ struct GeneralSettingsView: View {
                     }
                     .accessibilityLabeledPair(role: .content, id: "noDocumentOnLaunchOption", in: self.accessibility)
                     .padding(.leading, 20)
+                    
+                    Toggle(String(localized: "Show welcome screen on new tab", table: "GeneralSettings"), isOn: $showWelcomeScreen)
                 }
             }
             
@@ -210,11 +208,7 @@ struct GeneralSettingsView: View {
                 }
             }
             
-            if self.showsUpdaterSettings {
-                Divider()
-                    .padding(.vertical, isLiquidGlass ? 0 : 6)
-                UpdaterView()
-            }
+
             
             HStack {
                 Spacer()
@@ -233,36 +227,7 @@ struct GeneralSettingsView: View {
 }
 
 
-private struct UpdaterView: View {
-    
-    @AppStorage("SUEnableAutomaticChecks") private var enableAutomaticUpdateChecks: Bool = true
-    @AppStorage(.checksUpdatesForBeta) private var checksUpdatesForBeta: Bool
-    
-    
-    var body: some View {
-        
-        GridRow {
-            Text("Software update:", tableName: "GeneralSettings")
-                .gridColumnAlignment(.trailing)
-            
-            VStack(alignment: .leading, spacing: isLiquidGlass ? nil : 6) {
-                Toggle(String(localized: "Check for updates automatically", table: "GeneralSettings"), isOn: $enableAutomaticUpdateChecks)
-                
-                VStack(alignment: .leading, spacing: 2) {
-                    Toggle(String(localized: "Update to prereleases when available", table: "GeneralSettings"), isOn: $checksUpdatesForBeta)
-                    
-                    if Bundle.main.version!.isPrerelease {
-                        Text("Regardless of this setting, new prereleases are always included while using a prerelease.", tableName: "GeneralSettings")
-                            .foregroundStyle(.secondary)
-                            .controlSize(.small)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .padding(.leading, 20)
-                    }
-                }
-            }
-        }
-    }
-}
+
 
 
 private struct WarningsSettingView: View {
@@ -371,9 +336,5 @@ private extension DocumentConflictOption {
 // MARK: - Preview
 
 #Preview {
-    GeneralSettingsView(showsUpdaterSettings: false)
-}
-
-#Preview("with Sparkle") {
-    GeneralSettingsView(showsUpdaterSettings: true)
+    GeneralSettingsView()
 }

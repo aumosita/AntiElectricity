@@ -269,6 +269,10 @@ import URLUtils
             case #selector(NSTextView.performTextFinderAction):
                 return menuItem.tag != TextFinder.Action.multipleReplace.rawValue
                 
+            case #selector(WindowContentViewController.toggleAIChat(_:)),
+                 #selector(ContentViewController.showAIPromptsMenu(_:)):
+                return true
+                
             default: break
         }
         

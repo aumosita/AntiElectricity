@@ -910,6 +910,7 @@ extension DocumentWindowController: NSToolbarDelegate {
                 item.image = NSImage(systemSymbolName: "sparkles", accessibilityDescription: item.label)
                 item.showsIndicator = true
                 item.menu = AIMenuBuilder.buildAISubmenu()
+                item.menu.delegate = AIMenuDelegate.shared
                 return item
                 
             case .aiChat:

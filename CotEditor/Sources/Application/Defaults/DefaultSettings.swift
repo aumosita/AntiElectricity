@@ -82,6 +82,8 @@ struct DefaultSettings {
             .showStatusBarLocation: true,
             .showStatusBarLine: true,
             .showStatusBarColumn: false,
+            .statusBarCountMode: "characters",
+            .showWelcomeScreen: true,
             
             // Edit
             .autoExpandTab: false,

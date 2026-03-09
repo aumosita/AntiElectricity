@@ -227,6 +227,18 @@ extension NSTextView: EditorCounter.Source { }
     
     // MARK: Document Methods
     
+    override var displayName: String! {
+        get {
+            if self.isTransient {
+                return String(localized: "New Tab", table: "Document", comment: "Display name for a transient, empty 'New Tab' instead of 'Untitled'")
+            }
+            return super.displayName
+        }
+        set {
+            super.displayName = newValue
+        }
+    }
+    
     override nonisolated static var autosavesInPlace: Bool {
         
         // avoid changing the value while the application is running

@@ -346,11 +346,7 @@ private struct CreditsView: View {
 
 private struct LicenseView: View {
     
-#if SPARKLE
-    private let hasSparkle = true
-#else
-    private let hasSparkle = false
-#endif
+
     
     var body: some View {
         
@@ -458,23 +454,7 @@ private struct LicenseView: View {
                      copyright: "© 2014-2024 1024jp",
                      license: .mit)
             
-            if self.hasSparkle {
-                ItemView(name: "Sparkle",
-                         url: "https://sparkle-project.org",
-                         copyright: """
-                                    © 2006-2013 Andy Matuschak.
-                                    © 2009-2013 Elgato Systems GmbH.
-                                    © 2011-2014 Kornel Lesiński.
-                                    © 2015-2017 Mayur Pawashe.
-                                    © 2014 C.W. Betts.
-                                    © 2014 Petroules Corporation.
-                                    © 2014 Big Nerd Ranch.
-                                    All rights reserved.
-                                    """,
-                         license: .custom("Sparkle"),
-                         description: String(localized: "only on non-AppStore version", table: "About",
-                                             comment: "annotation for the Sparkle framework license"))
-            }
+
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()

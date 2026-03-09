@@ -139,4 +139,49 @@ extension ContentViewController {
             self?.executeFreePrompt(textField.stringValue)
         }
     }
+    
+    
+    /// Shows a contextual menu with AI prompts for quick application
+    @objc func showAIPromptsMenu(_ sender: Any?) {
+        
+        let menu = AIMenuBuilder.buildAISubmenu()
+        
+        // Calculate where to show the menu
+        var point: NSPoint?
+        if let docVC = self.documentViewController,
+           let textView = docVC.focusedTextView,
+           let window = textView.window {
+            
+            let selectedRange = textView.selectedRange()
+            let layoutManager = textView.layoutManager
+            let textContainer = textView.textContainer
+            
+            if let layoutManager = layoutManager, let textContainer = textContainer {
+                let glyphRange = layoutManager.glyphRange(forCharacterRange: selectedRange, actualCharacterRange: nil)
+                var boundingRect = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
+                
+                // Adjust to showing at the bottom-right of the selection
+                boundingRect.origin.x += boundingRect.size.width
+                boundingRect.origin.y += boundingRect.size.height
+                
+                let viewRect = textView.convert(boundingRect, to: nil)
+                let windowPoint = window.convertPoint(toScreen: viewRect.origin)
+                
+                if let event = NSApp.currentEvent {
+                    point = windowPoint
+                    // Build a dummy event simulating a click at the target text position
+                    let syntheticEvent = NSEvent.mouseEvent(with: .rightMouseDown, location: viewRect.origin, modifierFlags: [], timestamp: event.timestamp, windowNumber: window.windowNumber, context: nil, eventNumber: event.eventNumber, clickCount: 1, pressure: 1.0)
+                    
+                    if let syntheticEvent = syntheticEvent {
+                        NSMenu.popUpContextMenu(menu, with: syntheticEvent, for: textView)
+                        return
+                    }
+                }
+            }
+        }
+        
+        // Fallback to current mouse location if text pos could not be calculated
+        let mouseLoc = NSEvent.mouseLocation
+        menu.popUp(positioning: nil, at: mouseLoc, in: nil)
+    }
 }

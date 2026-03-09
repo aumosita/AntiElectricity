@@ -73,6 +73,8 @@ final class DocumentViewController: NSSplitViewController, ThemeChanging, NSTool
     
     private var observers: Set<AnyCancellable> = []
     private var defaultsObservers: Set<AnyCancellable> = []
+    private var welcomeHostingView: NSHostingView<AnyView>?
+    private var welcomeKeyMonitor: Any?
     
     
     // MARK: Lifecycle
@@ -140,6 +142,46 @@ final class DocumentViewController: NSSplitViewController, ThemeChanging, NSTool
         NotificationCenter.default.addObserver(self, selector: #selector(textStorageDidProcessEditing),
                                                name: NSTextStorage.didProcessEditingNotification,
                                                object: self.document.textStorage)
+        
+        // setup welcome view if transient and preference enabled
+        if self.document.isTransient, UserDefaults.standard[.showWelcomeScreen] {
+            let welcomeView = WelcomeView(
+                onNewDocument: { [weak self] in
+                    self?.dismissWelcomeView()
+                },
+                onOpenDocument: {
+                    NSDocumentController.shared.openDocument(nil)
+                }
+            )
+            let hostingView = NSHostingView(rootView: AnyView(welcomeView))
+            hostingView.translatesAutoresizingMaskIntoConstraints = false
+            self.view.addSubview(hostingView)
+            NSLayoutConstraint.activate([
+                hostingView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+                hostingView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+                hostingView.topAnchor.constraint(equalTo: self.view.topAnchor),
+                hostingView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            ])
+            self.welcomeHostingView = hostingView
+            
+            // install key event monitor to intercept keys before they reach the text view
+            self.welcomeKeyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
+                guard self?.welcomeHostingView != nil else { return event }
+                
+                // use hardware key codes so shortcuts work regardless of input method (e.g. Korean)
+                switch event.keyCode {
+                    case 45:  // N key
+                        self?.dismissWelcomeView()
+                        return nil
+                    case 31:  // O key
+                        NSDocumentController.shared.openDocument(nil)
+                        return nil
+                    default:
+                        return nil  // swallow all other keys while welcome is showing
+                }
+            }
+        }
+
         
         // observe
         self.observers = [
@@ -438,6 +480,11 @@ final class DocumentViewController: NSSplitViewController, ThemeChanging, NSTool
         
         guard textStorage.editedMask.contains(.editedCharacters) else { return }
         
+        if self.welcomeHostingView != nil {
+            self.dismissWelcomeView()
+        }
+
+        
         MainActor.assumeIsolated { [range = textStorage.editedRange, length = textStorage.changeInLength] in
             // tell the parser that text was changed
             self.document.syntaxController.invalidate(in: range, changeInLength: length)
@@ -603,6 +650,21 @@ final class DocumentViewController: NSSplitViewController, ThemeChanging, NSTool
         
         textStorage.addAttributes(textView.typingAttributes, range: textStorage.range)
     }
+    
+    /// Dismisses the Welcome View and enters editor mode.
+    private func dismissWelcomeView() {
+        
+        self.document.isTransient = false
+        self.welcomeHostingView?.removeFromSuperview()
+        self.welcomeHostingView = nil
+        if let monitor = self.welcomeKeyMonitor {
+            NSEvent.removeMonitor(monitor)
+            self.welcomeKeyMonitor = nil
+        }
+        self.document.windowControllers.forEach { $0.synchronizeWindowTitleWithDocumentName() }
+        self.focusedTextView?.window?.makeFirstResponder(self.focusedTextView)
+    }
+
     
     
     // MARK: Action Messages
@@ -961,3 +1023,80 @@ final class DocumentViewController: NSSplitViewController, ThemeChanging, NSTool
         self.invalidateRestorableState()
     }
 }
+
+
+// MARK: - Welcome View
+
+private struct WelcomeView: View {
+    
+    var onNewDocument: () -> Void
+    var onOpenDocument: () -> Void
+    
+    var body: some View {
+        HStack(spacing: 20) {
+            WelcomeButton(
+                title: String(localized: "New Document", table: "Document"),
+                shortcutHint: "N",
+                systemImage: "doc.badge.plus",
+                action: onNewDocument
+            )
+            
+            WelcomeButton(
+                title: String(localized: "Open Document…", table: "Document"),
+                shortcutHint: "O",
+                systemImage: "folder",
+                action: onOpenDocument
+            )
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(NSColor.textBackgroundColor))
+    }
+}
+
+private struct WelcomeButton: View {
+    let title: String
+    let shortcutHint: String
+    let systemImage: String
+    let action: () -> Void
+    
+    @State private var isHovered = false
+    
+    var body: some View {
+        Button(action: action) {
+            VStack(spacing: 8) {
+                Image(systemName: systemImage)
+                    .font(.system(size: 28, weight: .light))
+                    .foregroundColor(isHovered ? .accentColor : .secondary)
+                Text(title)
+                    .font(.headline)
+                Text(shortcutHint)
+                    .font(.system(size: 12, weight: .medium, design: .rounded))
+                    .foregroundStyle(.tertiary)
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 2)
+                    .background(Color.secondary.opacity(0.1))
+                    .cornerRadius(4)
+            }
+            .frame(width: 160, height: 120)
+            .background(isHovered ? Color.accentColor.opacity(0.1) : Color(NSColor.controlBackgroundColor))
+            .cornerRadius(12)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(isHovered ? Color.accentColor.opacity(0.5) : Color.secondary.opacity(0.2), lineWidth: 1)
+            )
+            .shadow(color: .black.opacity(0.05), radius: 5, y: 2)
+            .scaleEffect(isHovered ? 1.02 : 1.0)
+            .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isHovered)
+        }
+        .buttonStyle(.plain)
+        .onHover { hovering in
+            isHovered = hovering
+            if hovering {
+                NSCursor.pointingHand.push()
+            } else {
+                NSCursor.pop()
+            }
+        }
+    }
+}
+

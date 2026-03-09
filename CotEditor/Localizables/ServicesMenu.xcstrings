@@ -1,209 +1,53 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "New AntiElectricity Window Containing Selection" : {
-      "comment" : "Refer to how Apple translates “New TextEdit Window Containing Selection”",
-      "extractionState" : "manual",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nové okno AntiElectricityu s výběrem"
+  "sourceLanguage": "en",
+  "strings": {
+    "New AntiElectricity Window Containing Selection": {
+      "comment": "Refer to how Apple translates “New TextEdit Window Containing Selection”",
+      "extractionState": "manual",
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Nouveau document AntiElectricity avec la sélection"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Auswahl in neuem AntiElectricity-Fenster"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "選択部分を含む新しいAntiElectricityウインドウを開く"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "New AntiElectricity Window Containing Selection"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abrir fichero en AntiElectricity"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Nouveau document AntiElectricity avec la sélection"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nuova finestra TextEdit contenente selezione"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "選択部分を含む新しいAntiElectricityウインドウを開く"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "새로운 AntiElectricity 윈도우에서 선택 부분 열기"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nieuw AntiElectricity-venster met selectie"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nowe okno AntiElectricitya zawierające zaznaczenie"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nova Janela do AntiElectricity Contendo Seleção"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Новое окно AntiElectricity, которое содержит выделенное"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seçimi İçeren Yeni AntiElectricity Belgesi"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "使用选中内容创建新的AntiElectricity 窗口"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "使用選中的內容創建新的AntiElectricity文件"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "新增包括所選範圍的AntiElectricity視窗"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "새로운 AntiElectricity 윈도우에서 선택 부분 열기"
           }
         }
       }
     },
-    "Open in AntiElectricity" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Otevřít v AntiElectricityu"
+    "Open in AntiElectricity": {
+      "extractionState": "manual",
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrir dans AntiElectricity"
           }
         },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "In AntiElectricity öffnen"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AntiElectricityで開く"
           }
         },
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Open in AntiElectricity"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abrir en AntiElectricity"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ouvrir dans AntiElectricity"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apri in AntiElectricity"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AntiElectricityで開く"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AntiElectricity에서 열기"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Open in AntiElectricity"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Otwórz w AntiElectricityze"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abrir no AntiElectricity"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Открыть в AntiElectricity"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AntiElectricity’de Aç"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在AntiElectricity中打开"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在AntiElectricity中開啟"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在AntiElectricity中開啟"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AntiElectricity에서 열기"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

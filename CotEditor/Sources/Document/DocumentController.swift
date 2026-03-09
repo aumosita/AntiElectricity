@@ -145,12 +145,17 @@ final class DocumentController: NSDocumentController {
     
     override func openUntitledDocumentAndDisplay(_ displayDocument: Bool) throws -> NSDocument {
         
-        let document = try super.openUntitledDocumentAndDisplay(displayDocument)
+        try super.openUntitledDocumentAndDisplay(displayDocument)
+    }
+    
+    
+    override func makeUntitledDocument(ofType typeName: String) throws -> NSDocument {
         
-        // make document transient when it is an open or reopen event
-        if self.documents.count == 1, NSAppleEventManager.shared().isOpenEvent {
-            (document as? Document)?.isTransient = true
-        }
+        let document = try super.makeUntitledDocument(ofType: typeName)
+        
+        // mark new untitled documents as transient to show the welcome screen
+        // -> must be set here (before makeWindowControllers/viewDidLoad) so the view can check it
+        (document as? Document)?.isTransient = true
         
         return document
     }

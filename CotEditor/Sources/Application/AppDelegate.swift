@@ -153,10 +153,6 @@ extension Logger {
         _ = DocumentController.shared
         
         self.prepareMainMenu()
-        
-        #if SPARKLE
-        UpdaterManager.shared.setup()
-        #endif
     }
     
     

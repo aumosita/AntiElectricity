@@ -692,6 +692,12 @@ Gw
                                                             <action selector="toggleAIChat:" target="Ady-hI-5gd" id="Zbx-rR-pMw"/>
                                                         </connections>
                                                     </menuItem>
+                                                    <menuItem title="Show AI Prompts" secondaryImage="sparkles" catalog="system" keyEquivalent="a" id="AI-Prm-pM0">
+                                                        <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                                        <connections>
+                                                            <action selector="showAIPromptsMenu:" target="Ady-hI-5gd" id="AI-Act-Spt"/>
+                                                        </connections>
+                                                    </menuItem>
                                                 </items>
                                             </menu>
                                         </menuItem>
