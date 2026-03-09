@@ -1,6 +1,6 @@
 # ⚡ AntiElectricity
 
-**AntiElectricity**는 [CotEditor](https://coteditor.com)를 기반으로 한 macOS 네이티브 텍스트 에디터입니다.
+**AntiElectricity**는 [CotEditor](https://coteditor.com)를 기반으로 한 macOS 네이티브 텍스트 에디터입니다. 에디터의 이름은 Google의 인공지능 코딩 도구인 Antigravity에서 따왔습니다. 
 CotEditor의 가볍고 아름다운 편집 환경 위에 **AI/LLM 기능**을 결합하여,
 글쓰기와 코딩을 새로운 방식으로 보조하는 에디터를 지향합니다.
 
@@ -86,7 +86,7 @@ AI: 설명 + SEARCH/REPLACE 블록 반환
 | 프로바이더 | 유형 | 주요 모델 |
 |-----------|------|----------|
 | **Ollama** | 로컬 | Llama, Qwen, Mistral 등 |
-| **Anthropic** | 클라우드 API | Claude Sonnet 4, Haiku 4, 3.5 Sonnet/Haiku, Opus |
+| **Anthropic** | 클라우드 API | Claude Sonnet 4.6, Haiku 4,5, Opus 4.6 |
 | **OpenAI** | 클라우드 API | GPT-4o, GPT-4, GPT-3.5 등 |
 | **GitHub Copilot** | 클라우드 | Copilot 모델 |
 
@@ -125,7 +125,19 @@ AI: 설명 + SEARCH/REPLACE 블록 반환
 ### Anthropic (클라우드)
 1. [Anthropic Console](https://console.anthropic.com)에서 API 키 발급
 2. Settings → **AI** → Provider: **Anthropic** 선택
-3. API Key 입력, 모델 선택 (Claude Sonnet 4 추천)
+3. API Key 입력, 모델 선택 (Claude Sonnet 4.6 추천)
+
+### OpenAI (클라우드)
+1. [OpenAI Platform](https://platform.openai.com)에서 API 키 발급
+2. Settings → **AI** → Provider: **OpenAI** 선택
+3. API Key 입력, 모델 선택 (GPT-4o 추천)
+
+### GitHub Copilot (클라우드)
+> ⚠️ [GitHub Copilot 구독](https://github.com/features/copilot) (Individual, Business, 또는 Enterprise)이 필요합니다.
+
+1. GitHub Copilot 구독 활성화
+2. Settings → **AI** → Provider: **GitHub Copilot** 선택
+3. GitHub 계정 인증
 
 > **공통**: **Import Examples** 버튼으로 예제 프리셋을 가져올 수 있습니다.
 
