@@ -64,11 +64,11 @@ protocol LLMProvider: Sendable {
     /// Sends a prompt and returns the completed response.
     ///
     /// - Parameters:
-    ///   - prompt: The user's input text.
+    ///   - messages: The full conversation history.
     ///   - systemPrompt: The system instruction for the LLM.
     ///   - model: The model identifier to use.
     /// - Returns: The LLM response.
-    func send(prompt: String, systemPrompt: String, model: String) async throws -> LLMResponse
+    func send(messages: [AIChatMessage], systemPrompt: String, model: String) async throws -> LLMResponse
     
     /// Tests the connection to the provider.
     ///

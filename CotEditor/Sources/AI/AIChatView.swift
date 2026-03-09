@@ -78,34 +78,54 @@ final class AIChatViewModel {
         let userText = self.inputText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !userText.isEmpty else { return }
         
+        NSLog("[AI sendMessage] START")
         self.messages.append(AIChatMessage(role: .user, content: userText))
         self.inputText = ""
         self.isProcessing = true
+        NSLog("[AI sendMessage] isProcessing=true, creating Task")
         
         Task {
             do {
+                NSLog("[AI sendMessage] Task started, building system prompt")
                 let systemPrompt = self.buildSystemPrompt()
+                NSLog("[AI sendMessage] System prompt built (%d chars), calling provider.send", systemPrompt.count)
+                
+                // Copy the messages to capture the current state and avoid data races during await
+                let currentMessages = self.messages
                 
                 let response = try await AIService.shared.provider.send(
-                    prompt: userText,
+                    messages: currentMessages,
                     systemPrompt: systemPrompt,
                     model: AIService.shared.model
                 )
+                NSLog("[AI sendMessage] Response received (%d chars)", response.content.count)
                 
                 self.messages.append(AIChatMessage(role: .assistant, content: response.content))
+                self.isProcessing = false
+                NSLog("[AI sendMessage] isProcessing=false")
                 
-                // Auto-trigger inline diff for the first edit block
+                // Auto-trigger inline diff for the first edit block.
+                // IMPORTANT: Schedule on a *separate* run-loop cycle via
+                // DispatchQueue.main.async so that SwiftUI's NSHostingView
+                // transaction triggered by `messages.append` above finishes
+                // completely before we touch AppKit's textStorage / layoutManager.
                 let editBlocks = Self.parseEditBlocks(response.content)
                 if let first = editBlocks.first {
-                    // Small delay to let the UI update before activating inline diff
-                    try? await Task.sleep(for: .milliseconds(200))
-                    self.onPreviewEdit?(first.searchText, first.replaceText, first.id)
+                    NSLog("[AI sendMessage] Scheduling onPreviewEdit for block")
+                    let preview = self.onPreviewEdit
+                    DispatchQueue.main.async {
+                        NSLog("[AI sendMessage] Calling onPreviewEdit")
+                        preview?(first.searchText, first.replaceText, first.id)
+                        NSLog("[AI sendMessage] onPreviewEdit done")
+                    }
                 }
             } catch {
+                NSLog("[AI sendMessage] ERROR: %@", error.localizedDescription)
                 self.messages.append(AIChatMessage(role: .system, content: "Error: \(error.localizedDescription)"))
+                self.isProcessing = false
             }
-            self.isProcessing = false
         }
+        NSLog("[AI sendMessage] END (Task launched)")
     }
     
     
@@ -300,7 +320,7 @@ struct AIChatView: View {
             } else {
                 ScrollViewReader { proxy in
                     ScrollView {
-                        LazyVStack(alignment: .leading, spacing: 12) {
+                        VStack(alignment: .leading, spacing: 12) {
                             ForEach(viewModel.messages) { message in
                                 MessageBubble(
                                     message: message,
@@ -339,42 +359,31 @@ struct AIChatView: View {
             
             // Input
             HStack(alignment: .bottom, spacing: 8) {
-                ZStack(alignment: .topLeading) {
-                    // Hidden text to measure content height
-                    Text(viewModel.inputText.isEmpty ? " " : viewModel.inputText + " ")
-                        .font(.system(size: viewModel.fontSize))
-                        .padding(.horizontal, 5)
-                        .padding(.vertical, 4)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .opacity(0)
-                    
-                    // Placeholder
-                    if viewModel.inputText.isEmpty {
-                        Text("Ask AI anything…")
-                            .font(.system(size: viewModel.fontSize))
-                            .foregroundStyle(.tertiary)
-                            .padding(.horizontal, 5)
-                            .padding(.vertical, 4)
-                            .allowsHitTesting(false)
+                TextField("Ask AI anything…", text: $viewModel.inputText, axis: .vertical)
+                    .textFieldStyle(.plain)
+                    .font(.system(size: viewModel.fontSize))
+                    .focused($isInputFocused)
+                    .lineLimit(1...8)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 6)
+                    .background(Color.primary.opacity(0.05))
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .onSubmit {
+                        // In macOS 14+, onSubmit on a vertical TextField maps to the Return key.
+                        // However, to support Shift+Return for newlines, we still need
+                        // key press handling, but iOS/macOS differ. For simple native behavior,
+                        // macOS handles newlines automatically with Option+Return.
+                        // If we want Shift+Return, keep onKeyPress:
                     }
-                    
-                    TextEditor(text: $viewModel.inputText)
-                        .font(.system(size: viewModel.fontSize))
-                        .scrollContentBackground(.hidden)
-                        .scrollDisabled(true)
-                        .focused($isInputFocused)
-                        .onKeyPress(.return, phases: .down) { keyPress in
-                            if keyPress.modifiers.contains(.shift) {
-                                viewModel.inputText += "\n"
-                                return .handled
-                            } else {
-                                viewModel.sendMessage()
-                                return .handled
-                            }
+                    .onKeyPress(.return, phases: .down) { keyPress in
+                        if keyPress.modifiers.contains(.shift) {
+                            viewModel.inputText += "\n"
+                            return .handled
+                        } else {
+                            viewModel.sendMessage()
+                            return .handled
                         }
-                }
-                .fixedSize(horizontal: false, vertical: true)
-                .frame(maxHeight: viewModel.fontSize * 8)
+                    }
                 
                 Button {
                     self.viewModel.sendMessage()
@@ -427,9 +436,6 @@ private struct MessageBubble: View {
     let message: AIChatMessage
     let viewModel: AIChatViewModel
     
-    @State private var isHovering = false
-    
-    
     var body: some View {
         
         HStack(alignment: .top, spacing: 8) {
@@ -447,7 +453,6 @@ private struct MessageBubble: View {
                     if !proseText.isEmpty {
                         Text(proseText)
                             .font(.system(size: viewModel.fontSize))
-                            .textSelection(.enabled)
                             .padding(10)
                             .background(Color.primary.opacity(0.06))
                             .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -466,29 +471,21 @@ private struct MessageBubble: View {
                         .background(Color.purple.opacity(0.06))
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                     }
-                    
-                    // Copy button on hover
-                    if isHovering {
-                        HStack(spacing: 8) {
-                            Button("Copy") {
-                                NSPasteboard.general.clearContents()
-                                NSPasteboard.general.setString(message.content, forType: .string)
-                            }
-                            .buttonStyle(.borderless)
-                            .font(.caption)
-                        }
-                    }
                 } else {
                     // User / system message
                     Text(message.content)
                         .font(.system(size: viewModel.fontSize))
-                        .textSelection(.enabled)
                         .padding(10)
                         .background(self.bubbleBackground)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
             }
-            .onHover { self.isHovering = $0 }
+            .contextMenu {
+                Button("Copy Message") {
+                    NSPasteboard.general.clearContents()
+                    NSPasteboard.general.setString(message.content, forType: .string)
+                }
+            }
             
             if message.role != .user {
                 Spacer(minLength: 40)

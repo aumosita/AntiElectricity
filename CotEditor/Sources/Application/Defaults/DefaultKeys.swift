@@ -75,6 +75,8 @@ extension DefaultKeys {
     static let showStatusBarLines = DefaultKey<Bool>("showStatusBarLines")
     static let showStatusBarChars = DefaultKey<Bool>("showStatusBarChars")
     static let showStatusBarWords = DefaultKey<Bool>("showStatusBarWords")
+    static let showStatusBarCharactersNoSpaces = DefaultKey<Bool>("showStatusBarCharactersNoSpaces")
+    static let showStatusBarManuscriptPages = DefaultKey<Bool>("showStatusBarManuscriptPages")
     static let showStatusBarLocation = DefaultKey<Bool>("showStatusBarLocation")
     static let showStatusBarLine = DefaultKey<Bool>("showStatusBarLine")
     static let showStatusBarColumn = DefaultKey<Bool>("showStatusBarColumn")

@@ -50,7 +50,7 @@ struct CreateDocumentIntent: AppIntent {
     
     static let description = IntentDescription(
         LocalizedStringResource("CreateDocumentIntent.description",
-                                defaultValue: "Create a new document with the specified text in CotEditor.",
+                                defaultValue: "Create a new document with the specified text in AntiElectricity.",
                                 table: "Intents")
     )
     

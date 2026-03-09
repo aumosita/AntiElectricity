@@ -82,7 +82,7 @@ struct ClaudeOAuthProvider: LLMProvider {
     }
     
     
-    func send(prompt: String, systemPrompt: String, model: String) async throws -> LLMResponse {
+    func send(messages: [AIChatMessage], systemPrompt: String, model: String) async throws -> LLMResponse {
         
         // Get a valid access token (refresh if needed)
         let accessToken = try await Self.getValidAccessToken()
@@ -105,13 +105,18 @@ struct ClaudeOAuthProvider: LLMProvider {
         request.setValue(Self.apiVersion, forHTTPHeaderField: "anthropic-version")
         request.timeoutInterval = 120
         
+        var requestMessages: [ClaudeOAuthRequest.Message] = []
+        
+        for msg in messages {
+            let roleStr = msg.role == .assistant ? "assistant" : "user" // Map system messages to user
+            requestMessages.append(.init(role: roleStr, content: msg.content))
+        }
+        
         let body = ClaudeOAuthRequest(
             model: model,
             maxTokens: 4096,
             system: systemPrompt,
-            messages: [
-                .init(role: "user", content: prompt),
-            ]
+            messages: requestMessages
         )
         
         request.httpBody = try JSONEncoder().encode(body)
@@ -158,7 +163,7 @@ struct ClaudeOAuthProvider: LLMProvider {
         
         do {
             _ = try await self.send(
-                prompt: "Hi",
+                messages: [.init(role: .user, content: "Hi")],
                 systemPrompt: "Reply with just 'ok'",
                 model: "claude-haiku-3-5"
             )

@@ -47,7 +47,7 @@ struct CopilotProvider: LLMProvider {
     }
     
     
-    func send(prompt: String, systemPrompt: String, model: String) async throws -> LLMResponse {
+    func send(messages: [AIChatMessage], systemPrompt: String, model: String) async throws -> LLMResponse {
         
         // Step 1: Exchange GitHub token for Copilot token
         let copilotToken = try await self.getCopilotToken()
@@ -65,12 +65,24 @@ struct CopilotProvider: LLMProvider {
         request.setValue("AntiElectricity", forHTTPHeaderField: "X-Request-Id")
         request.timeoutInterval = 120
         
+        var requestMessages: [CopilotChatRequest.Message] = [
+            .init(role: "system", content: systemPrompt)
+        ]
+        
+        for msg in messages {
+            let roleStr: String = {
+                switch msg.role {
+                    case .user: return "user"
+                    case .assistant: return "assistant"
+                    case .system: return "system"
+                }
+            }()
+            requestMessages.append(.init(role: roleStr, content: msg.content))
+        }
+        
         let body = CopilotChatRequest(
             model: model,
-            messages: [
-                .init(role: "system", content: systemPrompt),
-                .init(role: "user", content: prompt),
-            ],
+            messages: requestMessages,
             stream: false
         )
         

@@ -136,6 +136,8 @@ private extension StatusBar.Model {
             .showStatusBarLines,
             .showStatusBarChars,
             .showStatusBarWords,
+            .showStatusBarCharactersNoSpaces,
+            .showStatusBarManuscriptPages,
             .showStatusBarLocation,
             .showStatusBarLine,
             .showStatusBarColumn,
@@ -304,6 +306,8 @@ private struct EditorCountView: View {
     @AppStorage(.showStatusBarLines) private var showsLines
     @AppStorage(.showStatusBarChars) private var showsCharacters
     @AppStorage(.showStatusBarWords) private var showsWords
+    @AppStorage(.showStatusBarCharactersNoSpaces) private var showsCharactersNoSpaces
+    @AppStorage(.showStatusBarManuscriptPages) private var showsManuscriptPages
     @AppStorage(.showStatusBarLocation) private var showsLocation
     @AppStorage(.showStatusBarLine) private var showsLine
     @AppStorage(.showStatusBarColumn) private var showsColumn
@@ -323,6 +327,14 @@ private struct EditorCountView: View {
             if self.showsWords {
                 Text(String(localized: "CountType.words.label", defaultValue: "Words", table: "Document"),
                      value: self.result.words.formatted)
+            }
+            if self.showsCharactersNoSpaces {
+                Text(String(localized: "CountType.charactersNoSpaces.label", defaultValue: "Chars (No Spaces)", table: "Document"),
+                     value: self.result.charactersNoSpaces.formatted)
+            }
+            if self.showsManuscriptPages {
+                Text(String(localized: "CountType.manuscriptPages.label", defaultValue: "Manuscripts", table: "Document"),
+                     value: self.result.manuscriptPages.formatted)
             }
             if self.showsLocation {
                 Text(String(localized: "CountType.location.label", defaultValue: "Location", table: "Document"),
@@ -455,6 +467,8 @@ private extension UserDefaults {
             .union(self[.showStatusBarChars] ? .characters : [])
             .union(self[.showStatusBarLines] ? .lines : [])
             .union(self[.showStatusBarWords] ? .words : [])
+            .union(self[.showStatusBarCharactersNoSpaces] ? .charactersNoSpaces : [])
+            .union(self[.showStatusBarManuscriptPages] ? .manuscriptPages : [])
             .union(self[.showStatusBarLocation] ? .location : [])
             .union(self[.showStatusBarLine] ? .line : [])
             .union(self[.showStatusBarColumn] ? .column : [])

@@ -49,6 +49,8 @@ struct EditorCount: Equatable {
     @Observable final class Result {
         
         var characters = EditorCount()
+        var charactersNoSpaces = EditorCount()
+        var manuscriptPages = EditorCount()
         var lines = EditorCount()
         var words = EditorCount()
         
@@ -77,9 +79,11 @@ struct EditorCount: Equatable {
         static let line       = Self(rawValue: 1 << 4)
         static let column     = Self(rawValue: 1 << 5)
         static let character  = Self(rawValue: 1 << 6)
+        static let charactersNoSpaces = Self(rawValue: 1 << 7)
+        static let manuscriptPages = Self(rawValue: 1 << 8)
         
-        static let all: Self = [.characters, .lines, .words, .location, .line, .column, .character]
-        static let count: Self = [.characters, .lines, .words]
+        static let all: Self = [.characters, .lines, .words, .location, .line, .column, .character, .charactersNoSpaces, .manuscriptPages]
+        static let count: Self = [.characters, .lines, .words, .charactersNoSpaces, .manuscriptPages]
     }
     
     
@@ -148,6 +152,17 @@ struct EditorCount: Equatable {
                 try Task.checkCancellation()
                 self.result.words.entire = await Task.detached { string.numberOfWords }.value
             }
+            
+            if self.types.contains(.charactersNoSpaces) {
+                try Task.checkCancellation()
+                self.result.charactersNoSpaces.entire = await Task.detached { string.filter { !$0.isWhitespace }.count }.value
+            }
+            
+            if self.types.contains(.manuscriptPages) {
+                try Task.checkCancellation()
+                // manuscript length is standard 200 characters per page in Korea
+                self.result.manuscriptPages.entire = await Task.detached { Int(ceil(Double(string.count) / 200.0)) }.value
+            }
         }
     }
     
@@ -190,6 +205,16 @@ struct EditorCount: Equatable {
             if self.types.contains(.words) {
                 try Task.checkCancellation()
                 self.result.words.selected = await Task.detached { selectedStrings.map(\.numberOfWords).reduce(0, +) }.value
+            }
+            
+            if self.types.contains(.charactersNoSpaces) {
+                try Task.checkCancellation()
+                self.result.charactersNoSpaces.selected = await Task.detached { selectedStrings.map { $0.filter { !$0.isWhitespace }.count }.reduce(0, +) }.value
+            }
+            
+            if self.types.contains(.manuscriptPages) {
+                try Task.checkCancellation()
+                self.result.manuscriptPages.selected = await Task.detached { Int(ceil(Double(selectedStrings.map(\.count).reduce(0, +)) / 200.0)) }.value
             }
             
             if self.types.contains(.location) {

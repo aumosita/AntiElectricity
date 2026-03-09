@@ -76,3 +76,14 @@ EOF2
 if [ "${removedCount}" -eq 0 ]; then
     echo "warning: Removed no Tree-sitter bundles (check bundle path/pattern and bundle contents)"
 fi
+
+
+# --- Remove non-English Help localizations ---
+helpResources="${appResources}/CotEditor.help/Contents/Resources"
+
+if [ -d "${helpResources}" ]; then
+    find "${helpResources}" -maxdepth 1 -type d -name '*.lproj' ! -name 'en.lproj' | while IFS= read -r lprojPath; do
+        echo "Removing Help localization: ${lprojPath}"
+        rm -rf "${lprojPath}"
+    done
+fi

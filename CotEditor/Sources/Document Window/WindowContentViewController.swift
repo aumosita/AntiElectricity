@@ -152,12 +152,27 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
             return (text: text, syntax: syntax)
         }
         
-        // Sync font size from editor to chat
+        // Sync font size from editor to chat.
+        // IMPORTANT: We must filter the notification's sender inside the
+        // closure to ensure we only react to the *editor* textView, NOT
+        // SwiftUI's internal TextEditor.  Registering with a specific
+        // `object:` fails because focusedTextView is nil at viewDidLoad
+        // time (the editor hasn't loaded yet), so `nil` would be passed,
+        // observing everything and causing an infinite loop:
+        //   fontSize change → TextEditor update → typing-attrs notification
+        //   → fontSize change → …
         chatViewModel.fontSize = self.documentViewController?.focusedTextView?.font?.pointSize ?? NSFont.systemFontSize
-        NotificationCenter.default.addObserver(forName: NSTextView.didChangeTypingAttributesNotification, object: nil, queue: .main) { [weak self, weak chatViewModel] _ in
-            guard let fontSize = self?.documentViewController?.focusedTextView?.font?.pointSize else { return }
-            chatViewModel?.fontSize = fontSize
+        /*
+        NotificationCenter.default.addObserver(forName: NSTextView.didChangeTypingAttributesNotification, object: nil, queue: .main) { [weak self, weak chatViewModel] notification in
+            guard let editorTV = self?.documentViewController?.focusedTextView,
+                  notification.object as AnyObject? === editorTV
+            else { return }
+            guard let fontSize = editorTV.font?.pointSize else { return }
+            if chatViewModel?.fontSize != fontSize {
+                chatViewModel?.fontSize = fontSize
+            }
         }
+        */
         
         // Set up inline diff preview callback
         chatViewModel.onPreviewEdit = { [weak self] searchText, replaceText, blockID in
@@ -243,11 +258,17 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
                 NSLog("[AI InlineDiff] No match, falling back to popover. Search: '%@'",
                       searchText.prefix(80).description)
                 
-                guard let layoutManager = textView.layoutManager else { return }
+                guard let layoutManager = textView.layoutManager,
+                      let textContainer = textView.textContainer
+                else { return }
                 let sel = textView.selectedRange()
-                let cursorRange = sel.length > 0 ? sel : NSRange(location: max(sel.location, 0), length: 1)
+                let docLen = (textView.string as NSString).length
+                let safeLoc = min(sel.location, max(docLen - 1, 0))
+                let safeLen = min(sel.length, docLen - safeLoc)
+                let cursorRange = safeLen > 0 ? NSRange(location: safeLoc, length: safeLen) : NSRange(location: safeLoc, length: min(1, docLen))
+                guard cursorRange.location + cursorRange.length <= docLen else { return }
                 let glyphRange = layoutManager.glyphRange(forCharacterRange: cursorRange, actualCharacterRange: nil)
-                let rect = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textView.textContainer!)
+                let rect = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
                 let positionRect = NSRect(
                     x: rect.origin.x + textView.textContainerOrigin.x,
                     y: rect.origin.y + textView.textContainerOrigin.y,
@@ -279,9 +300,12 @@ final class WindowContentViewController: NSSplitViewController, NSToolbarItemVal
         
         let chatView = AIChatView(viewModel: chatViewModel)
         let chatHostingController = NSHostingController(rootView: chatView)
-        let chatItem = NSSplitViewItem(inspectorWithViewController: chatHostingController)
+        // Use standard viewController instead of inspectorWithViewController to avoid
+        // swipe-to-reveal collisions with the actual document Inspector.
+        let chatItem = NSSplitViewItem(viewController: chatHostingController)
         chatItem.minimumThickness = 280
         chatItem.preferredThicknessFraction = 0.3
+        chatItem.canCollapse = true
         chatItem.isCollapsed = true
         chatItem.titlebarSeparatorStyle = .none
         self.addSplitViewItem(chatItem)

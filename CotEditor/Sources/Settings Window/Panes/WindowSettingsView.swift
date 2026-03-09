@@ -59,6 +59,8 @@ struct WindowSettingsView: View {
     @AppStorage(.showStatusBarLines) private var showStatusBarLines
     @AppStorage(.showStatusBarChars) private var showStatusBarChars
     @AppStorage(.showStatusBarWords) private var showStatusBarWords
+    @AppStorage(.showStatusBarCharactersNoSpaces) private var showStatusBarCharactersNoSpaces
+    @AppStorage(.showStatusBarManuscriptPages) private var showStatusBarManuscriptPages
     @AppStorage(.showStatusBarLocation) private var showStatusBarLocation
     @AppStorage(.showStatusBarLine) private var showStatusBarLine
     @AppStorage(.showStatusBarColumn) private var showStatusBarColumn
@@ -243,8 +245,10 @@ struct WindowSettingsView: View {
                         Toggle(String(localized: "Line count", table: "WindowSettings"), isOn: $showStatusBarLines)
                         Toggle(String(localized: "Character count", table: "WindowSettings"), isOn: $showStatusBarChars)
                         Toggle(String(localized: "Word count", table: "WindowSettings"), isOn: $showStatusBarWords)
+                        Toggle(String(localized: "Characters (No Spaces)", table: "WindowSettings"), isOn: $showStatusBarCharactersNoSpaces)
                     }
                     VStack(alignment: .leading, spacing: isLiquidGlass ? nil : 6) {
+                        Toggle(String(localized: "Manuscript Pages", table: "WindowSettings"), isOn: $showStatusBarManuscriptPages)
                         Toggle(String(localized: "Location", table: "WindowSettings"), isOn: $showStatusBarLocation)
                         Toggle(String(localized: "Current line", table: "WindowSettings"), isOn: $showStatusBarLine)
                         Toggle(String(localized: "Current column", table: "WindowSettings"), isOn: $showStatusBarColumn)

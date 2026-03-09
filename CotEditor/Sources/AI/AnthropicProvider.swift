@@ -53,7 +53,7 @@ struct AnthropicProvider: LLMProvider {
     }
     
     
-    func send(prompt: String, systemPrompt: String, model: String) async throws -> LLMResponse {
+    func send(messages: [AIChatMessage], systemPrompt: String, model: String) async throws -> LLMResponse {
         
         let url = self.baseURL.appendingPathComponent("v1/messages")
         
@@ -64,13 +64,18 @@ struct AnthropicProvider: LLMProvider {
         request.setValue(self.apiVersion, forHTTPHeaderField: "anthropic-version")
         request.timeoutInterval = 120
         
+        var requestMessages: [AnthropicRequest.Message] = []
+        
+        for msg in messages {
+            let roleStr = msg.role == .assistant ? "assistant" : "user" // Map system messages to user
+            requestMessages.append(.init(role: roleStr, content: msg.content))
+        }
+        
         let body = AnthropicRequest(
             model: model,
             maxTokens: 4096,
             system: systemPrompt,
-            messages: [
-                .init(role: "user", content: prompt),
-            ]
+            messages: requestMessages
         )
         
         request.httpBody = try JSONEncoder().encode(body)
@@ -108,7 +113,7 @@ struct AnthropicProvider: LLMProvider {
         
         do {
             _ = try await self.send(
-                prompt: "Hi",
+                messages: [.init(role: .user, content: "Hi")],
                 systemPrompt: "Reply with just 'ok'",
                 model: "claude-3-5-haiku-20241022"
             )

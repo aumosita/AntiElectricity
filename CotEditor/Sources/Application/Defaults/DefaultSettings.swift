@@ -77,6 +77,8 @@ struct DefaultSettings {
             .showStatusBarLines: true,
             .showStatusBarChars: true,
             .showStatusBarWords: false,
+            .showStatusBarCharactersNoSpaces: false,
+            .showStatusBarManuscriptPages: false,
             .showStatusBarLocation: true,
             .showStatusBarLine: true,
             .showStatusBarColumn: false,

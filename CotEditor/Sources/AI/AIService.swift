@@ -175,7 +175,7 @@ final class AIService {
         
         do {
             let response = try await self.provider.send(
-                prompt: prompt,
+                messages: [.init(role: .user, content: prompt)],
                 systemPrompt: command.systemPrompt,
                 model: self.model
             )

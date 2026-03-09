@@ -42,7 +42,7 @@ struct WhatsNewView: View {
         VStack {
             VStack(alignment: .leading, spacing: 20) {
                 HStack(alignment: .firstTextBaseline) {
-                    Text("What’s New in CotEditor \(NewFeature.version, format: .version(part: .minor))", tableName: "WhatsNew", comment: "%@ is version number")
+                    Text("What’s New in AntiElectricity \(NewFeature.version, format: .version(part: .minor))", tableName: "WhatsNew", comment: "%@ is version number")
                         .fontWeight(isLiquidGlass ? .bold : .semibold)
                         .accessibilityHeading(.h1)
                     

@@ -129,10 +129,10 @@ struct GeneralSettingsView: View {
                                 self.enablesAutosaveInPlace.toggle()
                             }
                         } message: {
-                            Text(String(localized: "NextSessionApplicationConfirmation.message", defaultValue: "Do you want to restart CotEditor now?", table: "GeneralSettings"))
+                            Text(String(localized: "NextSessionApplicationConfirmation.message", defaultValue: "Do you want to restart AntiElectricity now?", table: "GeneralSettings"))
                         }
                     
-                    Text("A system feature that automatically overwrites your files while editing. Even if turned off, CotEditor covertly creates a backup in case it unexpectedly quits.", tableName: "GeneralSettings")
+                    Text("A system feature that automatically overwrites your files while editing. Even if turned off, AntiElectricity covertly creates a backup in case it unexpectedly quits.", tableName: "GeneralSettings")
                         .foregroundStyle(.secondary)
                         .controlSize(.small)
                         .lineLimit(10)
@@ -202,7 +202,7 @@ struct GeneralSettingsView: View {
                             }.foregroundStyle(.secondary)
                         }
                     }
-                    Text("With the `cot` command-line tool, you can launch CotEditor and let it open files from the command line.", tableName: "GeneralSettings")
+                    Text("With the `cot` command-line tool, you can launch AntiElectricity and let it open files from the command line.", tableName: "GeneralSettings")
                         .foregroundStyle(.secondary)
                         .controlSize(.small)
                         .lineLimit(10)
@@ -314,7 +314,7 @@ private extension CommandLineToolManager.Status {
                 nil
             case .differentTarget:
                 String(localized: "CommandLineToolManager.Status.differentTarget.message",
-                       defaultValue: "The current `cot` symbolic link doesn’t target the running CotEditor.",
+                       defaultValue: "The current `cot` symbolic link doesn’t target the running AntiElectricity.",
                        table: "GeneralSettings")
             case .invalidTarget:
                 String(localized: "CommandLineToolManager.Status.invalidTarget.message",
@@ -353,7 +353,7 @@ private extension DocumentConflictOption {
         switch self {
             case .ignore:
                 String(localized: "DocumentConflictOption.ignore.label",
-                       defaultValue: "Keep CotEditor’s version",
+                       defaultValue: "Keep AntiElectricity’s version",
                        table: "GeneralSettings")
             case .notify:
                 String(localized: "DocumentConflictOption.notify.label",

@@ -13,9 +13,10 @@ import AppKit
 /// 2. Inserts the replacement (REPLACE) text with green background right after (ghost text)
 /// 3. Shows floating Accept/Reject controls near the diff
 ///
-/// Ghost text insertion uses disabled undo registration.
-/// Accept: replaces original+ghost with replacement text (undoable).
-/// Reject: removes ghost text, restores original styling.
+/// Ghost text insertion uses disabled undo registration and directly mutates
+/// textStorage — it intentionally bypasses shouldChangeText/didChangeText to
+/// avoid triggering SwiftUI NSHostingView re-entrant layout transactions that
+/// crash with EXC_BAD_ACCESS in NSAppearance.
 final class InlineDiffController: NSObject {
     
     // MARK: Properties
@@ -74,6 +75,8 @@ final class InlineDiffController: NSObject {
         )
         
         // 2. Insert ghost text (replacement) right after search range
+        //    Using direct textStorage manipulation (NOT shouldChangeText/didChangeText)
+        //    to avoid triggering SwiftUI layout transactions from run-loop observers.
         let insertPoint = originalRange.location + originalRange.length
         let ghostString = "\n" + replaceText
         ghostTextLength = (ghostString as NSString).length
@@ -85,7 +88,6 @@ final class InlineDiffController: NSObject {
             .font: font,
         ]
         
-        // Disable undo for ghost text insertion (it's temporary)
         textView.undoManager?.disableUndoRegistration()
         textStorage.beginEditing()
         textStorage.insert(
@@ -102,10 +104,10 @@ final class InlineDiffController: NSObject {
         )
         textView.scrollRangeToVisible(fullRange)
         
-        // 4. Show floating controls (after layout settles)
-        DispatchQueue.main.async { [weak self] in
-            self?.showControls()
-        }
+        // 4. Force layout, then show floating controls immediately
+        //    (caller already ensures we are on a fresh main-queue cycle)
+        layoutManager.ensureLayout(forCharacterRange: fullRange)
+        self.showControls()
     }
     
     
@@ -132,7 +134,13 @@ final class InlineDiffController: NSObject {
         layoutManager.removeTemporaryAttribute(.strikethroughStyle, forCharacterRange: originalRange)
         layoutManager.removeTemporaryAttribute(.strikethroughColor, forCharacterRange: originalRange)
         
-        // Replace combined region with replacement text (undoable via shouldChangeText)
+        // Replace combined region with replacement text.
+        // Use the EditorTextView's approved-change flag to bypass line ending
+        // normalization, then go through the proper shouldChangeText/didChangeText
+        // so that undo registration works correctly for the real edit.
+        let editorTV = textView as? EditorTextView
+        editorTV?.isApprovedTextChange = true
+        
         if textView.shouldChangeText(in: combinedRange, replacementString: replaceText) {
             textStorage.beginEditing()
             textStorage.replaceCharacters(in: combinedRange, with: replaceText)
@@ -145,6 +153,8 @@ final class InlineDiffController: NSObject {
             textStorage.endEditing()
             textView.didChangeText()
         }
+        
+        editorTV?.isApprovedTextChange = false
         
         isActive = false
         onAccept?()
@@ -161,7 +171,11 @@ final class InlineDiffController: NSObject {
         controlsView?.removeFromSuperview()
         controlsView = nil
         
-        // Remove ghost text
+        // Remove ghost text directly from textStorage.
+        // Do NOT use shouldChangeText/didChangeText — the ghost text was never
+        // a "real" edit, and didChangeText triggers run-loop observers that
+        // cause SwiftUI's NSHostingView to re-enter layout, crashing in
+        // NSAppearance.appearanceByApplyingTintColor (EXC_BAD_ACCESS).
         let ghostRange = NSRange(
             location: originalRange.location + originalRange.length,
             length: ghostTextLength
@@ -178,6 +192,15 @@ final class InlineDiffController: NSObject {
         layoutManager.removeTemporaryAttribute(.strikethroughStyle, forCharacterRange: originalRange)
         layoutManager.removeTemporaryAttribute(.strikethroughColor, forCharacterRange: originalRange)
         
+        // Clamp selection so the cursor doesn't point past the (now shorter) document.
+        // Use setSelectedRange directly (no didChangeText needed) — the textView's
+        // layout manager was already notified of the change via textStorage.endEditing().
+        let docLength = textStorage.length
+        let sel = textView.selectedRange()
+        if sel.location + sel.length > docLength {
+            textView.setSelectedRange(NSRange(location: min(sel.location, docLength), length: 0))
+        }
+        
         isActive = false
         onReject?()
     }
@@ -187,13 +210,15 @@ final class InlineDiffController: NSObject {
     
     private func showControls() {
         
-        guard let textView, let layoutManager = textView.layoutManager else { return }
+        guard let textView, let layoutManager = textView.layoutManager,
+              let textContainer = textView.textContainer
+        else { return }
         
         let searchGlyphRange = layoutManager.glyphRange(
             forCharacterRange: originalRange, actualCharacterRange: nil
         )
         let boundingRect = layoutManager.boundingRect(
-            forGlyphRange: searchGlyphRange, in: textView.textContainer!
+            forGlyphRange: searchGlyphRange, in: textContainer
         )
         
         let ctrlWidth: CGFloat = 150
@@ -230,6 +255,7 @@ final class InlineDiffController: NSObject {
         acceptBtn.target = self
         acceptBtn.action = #selector(acceptClicked)
         acceptBtn.keyEquivalent = "\r"
+        acceptBtn.refusesFirstResponder = true
         
         // Reject button
         let rejectBtn = NSButton(frame: NSRect(x: 76, y: 3, width: 68, height: 22))
@@ -241,6 +267,7 @@ final class InlineDiffController: NSObject {
         rejectBtn.target = self
         rejectBtn.action = #selector(rejectClicked)
         rejectBtn.keyEquivalent = "\u{1b}"
+        rejectBtn.refusesFirstResponder = true
         
         container.addSubview(acceptBtn)
         container.addSubview(rejectBtn)

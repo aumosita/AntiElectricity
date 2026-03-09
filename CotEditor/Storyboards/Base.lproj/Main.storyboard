@@ -686,6 +686,12 @@ Gw
                                                             <action selector="toggleInspector:" target="Ady-hI-5gd" id="Xmb-c9-cWL"/>
                                                         </connections>
                                                     </menuItem>
+                                                    <menuItem title="Toggle AI Chat" secondaryImage="bubble.left.and.text.bubble.right" catalog="system" keyEquivalent="c" id="aIC-ha-tTq">
+                                                        <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                                        <connections>
+                                                            <action selector="toggleAIChat:" target="Ady-hI-5gd" id="Zbx-rR-pMw"/>
+                                                        </connections>
+                                                    </menuItem>
                                                 </items>
                                             </menu>
                                         </menuItem>

@@ -76,7 +76,7 @@ struct OpenAIProvider: LLMProvider {
     }
     
     
-    func send(prompt: String, systemPrompt: String, model: String) async throws -> LLMResponse {
+    func send(messages: [AIChatMessage], systemPrompt: String, model: String) async throws -> LLMResponse {
         
         let url = self.baseURL.appendingPathComponent("v1/chat/completions")
         
@@ -86,12 +86,24 @@ struct OpenAIProvider: LLMProvider {
         request.setValue("Bearer \(self.apiKey)", forHTTPHeaderField: "Authorization")
         request.timeoutInterval = 120
         
+        var requestMessages: [OpenAIChatRequest.Message] = [
+            .init(role: "system", content: systemPrompt)
+        ]
+        
+        for msg in messages {
+            let roleStr: String = {
+                switch msg.role {
+                    case .user: return "user"
+                    case .assistant: return "assistant"
+                    case .system: return "system"
+                }
+            }()
+            requestMessages.append(.init(role: roleStr, content: msg.content))
+        }
+        
         let body = OpenAIChatRequest(
             model: model,
-            messages: [
-                .init(role: "system", content: systemPrompt),
-                .init(role: "user", content: prompt),
-            ]
+            messages: requestMessages
         )
         
         request.httpBody = try JSONEncoder().encode(body)
@@ -127,7 +139,7 @@ struct OpenAIProvider: LLMProvider {
         
         do {
             _ = try await self.send(
-                prompt: "Hi",
+                messages: [.init(role: .user, content: "Hi")],
                 systemPrompt: "Reply with just 'ok'",
                 model: "gpt-4o-mini"
             )

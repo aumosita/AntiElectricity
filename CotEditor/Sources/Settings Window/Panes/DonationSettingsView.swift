@@ -63,7 +63,7 @@ struct DonationSettingsView: View {
     var body: some View {
         
         VStack(alignment: .leading) {
-            Text("CotEditor provides all features for free to everyone. You can support this project by offering coffee.", tableName: "DonationSettings")
+            Text("AntiElectricity provides all features for free to everyone. You can support this project by offering coffee.", tableName: "DonationSettings")
                 .padding(.bottom, 10)
             
             if self.isInAppPurchaseAvailable {
@@ -186,7 +186,7 @@ struct DonationSettingsView: View {
                         .font(.system(size: 64, weight: .light))
                         .foregroundStyle(.tertiary)
                         .padding(.vertical, 6)
-                    Text("The In-App donation feature is available only in CotEditor distributed in the App Store.", tableName: "DonationSettings")
+                    Text("The In-App donation feature is available only in AntiElectricity distributed in the App Store.", tableName: "DonationSettings")
                         .foregroundStyle(.secondary)
                     
                     if let url = URL(string: "itms-apps://apps.apple.com/app/id1024640650") {

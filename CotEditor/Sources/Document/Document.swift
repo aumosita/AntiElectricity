@@ -1467,13 +1467,13 @@ extension NSTextView: EditorCounter.Source { }
             let alert = NSAlert()
             alert.messageText = self.isDocumentEdited
                 ? String(localized: "UpdatedByExternalProcessAlert.message.edited",
-                         defaultValue: "The file has been changed by another application. There are also unsaved changes in CotEditor.")
+                         defaultValue: "The file has been changed by another application. There are also unsaved changes in AntiElectricity.")
                 : String(localized: "UpdatedByExternalProcessAlert.message",
                          defaultValue: "The file has been changed by another application.")
             alert.informativeText = String(localized: "UpdatedByExternalProcessAlert.informativeText",
-                                           defaultValue: "Do you want to keep CotEditor’s version or update it to the modified version?")
+                                           defaultValue: "Do you want to keep AntiElectricity’s version or update it to the modified version?")
             alert.addButton(withTitle: String(localized: "UpdatedByExternalProcessAlert.button.keep",
-                                              defaultValue: "Keep CotEditor’s Version"))
+                                              defaultValue: "Keep AntiElectricity’s Version"))
             alert.addButton(withTitle: String(localized: "UpdatedByExternalProcessAlert.button.update",
                                               defaultValue: "Update"))
             

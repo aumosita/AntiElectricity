@@ -131,8 +131,8 @@ struct MultipleReplaceListView: View {
             }
         }
         .fileDialogMessage(String(localized: "FileImporter.message",
-                                  defaultValue: "Choose CotEditor Replace Definition or TSV (Tab-separated values) files.", table: "MultipleReplace",
-                                  comment: "CotEditor Replace Definition is a proper file type name. Refer to InfoPlist.xcstrings."))
+                                  defaultValue: "Choose AntiElectricity Replace Definition or TSV (Tab-separated values) files.", table: "MultipleReplace",
+                                  comment: "AntiElectricity Replace Definition is a proper file type name. Refer to InfoPlist.xcstrings."))
         .fileDialogConfirmationLabel(String(localized: "Action.import.label", defaultValue: "Import"))
         .confirmationDialog(String(localized: "ImportDuplicationError.description",
                                    defaultValue: "“\(self.importingError?.name ?? String(localized: .unknown))” already exists. Do you want to replace it?",
