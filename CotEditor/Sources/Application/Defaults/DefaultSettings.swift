@@ -56,7 +56,7 @@ struct DefaultSettings {
             .pinsThemeAppearance: false,
             
             // Window
-            .windowTabbing: -1,  // = Respect System Setting
+            .windowTabbing: NSWindow.UserTabbingPreference.always.rawValue,  // = Always open in tabs
             .showLineNumbers: true,
             .showLineNumberSeparator: false,
             .showInvisibles: false,

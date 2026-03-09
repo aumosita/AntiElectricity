@@ -24,7 +24,8 @@ struct AIResultView: View {
     let errorMessage: String?
     var fontSize: CGFloat = NSFont.systemFontSize
     
-    var onAccept: (() -> Void)?
+    var onReplace: (() -> Void)?
+    var onAppendBelow: (() -> Void)?
     var onReject: (() -> Void)?
     var onCopy: (() -> Void)?
     
@@ -68,8 +69,12 @@ struct AIResultView: View {
                     }
                     .keyboardShortcut(.escape, modifiers: [])
                     
-                    Button(String(localized: "Accept", table: "AI")) {
-                        self.onAccept?()
+                    Button(String(localized: "Append Below", table: "AI")) {
+                        self.onAppendBelow?()
+                    }
+                    
+                    Button(String(localized: "Replace", table: "AI")) {
+                        self.onReplace?()
                     }
                     .keyboardShortcut(.return, modifiers: .command)
                     .buttonStyle(.borderedProminent)

@@ -14,3 +14,5 @@ default.profraw
 Packages/*/Package.resolved
 build_output.log
 build.log
+SUBSCRIPTION_PLAN.md
+APPSTORE_PLAN.md

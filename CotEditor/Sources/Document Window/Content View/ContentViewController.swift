@@ -179,8 +179,8 @@ final class ContentViewController: NSSplitViewController {
     }
     
     
-    /// Accepts the AI result and replaces the original text.
-    func acceptAIResult() {
+    /// Replaces the original text with the AI result.
+    func replaceWithAIResult() {
         
         guard let result = self.currentAIResult,
               let docVC = self.documentViewController,
@@ -197,6 +197,33 @@ final class ContentViewController: NSSplitViewController {
             textView.selectAll(nil)
             textView.insertText(result.resultText, replacementRange: textView.selectedRange())
         }
+        
+        self.hideAIPanel()
+    }
+    
+    
+    /// Appends the AI result below the current selection.
+    func appendAIResultBelow() {
+        
+        guard let result = self.currentAIResult,
+              let docVC = self.documentViewController,
+              let textView = docVC.focusedTextView
+        else { return }
+        
+        let selectedRange = textView.selectedRange()
+        let insertionPoint: Int
+        
+        if selectedRange.length > 0 {
+            // Insert after the selection
+            insertionPoint = selectedRange.location + selectedRange.length
+        } else {
+            // Insert at the end of the document
+            insertionPoint = (textView.string as NSString).length
+        }
+        
+        let textToInsert = "\n" + result.resultText
+        let insertRange = NSRange(location: insertionPoint, length: 0)
+        textView.insertText(textToInsert, replacementRange: insertRange)
         
         self.hideAIPanel()
     }
@@ -226,7 +253,8 @@ final class ContentViewController: NSSplitViewController {
             errorMessage: error,
             fontSize: editorFontSize
         )
-        resultView.onAccept = { [weak self] in self?.acceptAIResult() }
+        resultView.onReplace = { [weak self] in self?.replaceWithAIResult() }
+        resultView.onAppendBelow = { [weak self] in self?.appendAIResultBelow() }
         resultView.onReject = { [weak self] in self?.rejectAIResult() }
         resultView.onCopy = { [weak self] in
             guard let text = self?.currentAIResult?.resultText else { return }
